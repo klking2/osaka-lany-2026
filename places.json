@@ -1,0 +1,311 @@
+[
+  {
+    "name": "關西國際機場 Terminal 1",
+    "query": "Kansai International Airport Terminal 1, Osaka, Japan",
+    "day": "Day 1",
+    "kind": "交通",
+    "note": "抵達大阪及回程機場"
+  },
+  {
+    "name": "南海難波站",
+    "query": "Nankai Namba Station, Osaka, Japan",
+    "day": "Day 1",
+    "kind": "交通",
+    "note": "Rapi:t 抵達／出發站"
+  },
+  {
+    "name": "Hotel IL Cuore Namba",
+    "query": "Hotel IL Cuore Namba, 1-15-15 Nambanaka Naniwa Ward Osaka, Japan",
+    "day": "住宿",
+    "kind": "酒店",
+    "note": "四日住宿據點"
+  },
+  {
+    "name": "LAWSON 難波三丁目店",
+    "query": "LAWSON Namba 3-chome, Osaka, Japan",
+    "day": "Day 1",
+    "kind": "補給",
+    "note": "酒店附近便利店"
+  },
+  {
+    "name": "道頓堀 Glico Sign",
+    "query": "Dotonbori Glico Sign, Osaka, Japan",
+    "day": "Day 1",
+    "kind": "景點",
+    "note": "首晚散步及拍照"
+  },
+  {
+    "name": "大阪產料理 空 難波こめじるし店",
+    "query": "大阪産料理 空 なんばこめじるし店, Osaka, Japan",
+    "day": "Day 1",
+    "kind": "餐廳",
+    "note": "難波晚餐候選"
+  },
+  {
+    "name": "大阪木津卸売市場",
+    "query": "Osaka Kizu Wholesale Market, 2-2-8 Shikitsuhigashi, Naniwa Ward, Osaka, Japan",
+    "day": "Day 2",
+    "kind": "景點／早餐",
+    "note": "大國町站 1 號出口步行 3 分鐘；海鮮早餐及市場採購，店舖多約 11:00 收市"
+  },
+  {
+    "name": "阿倍野 HARUKAS 300",
+    "query": "HARUKAS 300, Abeno Harukas, Osaka, Japan",
+    "day": "Day 2",
+    "kind": "景點",
+    "note": "高空觀景台"
+  },
+  {
+    "name": "通天閣",
+    "query": "Tsutenkaku, Osaka, Japan",
+    "day": "Day 2",
+    "kind": "景點",
+    "note": "新世界地標"
+  },
+  {
+    "name": "Zepp Namba",
+    "query": "Zepp Namba Osaka, Japan",
+    "day": "Day 2",
+    "kind": "演唱會",
+    "note": "LANY SOFT WORLD TOUR 場地"
+  },
+  {
+    "name": "金久右衛門 道頓堀店",
+    "query": "金久右衛門 道頓堀店, Osaka, Japan",
+    "day": "Day 2",
+    "kind": "餐廳",
+    "note": "演唱會後拉麵候選"
+  },
+  {
+    "name": "Namba Parks",
+    "query": "Namba Parks, Osaka, Japan",
+    "day": "Day 3",
+    "kind": "購物",
+    "note": "難波商場與天台花園"
+  },
+  {
+    "name": "心齋橋筋商店街",
+    "query": "Shinsaibashi-suji Shopping Street, Osaka, Japan",
+    "day": "Day 3",
+    "kind": "購物",
+    "note": "心齋橋購物主線"
+  },
+  {
+    "name": "奈良公園",
+    "query": "Nara Park, Nara, Japan",
+    "day": "舊備選",
+    "kind": "景點",
+    "note": "已由10月6日行程移除；Google My Maps舊pin保留備選"
+  },
+  {
+    "name": "東大寺",
+    "query": "Todai-ji, Nara, Japan",
+    "day": "舊備選",
+    "kind": "景點",
+    "note": "已由10月6日行程移除；Google My Maps舊pin保留備選"
+  },
+  {
+    "name": "春日大社",
+    "query": "Kasuga Taisha, Nara, Japan",
+    "day": "舊備選",
+    "kind": "景點",
+    "note": "已由10月6日行程移除；Google My Maps舊pin保留備選"
+  },
+  {
+    "name": "興福寺",
+    "query": "Kofuku-ji, Nara, Japan",
+    "day": "舊備選",
+    "kind": "景點",
+    "note": "已由10月6日行程移除；Google My Maps舊pin保留備選"
+  },
+  {
+    "name": "阪神神戶三宮站",
+    "query": "Hanshin Kobe-Sannomiya Station, Kobe, Japan",
+    "day": "Day 3",
+    "kind": "交通",
+    "note": "10月6日神戶到達及回程站"
+  },
+  {
+    "name": "グリル一平 三宮店",
+    "query": "Grill Ippei Sannomiya, Kobe, Japan",
+    "day": "Day 3",
+    "kind": "餐廳",
+    "note": "午餐已選厚切牛柳吉列；非神戶牛；不設午餐預約"
+  },
+  {
+    "name": "南京町",
+    "query": "Nankinmachi, Kobe, Japan",
+    "day": "Day 3",
+    "kind": "景點",
+    "note": "神戶元町散步"
+  },
+  {
+    "name": "美利堅公園",
+    "query": "Meriken Park, Kobe, Japan",
+    "day": "Day 3",
+    "kind": "景點",
+    "note": "神戶港邊散步"
+  },
+  {
+    "name": "大阪燒肉・內臟 Futago 道頓堀店",
+    "query": "大阪焼肉・ホルモン ふたご 道頓堀店, Osaka, Japan",
+    "day": "Day 3",
+    "kind": "餐廳",
+    "note": "大阪晚餐候選"
+  },
+  {
+    "name": "大阪高島屋",
+    "query": "Osaka Takashimaya, Namba, Osaka, Japan",
+    "day": "Day 4",
+    "kind": "購物",
+    "note": "最後購物及手信"
+  },
+  {
+    "name": "大丸心齋橋店",
+    "query": "Daimaru Shinsaibashi, Osaka, Japan",
+    "day": "Day 4",
+    "kind": "購物",
+    "note": "最後購物候選"
+  },
+  {
+    "name": "LUCUA Osaka",
+    "query": "LUCUA Osaka, 3-1-3 Umeda, Kita Ward, Osaka, Japan",
+    "day": "候選",
+    "kind": "後備基地",
+    "note": "下雨或臨時改行程的一站式選擇"
+  },
+  {
+    "name": "うなぎ 串焼き いづも ルクア大阪店",
+    "query": "うなぎ 串焼き いづも ルクア大阪店, Osaka, Japan",
+    "day": "候選",
+    "kind": "餐廳",
+    "note": "LUCUA B2F 鰻玉丼"
+  },
+  {
+    "name": "WIRED CAFE ルクア大阪店",
+    "query": "WIRED CAFE ルクア大阪店, Osaka, Japan",
+    "day": "候選",
+    "kind": "甜品",
+    "note": "LUCUA 7F 晚間甜品與咖啡"
+  },
+  {
+    "name": "モリタ屋 ルクア大阪店",
+    "query": "モリタ屋 ルクア大阪店, Osaka, Japan",
+    "day": "候選",
+    "kind": "餐廳",
+    "note": "LUCUA 10F 老字號和牛壽喜燒"
+  },
+  {
+    "name": "やさい串巻き なるとや",
+    "query": "やさい串巻き なるとや, 7-18 Namba Sennichimae, Chuo Ward, Osaka, Japan",
+    "day": "晚餐候選",
+    "kind": "居酒屋",
+    "note": "裏難波蔬菜豚肉卷串燒"
+  },
+  {
+    "name": "難波八阪神社",
+    "query": "Namba Yasaka Shrine, 2-9-19 Motomachi, Naniwa Ward, Osaka, Japan",
+    "day": "候選",
+    "kind": "景點",
+    "note": "巨大獅子殿"
+  },
+  {
+    "name": "勝尾寺",
+    "query": "Katsuoji Temple, 2914-1 Aomatani, Minoh, Osaka, Japan",
+    "day": "候選",
+    "kind": "景點",
+    "note": "達摩與勝運寺院"
+  },
+  {
+    "name": "箕面大滝",
+    "query": "Minoh Falls, Minoh Park, Osaka, Japan",
+    "day": "候選",
+    "kind": "景點",
+    "note": "瀑布步道"
+  },
+  {
+    "name": "大阪城公園",
+    "query": "Osaka Castle Park, Osaka, Japan",
+    "day": "候選",
+    "kind": "景點",
+    "note": "與天守閣及御座船同區"
+  },
+  {
+    "name": "大阪城天守閣",
+    "query": "Osaka Castle Main Tower, Osaka, Japan",
+    "day": "候選",
+    "kind": "景點",
+    "note": "室內展示與展望"
+  },
+  {
+    "name": "大阪城御座船",
+    "query": "Osaka Castle Gozabune Boat, Osaka, Japan",
+    "day": "候選",
+    "kind": "景點",
+    "note": "護城河遊船"
+  },
+  {
+    "name": "Stüssy Osaka Chapter",
+    "query": "Stussy Osaka, 1-7-9 Nishishinsaibashi, Chuo Ward, Osaka, Japan",
+    "day": "候選",
+    "kind": "購物",
+    "note": "官方大阪實體店"
+  },
+  {
+    "name": "HOODS OSAKA（WTAPS）",
+    "query": "HOODS Osaka, 1-19-22 Minamihorie, Nishi Ward, Osaka, Japan",
+    "day": "候選",
+    "kind": "購物",
+    "note": "WTAPS 官方大阪 stockist"
+  },
+  {
+    "name": "FREAK’S STORE なんばパークス店",
+    "query": "FREAK'S STORE Namba Parks, 2-10-70 Nambanaka, Naniwa Ward, Osaka, Japan",
+    "day": "候選",
+    "kind": "購物",
+    "note": "Daytona Park 實體店 Namba Parks 4F"
+  },
+  {
+    "name": "なんばCITY",
+    "query": "Namba CITY, 5-1-60 Namba, Chuo Ward, Osaka, Japan",
+    "day": "Day 4",
+    "kind": "購物",
+    "note": "南海難波站直結；商店一般11:00–21:00"
+  },
+  {
+    "name": "なんばSkyO",
+    "query": "Namba SkyO, 5-1-60 Namba, Chuo Ward, Osaka, Japan",
+    "day": "Day 4",
+    "kind": "購物",
+    "note": "南海難波站直結；CITY／PARKS之間順路"
+  },
+  {
+    "name": "なんばEKIKAN",
+    "query": "Namba EKIKAN, Osaka, Japan",
+    "day": "Day 4",
+    "kind": "購物",
+    "note": "南海難波站旁高架下商業走廊"
+  },
+  {
+    "name": "EDION なんば本店",
+    "query": "EDION Namba Main Store, 3-2-18 Namba, Chuo Ward, Osaka, Japan",
+    "day": "Day 4",
+    "kind": "購物／飲食",
+    "note": "8F手錶珠寶；9Fなんばラーメン一座（最後點餐21:30）"
+  },
+  {
+    "name": "萬兩 日本橋店",
+    "query": "焼肉 万両 日本橋店 大阪",
+    "day": "10/4 19:30",
+    "kind": "已訂位",
+    "note": "2 位 · Google 已確認"
+  },
+  {
+    "name": "磯丸水産 なんば南海通り店",
+    "query": "磯丸水産 なんば南海通り店 大阪",
+    "day": "10/5 22:00",
+    "kind": "已訂位",
+    "note": "2 位 · 先回酒店接同行者"
+  }
+]
+

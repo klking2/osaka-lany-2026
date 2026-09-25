@@ -1,0 +1,1606 @@
+<!doctype html>
+<html lang="zh-Hant" data-ha-style="soft-saas">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <title>大阪 LANY 2026 · 手機行程</title>
+  <meta name="theme-color" content="#5b7cf6">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <script defer src="./mobile.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+      --canvas: #f5f7fb;
+      --panel: #ffffff;
+      --panel-2: #f8faff;
+      --line: rgba(106, 119, 150, 0.14);
+      --line-strong: rgba(88, 101, 133, 0.24);
+      --text: #172033;
+      --muted: #6b7288;
+      --muted-2: #9aa3b7;
+      --blue: #5b7cf6;
+      --blue-2: #aebcff;
+      --cyan: #65d6ce;
+      --pink: #e978ae;
+      --yellow: #f6c445;
+      --green: #49c99f;
+      --red: #e35d6a;
+      --shadow: 0 18px 44px rgba(71, 83, 112, 0.11);
+      --shadow-soft: 0 8px 24px rgba(71, 83, 112, 0.08);
+      --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+      --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+      --font-mono: "SF Mono", Menlo, ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(720px 340px at 52% 7%, rgba(91, 124, 246, 0.11), transparent 72%),
+        radial-gradient(560px 320px at 88% 0%, rgba(101, 214, 206, 0.14), transparent 70%),
+        var(--canvas);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid rgba(91, 124, 246, 0.35); outline-offset: 3px; }
+    .mono { font-family: var(--font-mono); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    .soft-saas-shell {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 32px 24px 72px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .brandline { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .brandmark {
+      width: 38px; height: 38px; display: grid; place-items: center;
+      border-radius: 13px; color: #fff; background: linear-gradient(135deg, var(--blue), #8f6de8);
+      box-shadow: 0 10px 24px rgba(91, 124, 246, 0.24);
+    }
+    .brandline strong { display: block; font: 700 19px/1.2 var(--font-display); }
+    .brandline span { display: block; margin-top: 3px; color: var(--muted); font-size: 16px; }
+    .top-actions { display: flex; align-items: center; gap: 8px; }
+    .ghost-button, .copy-button, .primary-link {
+      min-height: 42px; display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+      padding: 0 14px; border-radius: 12px; border: 1px solid var(--line); text-decoration: none;
+      background: rgba(255,255,255,.88); color: var(--text); font-weight: 700; font-size: 17px;
+    }
+    .primary-link { background: var(--blue); color: #fff; border-color: transparent; box-shadow: 0 9px 20px rgba(91,124,246,.22); }
+
+    .soft-board {
+      display: grid;
+      grid-template-columns: 286px minmax(410px, 1fr) 328px;
+      gap: 22px;
+      align-items: start;
+    }
+    .left-stack, .center-stack, .right-stack { display: grid; gap: 22px; }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,.93);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .profile-card { padding: 22px 18px 18px; }
+    .avatar {
+      width: 54px; height: 54px; margin: 0 auto 12px; border-radius: 18px; display: grid; place-items: center;
+      color: #fff; background: linear-gradient(145deg, #5b7cf6 0 52%, #65d6ce 52% 100%);
+      box-shadow: 0 10px 22px rgba(91,124,246,.24);
+    }
+    .avatar svg { width: 28px; height: 28px; }
+    .profile-card h1 { margin: 0; text-align: center; font: 700 23px/1.25 var(--font-display); letter-spacing: -.025em; }
+    .profile-card .sub { margin: 7px auto 14px; max-width: 230px; text-align: center; color: var(--muted); font-size: 17px; line-height: 1.55; }
+    .identity-chips { display: flex; justify-content: center; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+    .chip, .status-pill, .type-chip, .date-chip {
+      display: inline-flex; align-items: center; gap: 5px; padding: 6px 9px; border-radius: 9px;
+      background: #eef3ff; color: #4d63bd; font: 700 15px/1 var(--font-body);
+    }
+    .chip.done { background: #ebfbf5; color: #247e66; }
+    .chip.decision { background: #fff6dc; color: #8d6800; }
+    .tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 5px; border-radius: 13px; background: #f5f7fc; }
+    .tab { min-height: 38px; border: 0; border-radius: 10px; background: transparent; color: var(--muted); font-size: 16px; font-weight: 800; }
+    .tab[aria-selected="true"] { background: #fff; color: var(--blue); box-shadow: 0 5px 14px rgba(71,83,112,.09); }
+    .profile-view { display: none; padding-top: 14px; }
+    .profile-view.active { display: grid; gap: 8px; }
+    .soft-row {
+      min-height: 44px; display: grid; grid-template-columns: 10px minmax(0,1fr) auto; align-items: center;
+      gap: 9px; padding: 8px 9px; border: 1px solid transparent; border-radius: 11px; background: #fbfcff;
+    }
+    .soft-row .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
+    .soft-row .label { min-width: 0; color: var(--muted); font-size: 16px; line-height: 1.35; }
+    .soft-row .label b { display: block; color: var(--text); font-size: 16px; }
+    .soft-row .value { color: var(--text); font: 700 15px/1 var(--font-mono); }
+
+    .delivery-grid { padding: 18px; }
+    .panel-head { display: flex; justify-content: space-between; align-items: start; gap: 14px; margin-bottom: 14px; }
+    .panel-title { margin: 0; font: 700 22px/1.25 var(--font-display); letter-spacing: -.025em; }
+    .panel-kicker { margin: 4px 0 0; color: var(--muted); font-size: 16px; line-height: 1.45; }
+    .deadline-list { display: grid; gap: 9px; }
+    .deadline {
+      display: grid; grid-template-columns: 46px minmax(0,1fr); gap: 10px; align-items: center;
+      min-height: 48px; padding: 8px; border-radius: 12px; background: var(--panel-2);
+    }
+    .deadline time { display: grid; place-items: center; min-height: 34px; border-radius: 9px; background: #fff; color: var(--blue); font: 800 15px/1.2 var(--font-mono); }
+    .deadline b { display: block; font-size: 16px; }
+    .deadline span { display: block; margin-top: 2px; color: var(--muted); font-size: 15px; }
+
+    .soft-alert {
+      min-height: 72px; display: flex; align-items: center; gap: 13px; padding: 15px 18px;
+      border: 1px solid #cad7ff; border-radius: 17px;
+      background: linear-gradient(135deg, rgba(234,239,255,.98), rgba(246,249,255,.94));
+      box-shadow: 0 9px 22px rgba(91,124,246,.11);
+    }
+    .soft-icon { width: 34px; height: 34px; flex: 0 0 auto; display: grid; place-items: center; color: var(--blue); border-radius: 11px; background: #fff; }
+    .soft-alert p { margin: 0; }
+    .soft-alert strong { display: block; font-size: 18px; }
+    .soft-alert span { display: block; margin-top: 3px; color: var(--muted); font-size: 16px; line-height: 1.45; }
+
+    .metric-bloom { padding: 22px; min-height: 472px; }
+    .progress-wrap { display: grid; grid-template-columns: 154px minmax(0,1fr); gap: 22px; align-items: center; min-height: 196px; }
+    .progress-ring { position: relative; width: 150px; height: 150px; margin: 0 auto; }
+    .progress-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+    .ring-track { fill: none; stroke: #edf1f8; stroke-width: 11; }
+    .ring-value { fill: none; stroke: url(#ringGradient); stroke-width: 11; stroke-linecap: round; stroke-dasharray: 352; stroke-dashoffset: 352; transition: stroke-dashoffset .55s ease; }
+    .ring-copy { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+    .ring-copy strong { font: 700 31px/1 var(--font-display); }
+    .ring-copy span { margin-top: 6px; color: var(--muted); font-size: 15px; }
+    .route-summary h3 { margin: 0 0 8px; font: 700 25px/1.25 var(--font-display); letter-spacing: -.03em; }
+    .route-summary p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.6; }
+    .route-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; margin-top: 14px; }
+    .route-stat { padding: 10px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+    .route-stat b { display: block; font: 800 19px/1 var(--font-mono); }
+    .route-stat span { display: block; margin-top: 4px; color: var(--muted); font-size: 14px; }
+    .route-trace { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-top: 24px; padding-top: 22px; }
+    .route-trace::before { content: ""; position: absolute; top: 9px; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, var(--blue), var(--cyan), var(--yellow), var(--pink)); }
+    .route-stop { position: relative; border: 1px solid var(--line); border-radius: 13px; padding: 12px 8px 10px; background: #fff; text-align: center; }
+    .route-stop::before { content: ""; position: absolute; width: 10px; height: 10px; border-radius: 50%; top: -19px; left: calc(50% - 5px); background: var(--blue); box-shadow: 0 0 0 5px #eef2ff; }
+    .route-stop:nth-child(2)::before { background: var(--cyan); }
+    .route-stop:nth-child(3)::before { background: var(--yellow); }
+    .route-stop:nth-child(4)::before { background: var(--pink); }
+    .route-stop time { display: block; color: var(--muted); font: 700 14px/1 var(--font-mono); }
+    .route-stop b { display: block; margin-top: 6px; font-size: 16px; }
+    .route-stop span { display: block; margin-top: 3px; color: var(--muted); font-size: 14px; }
+
+    .campaign-panel { padding: 17px; }
+    .rapit-card { padding: 15px; border: 1px solid #dce5ff; border-radius: 15px; background: linear-gradient(145deg, #f5f8ff, #fbfdff); }
+    .campaign-panel.is-complete .rapit-card { border-color: #bfe7d3; background: linear-gradient(145deg, #effbf4, #fbfffd); }
+    .campaign-panel.is-complete .rapit-price strong { color: #20855b; }
+    .campaign-panel.is-complete .status-pill { background: #e8f8ef; color: #20855b; }
+    .rapit-price { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .rapit-price strong { display: block; font: 700 28px/1.15 var(--font-display); color: var(--blue); }
+    .rapit-price span { display: block; margin-top: 5px; color: var(--muted); font-size: 15px; }
+    .direction-grid { display: grid; gap: 8px; margin: 12px 0; }
+    .direction { display: grid; grid-template-columns: 44px minmax(0,1fr) auto; gap: 8px; align-items: center; padding: 9px; border-radius: 11px; background: #fff; border: 1px solid var(--line); }
+    .direction time { color: var(--blue); font: 800 15px/1 var(--font-mono); }
+    .direction b { display: block; font-size: 15px; }
+    .direction span { display: block; margin-top: 2px; color: var(--muted); font-size: 14px; }
+    .direction em { font: 800 15px/1 var(--font-mono); font-style: normal; }
+    .rapit-note { margin: 10px 0 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
+    .full-button { width: 100%; margin-top: 12px; }
+
+    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .metric-tile { min-height: 98px; padding: 12px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+    .metric-label { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 15px; font-weight: 700; }
+    .metric-label::before { content: ""; width: 7px; height: 7px; border-radius: 3px; background: var(--blue); }
+    .metric-tile:nth-child(2) .metric-label::before { background: var(--green); }
+    .metric-tile:nth-child(3) .metric-label::before { background: var(--yellow); }
+    .metric-tile:nth-child(4) .metric-label::before { background: var(--pink); }
+    .metric-tile:last-child { grid-column: span 2; min-height: 86px; }
+    .metric-value { margin-top: 14px; font: 800 24px/1 var(--font-display); }
+    .metric-note { margin-top: 5px; color: var(--muted); font-size: 14px; line-height: 1.35; }
+    a.metric-note { display: inline-block; color: var(--blue); font-weight: 700; }
+
+    .leaderboard-panel { padding: 17px; }
+    .task-list { display: grid; gap: 8px; }
+    .task-item { position: relative; }
+    .task-item input { position: absolute; opacity: 0; pointer-events: none; }
+    .task-item label {
+      min-height: 48px; display: grid; grid-template-columns: 20px minmax(0,1fr) auto; gap: 9px; align-items: center;
+      padding: 8px 9px; border: 1px solid var(--line); border-radius: 12px; background: #fbfcff; cursor: pointer;
+    }
+    .task-check { width: 18px; height: 18px; border: 1px solid #cbd4e7; border-radius: 6px; background: #fff; }
+    .task-item input:checked + label .task-check { background: var(--green); border-color: var(--green); box-shadow: inset 0 0 0 4px #fff; }
+    .task-item input:checked + label .task-copy b { text-decoration: line-through; color: var(--muted); }
+    .task-copy b { display: block; font-size: 15px; }
+    .task-copy span { display: block; margin-top: 2px; color: var(--muted); font-size: 14px; }
+    .priority { padding: 5px 7px; border-radius: 8px; background: #fff2cf; color: #8b6500; font: 800 13px/1 var(--font-mono); }
+
+    .activity-strip { grid-column: 2 / 4; padding: 18px; }
+    .activity-head { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .journey-stat { min-width: 0; }
+    .journey-stat strong { display: block; font: 800 21px/1 var(--font-display); }
+    .journey-stat span { display: block; margin-top: 5px; color: var(--muted); font-size: 14px; }
+    .activity-bars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; height: 68px; align-items: end; margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--line); }
+    .day-bar { position: relative; min-height: 14px; border-radius: 9px 9px 4px 4px; background: linear-gradient(180deg, var(--blue-2), var(--blue)); }
+    .day-bar:nth-child(2) { background: linear-gradient(180deg, #9ce8df, #55c7bd); }
+    .day-bar:nth-child(3) { background: linear-gradient(180deg, #fbe19a, #f6c445); }
+    .day-bar:nth-child(4) { background: linear-gradient(180deg, #f5b2d1, #e978ae); }
+    .day-bar span { position: absolute; left: 8px; bottom: 7px; color: #fff; font: 800 14px/1 var(--font-mono); }
+
+    .map-shell { margin-top: 22px; padding: 20px; }
+    .map-head { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; margin-bottom: 14px; }
+    .map-copy { max-width: 700px; }
+    .map-copy p { margin: 7px 0 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+    .map-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 11px; }
+    .map-chip { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 10px; border-radius: 10px; border: 1px solid var(--line); background: #fff; color: var(--muted); font: 800 14px/1 var(--font-mono); }
+    .map-chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 4px #eef3ff; }
+    .map-chip:nth-child(2)::before { background: var(--pink); box-shadow: 0 0 0 4px #fff0f7; }
+    .map-chip:nth-child(3)::before { background: var(--green); box-shadow: 0 0 0 4px #ebfbf7; }
+    .atlas-stage { position: relative; min-height: 520px; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 18px; background: linear-gradient(135deg, #eef4ff, #edfafa); box-shadow: inset 0 0 0 1px rgba(255,255,255,.72); }
+    .atlas-stage iframe { display: block; width: 100%; height: 520px; border: 0; background: #f5f8ff; }
+    .map-note { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 2px 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .map-note a { color: var(--blue); font-weight: 800; }
+
+    .food-decider { margin-top: 22px; padding: 20px; }
+    .food-head { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; }
+    .food-head-copy { max-width: 760px; }
+    .food-head-copy p { margin: 7px 0 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
+    .meal-rules { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+    .meal-rule { display: inline-flex; align-items: center; min-height: 32px; padding: 0 11px; border-radius: 10px; background: #f3f6ff; color: #4d63bd; font-size: 15px; font-weight: 800; }
+    .meal-rule.locked { background: #ebfbf5; color: #247e66; }
+    .meal-rule.must { background: #fff4df; color: #8d6500; }
+    .food-layout { display: grid; grid-template-columns: minmax(0,1.35fr) minmax(300px,.65fr); gap: 16px; align-items: start; }
+    .food-column { display: grid; gap: 12px; }
+    .food-group { padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: #fbfcff; }
+    .food-group-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 11px; }
+    .food-group-head h3 { margin: 0; font: 700 19px/1.25 var(--font-display); }
+    .food-group-head p { margin: 4px 0 0; color: var(--muted); font-size: 14px; line-height: 1.45; }
+    .choice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+    .choice-slot { min-width: 0; padding: 11px; border: 1px solid var(--line); border-radius: 13px; background: #fff; }
+    .choice-slot > span { display: block; margin-bottom: 7px; color: var(--muted); font: 800 14px/1 var(--font-mono); }
+    .choice-slot select { width: 100%; min-height: 44px; padding: 0 32px 0 10px; border: 1px solid var(--line-strong); border-radius: 10px; color: var(--text); background: #fff; font-size: 16px; font-weight: 700; }
+    .locked-choice { min-height: 44px; display: flex; align-items: center; padding: 9px 10px; border: 1px solid #cdece1; border-radius: 10px; background: #effbf7; color: #247e66; font-size: 15px; font-weight: 800; line-height: 1.4; }
+    .food-options { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 9px; }
+    .food-option { position: relative; min-height: 116px; padding: 13px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+    .food-option.must { border-color: #efd78d; background: #fffaf0; }
+    .food-code { display: inline-grid; place-items: center; width: 25px; height: 25px; margin-bottom: 9px; border-radius: 8px; background: #eef3ff; color: var(--blue); font: 800 15px/1 var(--font-mono); }
+    .food-option.must .food-code { background: #fff0c5; color: #8d6500; }
+    .food-option b { display: block; padding-right: 56px; font-size: 16px; line-height: 1.4; }
+    .food-option p { margin: 5px 0 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .food-option a { display: inline-block; margin-top: 8px; color: var(--blue); font-size: 14px; font-weight: 800; text-decoration: none; }
+    .candidate-board { margin-top: 22px; padding: 20px; }
+    .candidate-intro { max-width: 860px; margin: 7px 0 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
+    .candidate-groups { display: grid; gap: 14px; margin-top: 16px; }
+    .candidate-group { padding: 15px; border: 1px solid var(--line); border-radius: 15px; background: var(--panel-2); }
+    .candidate-group h3 { margin: 0 0 5px; font: 700 18px/1.35 var(--font-display); }
+    .candidate-group > p { margin: 0 0 11px; color: var(--muted); font-size: 15px; line-height: 1.55; }
+    .candidate-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 9px; }
+    .candidate-card { min-height: 132px; padding: 13px; border: 1px solid var(--line); border-radius: 13px; background: #fff; }
+    .candidate-card.must { border-color: #efce6d; background: #fffaf0; }
+    .candidate-card b { display: block; margin-top: 7px; font-size: 16px; line-height: 1.4; }
+    .candidate-card p { margin: 5px 0 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .candidate-card a { display: inline-block; margin-top: 8px; color: var(--blue); font-size: 14px; font-weight: 800; text-decoration: none; }
+    .meal-label { position: absolute; top: 13px; right: 12px; padding: 5px 7px; border-radius: 8px; background: #f3f5fa; color: var(--muted); font: 800 13px/1 var(--font-mono); }
+    .food-summary { padding: 16px; border: 1px solid #d7e1ff; border-radius: 16px; background: linear-gradient(145deg, #f4f7ff, #fbfdff); }
+    .food-summary strong { display: block; font-size: 17px; }
+    .food-summary p { margin: 7px 0 0; color: var(--muted); font-size: 15px; line-height: 1.55; }
+    .summary-list { display: grid; gap: 7px; margin: 13px 0; }
+    .summary-line { display: grid; grid-template-columns: 72px minmax(0,1fr); gap: 8px; padding: 9px; border-radius: 10px; background: #fff; font-size: 14px; }
+    .summary-line span:first-child { color: var(--muted); font-family: var(--font-mono); font-weight: 800; }
+    .food-status { margin-top: 10px; padding: 10px; border-radius: 11px; background: #fff4df; color: #8d6500; font-size: 14px; font-weight: 800; line-height: 1.5; }
+    .food-status.ready { background: #ebfbf5; color: #247e66; }
+    .standby-control { margin-top: 12px; }
+    .standby-control label { display: block; margin-bottom: 6px; color: var(--muted); font-size: 14px; font-weight: 800; }
+    .standby-control select { width: 100%; min-height: 44px; padding: 0 10px; border: 1px solid var(--line-strong); border-radius: 10px; background: #fff; color: var(--text); font-size: 15px; font-weight: 700; }
+    .food-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .food-actions button { min-height: 44px; border-radius: 11px; font-size: 15px; font-weight: 800; }
+    .food-actions .copy-button { border-color: transparent; background: var(--blue); color: #fff; }
+
+    .trip-workbench { margin-top: 22px; padding: 20px; }
+    .toolbar { display: grid; grid-template-columns: minmax(0,1fr) minmax(220px, 320px) auto; gap: 12px; align-items: center; }
+    .search { min-height: 44px; width: 100%; border: 1px solid var(--line-strong); border-radius: 12px; padding: 0 13px; color: var(--text); background: #fff; }
+    .filter-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+    .filter-chip { min-height: 38px; padding: 0 12px; border: 1px solid var(--line); border-radius: 11px; background: #fff; color: var(--muted); font-size: 16px; font-weight: 800; }
+    .filter-chip[aria-pressed="true"] { border-color: #cdd9ff; background: #eef3ff; color: var(--blue); }
+
+    .day-timeline { display: grid; gap: 14px; }
+    .day-card { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #fff; }
+    .day-head { display: grid; grid-template-columns: 86px minmax(0,1fr) auto; gap: 12px; align-items: center; padding: 14px; background: #fbfcff; }
+    .day-head time { color: var(--blue); font: 800 16px/1.3 var(--font-mono); }
+    .day-head h3 { margin: 0; font: 700 19px/1.25 var(--font-display); }
+    .day-head p { margin: 3px 0 0; color: var(--muted); font-size: 15px; }
+    .density { padding: 6px 8px; border-radius: 8px; background: #eef3ff; color: var(--blue); font: 800 14px/1 var(--font-mono); }
+    .schedule-line { height: 5px; margin: 0 14px; border-radius: 99px; background: #eef1f8; overflow: hidden; }
+    .schedule-line i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+    .event-list { padding: 8px 14px 14px; }
+    .event-row { display: grid; grid-template-columns: 62px minmax(0,1fr) auto; gap: 11px; align-items: center; min-height: 48px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .event-row:last-child { border-bottom: 0; }
+    .event-time { color: var(--text); font: 800 15px/1 var(--font-mono); }
+    .event-main b { display: block; font-size: 16px; }
+    .event-main span { display: block; margin-top: 3px; color: var(--muted); font-size: 14px; line-height: 1.4; }
+    .type-chip { background: #f3f5fa; color: var(--muted); }
+    .type-chip.transport { background: #eef3ff; color: #4d63bd; }
+    .type-chip.food { background: #fff4df; color: #8d6500; }
+    .type-chip.show { background: #fff0f7; color: #a14773; }
+    .type-chip.hotel { background: #ebfbf7; color: #287967; }
+
+    .breakdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+    .breakdown { padding: 16px; border: 1px solid var(--line); border-radius: 15px; background: #fff; }
+    .stacked { display: flex; height: 12px; overflow: hidden; border-radius: 99px; margin: 13px 0 10px; background: #eef1f8; }
+    .stacked i { height: 100%; }
+    .legend { display: flex; flex-wrap: wrap; gap: 10px; color: var(--muted); font-size: 14px; }
+    .legend span::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 5px; border-radius: 2px; background: var(--blue); }
+    .legend span:nth-child(2)::before { background: var(--cyan); }
+    .legend span:nth-child(3)::before { background: var(--yellow); }
+    .legend span:nth-child(4)::before { background: var(--pink); }
+    .city-list { display: grid; gap: 8px; margin-top: 12px; }
+    .city-line { display: grid; grid-template-columns: 54px minmax(0,1fr) 28px; gap: 8px; align-items: center; font-size: 15px; }
+    .city-track { height: 7px; border-radius: 99px; background: #eef1f8; overflow: hidden; }
+    .city-track i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--blue), var(--blue-2)); }
+
+    .conflict-panel { margin-top: 14px; padding: 15px; border: 1px solid #d9e5ff; border-radius: 15px; background: #f7faff; }
+    .conflict-panel strong { display: block; font-size: 16px; }
+    .conflict-panel p { margin: 5px 0 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
+
+    .all-items { margin-top: 14px; border: 1px solid var(--line); border-radius: 15px; background: #fff; }
+    .all-items summary { min-height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; cursor: pointer; font-weight: 800; font-size: 16px; }
+    .item-browser { padding: 0 15px 15px; }
+    .browser-row { display: grid; grid-template-columns: 80px minmax(0,1fr) auto; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
+    .browser-row time { color: var(--blue); font: 700 14px/1.4 var(--font-mono); }
+    .browser-row b { display: block; font-size: 15px; }
+    .browser-row span { display: block; margin-top: 2px; color: var(--muted); font-size: 14px; }
+
+    .source-footer { margin-top: 18px; color: var(--muted); font-size: 15px; line-height: 1.6; text-align: center; }
+    .source-footer a { color: var(--blue); }
+    .system-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; padding: 11px 15px; border: 1px solid #d9e5ff; border-radius: 13px; background: #f7faff; color: #4d63bd; font-size: 16px; font-weight: 700; }
+    .system-bar[data-state="saved"] { border-color: #ccefe2; background: #effbf7; color: #247e66; }
+    .system-bar[data-state="error"] { border-color: #f6c7ca; background: #fff2f3; color: #a33a46; }
+    .system-bar button { min-height: 36px; padding: 0 11px; border: 1px solid currentColor; border-radius: 9px; background: #fff; color: inherit; font-size: 15px; font-weight: 800; }
+    .quick-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: -7px 0 18px; }
+    .quick-nav a { min-height: 38px; display: inline-flex; align-items: center; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: #4d63bd; text-decoration: none; font-size: 15px; font-weight: 800; }
+    .notes-panel { margin-top: 16px; padding: 16px; border: 1px solid var(--line); border-radius: 15px; background: #fbfcff; }
+    .notes-panel textarea { width: 100%; min-height: 110px; margin: 10px 0; padding: 12px; resize: vertical; border: 1px solid var(--line-strong); border-radius: 11px; background: #fff; color: var(--text); font-size: 16px; line-height: 1.6; }
+    .notes-panel .note-actions { display: flex; justify-content: flex-end; }
+    .editor-dialog { width: min(920px, calc(100vw - 24px)); max-height: min(88vh, 950px); padding: 0; border: 1px solid var(--line-strong); border-radius: 18px; background: #fff; color: var(--text); box-shadow: var(--shadow); }
+    .editor-dialog::backdrop { background: rgba(23, 32, 51, .42); }
+    .editor-body { padding: 20px; overflow-y: auto; max-height: min(88vh, 950px); }
+    .editor-top { display: flex; align-items: start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .editor-top h2 { margin: 0; font: 700 23px/1.3 var(--font-display); }
+    .editor-top p { margin: 5px 0 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
+    .editor-fields { display: grid; gap: 10px; margin-bottom: 14px; }
+    .editor-fields.two { grid-template-columns: 1fr 2fr; }
+    .editor-field { display: grid; gap: 5px; min-width: 0; color: var(--muted); font-size: 15px; font-weight: 800; }
+    .editor-field input, .editor-field select, .editor-field textarea { width: 100%; min-height: 42px; padding: 9px 10px; border: 1px solid var(--line-strong); border-radius: 10px; background: #fff; color: var(--text); font-size: 16px; font-weight: 500; }
+    .editor-field textarea { min-height: 68px; resize: vertical; }
+    .editor-rows { display: grid; gap: 9px; }
+    .editor-row { display: grid; grid-template-columns: 100px minmax(130px,1fr) minmax(170px,1.5fr) 112px 60px; gap: 8px; align-items: end; padding: 10px; border: 1px solid var(--line); border-radius: 12px; background: #fbfcff; }
+    .editor-row.task { grid-template-columns: minmax(130px,1fr) minmax(170px,1.4fr) 100px 60px; }
+    .editor-row button { min-height: 42px; border: 1px solid #f0c6ca; border-radius: 10px; background: #fff5f6; color: #a33a46; font-size: 15px; font-weight: 800; }
+    .editor-row.fixed { border-color: #cdece1; background: #effbf7; }
+    .editor-actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 9px; margin-top: 16px; }
+    .editor-actions > div { display: flex; flex-wrap: wrap; gap: 8px; }
+    .editor-actions button { min-height: 42px; padding: 0 14px; border-radius: 11px; font-size: 16px; font-weight: 800; }
+    .editor-actions .save-editor { border: 0; background: var(--blue); color: #fff; }
+    .editor-actions .cancel-editor { border: 1px solid var(--line-strong); background: #fff; color: var(--text); }
+    .toast { position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 14px); opacity: 0; pointer-events: none; padding: 11px 15px; border-radius: 12px; color: #fff; background: #172033; font-size: 16px; box-shadow: var(--shadow); transition: .2s ease; z-index: 50; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+    }
+    @media (max-width: 1120px) {
+      .soft-board { grid-template-columns: 280px minmax(0,1fr); }
+      .right-stack { grid-column: 1 / 3; grid-template-columns: 1fr 1fr; }
+      .activity-strip { grid-column: 1 / 3; }
+    }
+    @media (max-width: 780px) {
+      .soft-saas-shell { padding: 18px 12px 44px; }
+      .topbar { align-items: flex-start; }
+      .topbar .top-actions .ghost-button { display: none; }
+      .soft-board, .left-stack, .right-stack { grid-template-columns: 1fr; }
+      .right-stack, .activity-strip { grid-column: auto; }
+      .progress-wrap { grid-template-columns: 1fr; }
+      .route-summary { text-align: center; }
+      .route-stats { text-align: left; }
+      .activity-head { grid-template-columns: repeat(2,1fr); }
+      .toolbar { grid-template-columns: 1fr; }
+      .map-head { display: grid; }
+      .atlas-stage, .atlas-stage iframe { min-height: 440px; height: 440px; }
+      .food-head { display: grid; }
+      .food-layout { grid-template-columns: 1fr; }
+      .breakdown-grid { grid-template-columns: 1fr; }
+      .day-head { grid-template-columns: 72px minmax(0,1fr); }
+      .density { grid-column: 1 / 3; justify-self: start; }
+    }
+    @media (max-width: 520px) {
+      .topbar { display: grid; }
+      .top-actions { width: 100%; }
+      .top-actions .primary-link { flex: 1; }
+      .metric-grid, .route-stats { grid-template-columns: 1fr; }
+      .route-trace { grid-template-columns: 1fr 1fr; row-gap: 24px; }
+      .route-trace::before { display: none; }
+      .route-stop::before { display: none; }
+      .event-row { grid-template-columns: 52px minmax(0,1fr); }
+      .event-row .type-chip { grid-column: 2; justify-self: start; }
+      .browser-row { grid-template-columns: 64px minmax(0,1fr); }
+      .browser-row .type-chip { grid-column: 2; justify-self: start; }
+      .atlas-stage, .atlas-stage iframe { min-height: 520px; height: 520px; }
+      .map-note { align-items: flex-start; flex-direction: column; }
+      .choice-grid, .food-options, .candidate-grid { grid-template-columns: 1fr; }
+      .food-actions { grid-template-columns: 1fr; }
+      .system-bar { align-items: stretch; flex-direction: column; }
+      .editor-fields.two, .editor-row, .editor-row.task { grid-template-columns: 1fr; }
+      .editor-body { padding: 14px; }
+    }
+    @media print {
+      body { background: #fff; }
+      .soft-saas-shell { max-width: none; padding: 0; }
+      .top-actions, .tabs, .toolbar input, .filter-row, .copy-button, .primary-link, .toast { display: none !important; }
+      .soft-board { grid-template-columns: 1fr 1fr; }
+      .right-stack, .activity-strip { grid-column: 1 / 3; }
+      .panel, .soft-alert { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+  <link rel="stylesheet" href="./mobile.css">
+</head>
+<body>
+  <main class="soft-saas-shell">
+    <header class="topbar">
+      <div class="brandline">
+        <span class="brandmark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M4 16.5 9 12l3 2.5L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 7h4v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <div><strong>Osaka Trip Console</strong><span>手機離線版 · 更新 2026-09-25</span></div>
+      </div>
+      <div class="top-actions">
+        <a class="primary-link" href="https://klking2.github.io/taipei-lany-2026/">台北 LANY Console</a>
+        <button class="ghost-button" id="print-page" type="button">列印／存 PDF</button>
+        <a class="primary-link" href="https://app.notion.com/p/3e46a0b4b6f48000b201ef7e622275b5" target="_blank" rel="noreferrer">開啟 Notion</a>
+      </div>
+    </header>
+
+    <div class="system-bar" id="system-bar" data-state="loading" role="status" aria-live="polite">
+      <span id="system-message">正在載入手機行程…</span>
+      <button id="reload-system" type="button">重新載入資料</button>
+    </div>
+    <section class="mobile-intro panel">
+      <strong>大阪・神戶，放進手機。</strong>
+      <p>iPhone：Safari「分享」→「加入主畫面」。Android：瀏覽器選單「安裝應用程式」。第一次請連網開啟，待下方顯示離線包已備妥，再開飛行模式測試。</p>
+      <p id="offline-status" role="status">離線包準備中…</p>
+      <p>行程、餐廳特色、地址與路線示意可離線；Google 地圖及即時導航需要網絡。手機修改只存在這部裝置，不會自動同步 Drive／Codex 或改動真實訂位。</p>
+      <div class="mobile-actions"><a href="#itinerary">查看四日行程</a><a href="#offline-wallet">私人票券包</a><button id="export-state" type="button">匯出我的修改</button></div>
+    </section>
+    <nav class="quick-nav" aria-label="旅程系統快速前往">
+      <a href="#food-choices">選餐廳</a><a href="#optional-places">候選行程</a><a href="#task-panel">待辦</a><a href="#itinerary">行程</a><a href="#trip-notes">備註</a><a href="#trip-map">地圖</a>
+    </nav>
+
+    <section class="soft-board" aria-label="大阪旅程互動控制台">
+      <aside class="left-stack">
+        <article class="profile-card panel">
+          <div class="avatar" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 17h16M6 14l3-8 3 5 2-3 4 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h1>大阪 · LANY · 神戶</h1>
+          <p class="sub">4 日 3 夜，兩人同行。難波作基地；10 月 5 日 LANY 演唱會是全程硬死線。</p>
+          <div class="identity-chips">
+            <span class="chip done">入境 QR 已存</span>
+            <span class="chip decision">免稅 QR 不申請</span>
+          </div>
+          <div class="tabs" role="tablist" aria-label="旅程資料分類">
+            <button class="tab" type="button" role="tab" aria-selected="true" data-view="core">核心</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-view="people">同行</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-view="rules">原則</button>
+          </div>
+          <div class="profile-view active" data-panel="core">
+            <div class="soft-row"><i class="dot"></i><span class="label"><b>出發</b>香港 → 關西 T1</span><span class="value">10/4</span></div>
+            <div class="soft-row"><i class="dot" style="background:var(--pink)"></i><span class="label"><b>LANY</b>Zepp Namba · 19:00</span><span class="value">10/5</span></div>
+            <div class="soft-row"><i class="dot" style="background:var(--cyan)"></i><span class="label"><b>回程</b>關西 T1 → 香港</span><span class="value">10/7</span></div>
+          </div>
+          <div class="profile-view" data-panel="people">
+            <div class="soft-row"><i class="dot"></i><span class="label"><b>演唱會入場者</b>演出後返回酒店會合</span><span class="value">1 人</span></div>
+            <div class="soft-row"><i class="dot" style="background:var(--cyan)"></i><span class="label"><b>同行者</b>難波自由活動後會合</span><span class="value">1 人</span></div>
+            <div class="soft-row"><i class="dot" style="background:var(--yellow)"></i><span class="label"><b>行李</b>每人每程寄艙</span><span class="value">20kg</span></div>
+          </div>
+          <div class="profile-view" data-panel="rules">
+            <div class="soft-row"><i class="dot"></i><span class="label"><b>付款</b>由 Edward 最後確認</span><span class="value">GATE</span></div>
+            <div class="soft-row"><i class="dot" style="background:var(--green)"></i><span class="label"><b>工作版</b>只更新 9/23 頁面</span><span class="value">SSOT</span></div>
+            <div class="soft-row"><i class="dot" style="background:var(--pink)"></i><span class="label"><b>敏感編號</b>保留在 Notion</span><span class="value">PRIVATE</span></div>
+          </div>
+        </article>
+
+        <article class="delivery-grid panel">
+          <div class="panel-head"><div><h2 class="panel-title">接手節奏</h2><p class="panel-kicker">出發前四個驗收點</p></div></div>
+          <div class="deadline-list">
+            <div class="deadline"><time>9/23<br>–25</time><div><b>資料與交通</b><span>消除矛盾、購買 Rapi:t</span></div></div>
+            <div class="deadline"><time>9/26<br>–27</time><div><b>餐廳與上網</b><span>完成兩個訂位及 eSIM 決定</span></div></div>
+            <div class="deadline"><time>9/30</time><div><b>Lawson 取票</b><span>確認取票碼可用並離線保存</span></div></div>
+            <div class="deadline"><time>10/3</time><div><b>手機離線驗收</b><span>逐項實際打開，不只看勾號</span></div></div>
+          </div>
+        </article>
+      </aside>
+
+      <section class="center-stack">
+        <aside class="soft-alert" aria-live="polite">
+          <span class="soft-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M14 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <p><strong id="alert-title">下一步：選定 10/6 晚餐</strong><span id="alert-copy">10/4 萬兩及 10/5 磯丸水産已訂位確認；10/6 可選返回大阪或留在神戶食完晚餐再返酒店。</span></p>
+        </aside>
+
+        <article class="metric-bloom panel">
+          <div class="panel-head">
+            <div><h2 class="panel-title">Trip readiness</h2><p class="panel-kicker">勾選後存在這部手機，離線亦可修改</p></div>
+            <button class="ghost-button" id="reset-tasks" type="button">重設勾選</button>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-ring" role="img" aria-label="旅程準備進度">
+              <svg viewBox="0 0 130 130" aria-hidden="true">
+                <defs><linearGradient id="ringGradient" x1="0" x2="1"><stop offset="0" stop-color="#5b7cf6"/><stop offset="1" stop-color="#65d6ce"/></linearGradient></defs>
+                <circle class="ring-track" cx="65" cy="65" r="56"></circle>
+                <circle class="ring-value" id="ring-value" cx="65" cy="65" r="56"></circle>
+              </svg>
+              <div class="ring-copy"><strong id="progress-pct">0%</strong><span id="progress-copy">準備進度</span></div>
+            </div>
+            <div class="route-summary">
+              <h3>難波作基地，四日不搬酒店</h3>
+              <p>固定事項已完成；現在只收斂交通、餐廳、上網與離線資料。免稅 QR 已正式關閉，不再消耗時間。</p>
+              <div class="route-stats">
+                <div class="route-stat"><b>4 日</b><span>10/4 → 10/7</span></div>
+                <div class="route-stat"><b>2 人</b><span>母子同行</span></div>
+                <div class="route-stat"><b>1 場</b><span>LANY · 10/5</span></div>
+                <div class="route-stat"><b id="rapit-stat-total">HK$284</b><span id="rapit-stat-copy">Rapi:t 已付款</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="route-trace" aria-label="四日主要路線">
+            <div class="route-stop"><time>DAY 1 · 10/4</time><b>KIX → 難波</b><span>取票 · 道頓堀</span></div>
+            <div class="route-stop"><time>DAY 2 · 10/5</time><b>大阪市內</b><span>LANY 19:00</span></div>
+            <div class="route-stop"><time>DAY 3 · 10/6</time><b>神戶</b><span>三宮洋食 · 元町 · 港邊</span></div>
+            <div class="route-stop"><time>DAY 4 · 10/7</time><b>難波 → KIX</b><span>17:30 離開</span></div>
+          </div>
+        </article>
+      </section>
+
+      <aside class="right-stack">
+        <article class="campaign-panel panel" id="next-panel">
+          <div class="panel-head"><div><h2 class="panel-title" id="next-title">下一步：選 10/4 晚餐</h2><p class="panel-kicker" id="next-kicker">餐廳由你決定 · 選擇會儲存</p></div><span class="status-pill" id="next-pill">待選</span></div>
+          <div class="rapit-card">
+            <div class="rapit-price"><div><strong id="next-focus">10/6 晚餐</strong><span id="next-focus-copy">大阪 A–E／神戶 K1–K10 任選</span></div><span id="next-counter">餐廳 2 / 3</span></div>
+            <div class="direction-grid" id="next-options">
+              <div class="direction"><time>10/4</time><div><b>萬兩 日本橋店</b><span>19:30 · Google 訂位</span></div><em>已確認</em></div>
+              <div class="direction"><time>10/6</time><div><b>晚餐 A–E／K1–K10</b><span>大阪或神戶</span></div><em>待選</em></div>
+            </div>
+            <p class="rapit-note" id="next-note">10/5 演唱會後磯丸水産 なんば南海通り店已透過 Google 訂位：22:00、2 位。</p>
+            <a class="primary-link full-button" id="next-action" href="#food-choices">前往餐廳決策板</a>
+          </div>
+        </article>
+
+        <article class="campaign-panel panel">
+          <div class="panel-head"><div><h2 class="panel-title">已確認</h2><p class="panel-kicker">不需再做的工作</p></div></div>
+          <div class="metric-grid">
+            <div class="metric-tile"><span class="metric-label">VJW</span><div class="metric-value">2 QR</div><div class="metric-note">已存手機，可離線出示</div></div>
+            <div class="metric-tile"><span class="metric-label">免稅 QR</span><div class="metric-value">關閉</div><div class="metric-note">影相驗證太麻煩，不再申請</div></div>
+            <div class="metric-tile"><span class="metric-label">住宿</span><div class="metric-value">3 晚</div><div class="metric-note">難波同一酒店，不搬房</div></div>
+            <div class="metric-tile"><span class="metric-label">演唱會</span><div class="metric-value">19:00</div><div class="metric-note">10/5 Zepp Namba</div></div>
+            <div class="metric-tile"><span class="metric-label">Rapi:t</span><div class="metric-value">HK$284</div><div class="metric-note">兩程四張已付款；班次及座位待安排</div><a class="metric-note" href="https://www.klook.com/zh-HK/bookings/" target="_blank" rel="noreferrer">查看 Klook 訂單 ↗</a></div>
+          </div>
+        </article>
+
+        <article class="leaderboard-panel panel" id="task-panel">
+          <div class="panel-head"><div><h2 class="panel-title">優先隊列</h2><p class="panel-kicker">可勾選、增刪、改文字 · 自動儲存</p></div><span class="status-pill" id="open-count">0 OPEN</span></div>
+          <div class="task-list" id="task-list"></div>
+          <button class="ghost-button full-button" id="edit-tasks" type="button">管理待辦內容</button>
+        </article>
+      </aside>
+
+      <article class="activity-strip panel">
+        <div class="panel-head"><div><h2 class="panel-title">Journey metrics</h2><p class="panel-kicker">每天安排密度與硬死線</p></div><p class="panel-kicker mono">10/04 — 10/07</p></div>
+        <div class="activity-head">
+          <div class="journey-stat"><strong>4</strong><span>旅程日數</span></div>
+          <div class="journey-stat"><strong>3</strong><span>酒店晚數</span></div>
+          <div class="journey-stat"><strong>34–40m</strong><span>Rapi:t 車程</span></div>
+          <div class="journey-stat"><strong>17:30</strong><span>10/7 離開難波</span></div>
+          <div class="journey-stat"><strong>23:59</strong><span>10/5 Lawson 取票死線</span></div>
+        </div>
+        <div class="activity-bars" aria-label="四日行程密度">
+          <div class="day-bar" style="height:72%"><span>D1 · 7 stops</span></div>
+          <div class="day-bar" style="height:100%"><span>D2 · 9 stops</span></div>
+          <div class="day-bar" style="height:89%"><span>D3 · 8 stops</span></div>
+          <div class="day-bar" style="height:88%"><span>D4 · 8 stops</span></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="map-shell panel" id="trip-map" aria-label="大阪與神戶行程 Google 地圖">
+      <div class="map-head">
+        <div class="map-copy">
+          <h2 class="panel-title">大阪 LANY 2026 · Google My Maps</h2>
+          <p>原有大阪／神戶 Google My Maps 連結。私人地圖可能需登入原 Google 帳戶；下面的離線地點清單及路線示意不需要登入。候選不會自動改動正式行程。</p>
+          <div class="map-meta" aria-label="地圖摘要">
+            <span class="map-chip">既有 Google 地圖</span>
+            <span class="map-chip">大阪＋神戶</span>
+            <span class="map-chip">交通・住宿・景點・餐廳・購物</span>
+          </div>
+        </div>
+        <a class="primary-link" href="https://www.google.com/maps/d/viewer?mid=1EfJWtbDdLZm14VFLMqp-Vksp_uucBY4" target="_blank" rel="noreferrer">在 Google 地圖開啟</a>
+      </div>
+      <details class="online-map"><summary>展開 Google 線上互動地圖（需網絡）</summary><div class="atlas-stage">
+        <iframe
+          title="大阪 LANY 2026 Google My Maps"
+          src="https://www.google.com/maps/d/embed?mid=1EfJWtbDdLZm14VFLMqp-Vksp_uucBY4&amp;ehbc=2E312F"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div></details>
+      <div class="offline-map-content"><h3>離線路線示意</h3><p>按已儲存行程順序排列，不按地理比例，並非即時轉乘或步行導航。</p><div id="offline-routes"></div><details><summary>地點清單與 Google 導航</summary><div id="offline-places"></div></details></div>
+      <div class="map-note">
+        <span>地圖由 Google My Maps 提供；新候選會獨立成圖層，不會自動改動正式四日行程。奈良四個舊 pin 仍保留供參考。</span>
+        <a href="https://www.google.com/maps/d/edit?mid=1EfJWtbDdLZm14VFLMqp-Vksp_uucBY4" target="_blank" rel="noreferrer">管理 pins</a>
+      </div>
+    </section>
+
+    <section class="candidate-board panel" id="optional-places" aria-label="可能會做與後備行程">
+      <div class="panel-head">
+        <div><h2 class="panel-title">可能會做／臨時改行程</h2><p class="candidate-intro">以下先放進 Google My Maps 作後備，不硬塞入正式四日行程。當日不知道做甚麼、天氣或體力令原路線要改時，再按地區挑選。</p></div>
+        <span class="status-pill">MAP PINS</span>
+      </div>
+      <div class="candidate-groups">
+        <article class="candidate-group">
+          <h3>LUCUA Osaka · 一站式後備方案</h3>
+          <p>梅田區可同時吃飯、甜品與購物；適合空檔、下雨或臨時想改行程。</p>
+          <div class="candidate-grid">
+            <div class="candidate-card"><span class="meal-label">B2F · 鰻魚</span><b>うなぎ 串焼き いづも</b><p>招牌鰻玉丼；作臨時午餐或較早晚餐。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%86%E3%81%AA%E3%81%8E+%E4%B8%B2%E7%84%BC%E3%81%8D+%E3%81%84%E3%81%A5%E3%82%82+%E3%83%AB%E3%82%AF%E3%82%A2%E5%A4%A7%E9%98%AA%E5%BA%97" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card"><span class="meal-label">7F · 晚間甜品</span><b>WIRED CAFE LUCUA</b><p>咖啡、甜品與輕食；LUCUA 店一般營業至 23:00。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=WIRED+CAFE+LUCUA+Osaka" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card"><span class="meal-label">10F · 壽喜燒</span><b>モリタ屋 ルクア大阪店</b><p>京都老字號和牛壽喜燒；想吃較正式晚餐時可選。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A2%E3%83%AA%E3%82%BF%E5%B1%8B+%E3%83%AB%E3%82%AF%E3%82%A2%E5%A4%A7%E9%98%AA%E5%BA%97" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+          </div>
+        </article>
+        <article class="candidate-group">
+          <h3>大阪景點候選</h3>
+          <p>勝尾寺＋箕面大滝最好視作半日至一日郊遊；大阪城三項可串成同一區行程。</p>
+          <div class="candidate-grid">
+            <div class="candidate-card"><span class="meal-label">難波附近</span><b>難波八阪神社</b><p>看巨大獅子殿；正式名稱為「八阪」。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Namba+Yasaka+Shrine" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card"><span class="meal-label">箕面郊遊</span><b>勝尾寺</b><p>達摩與勝運寺院；與箕面大滝同日要預留交通時間。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Katsuoji+Temple+Minoh" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card"><span class="meal-label">箕面郊遊</span><b>箕面大滝</b><p>瀑布步道行程，從箕面站步行約 40 分鐘。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Minoh+Falls+Osaka" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card"><span class="meal-label">大阪城區</span><b>大阪城公園</b><p>外圍散步；可與天守閣及御座船一次完成。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Osaka+Castle+Park" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card"><span class="meal-label">大阪城區</span><b>大阪城天守閣</b><p>室內展示與高層展望；入場時間到時再核對。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Osaka+Castle+Main+Tower" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card"><span class="meal-label">大阪城區</span><b>大阪城御座船</b><p>從護城河看石垣及天守閣，與公園行程配搭。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Osaka+Castle+Gozabune+Boat" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card"><span class="meal-label">已排 10/5</span><b>阿倍野 HARUKAS 300</b><p>已在正式行程及地圖，不重複新增 pin。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=HARUKAS+300" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card must"><span class="meal-label">必去</span><b>道頓堀</b><p>固定放在 10/4 晚上；已在地圖，不是可刪候選。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Dotonbori+Glico+Sign" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+          </div>
+        </article>
+        <article class="candidate-group">
+          <h3>大阪實體服裝店</h3>
+          <p>以難波／心齋橋順路程度優先；WTAPS 使用官方 stockist HOODS OSAKA。</p>
+          <div class="candidate-grid">
+            <div class="candidate-card"><span class="meal-label">心齋橋</span><b>Stüssy Osaka Chapter</b><p>大阪市中央區西心齋橋 1-7-9。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Stussy+Osaka+1-7-9+Nishishinsaibashi" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card"><span class="meal-label">南堀江</span><b>HOODS OSAKA · WTAPS</b><p>WTAPS 官方列出的大阪 stockist；南堀江 1-19-22。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=HOODS+Osaka+1-19-22+Minamihorie" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card"><span class="meal-label">難波</span><b>FREAK’S STORE なんばパークス店</b><p>Daytona Park 實體店；Namba Parks 4F，最順酒店與難波行程。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=FREAKS+STORE+Namba+Parks" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+          </div>
+        </article>
+        <article class="candidate-group">
+          <h3>難波站購物圈 · 五個商場＋EDION</h3>
+          <p>把你提到的「五個商場」按南海難波站一帶處理：PARKS、CITY、SkyO、EKIKAN、髙島屋；PARKS 和髙島屋原本已有 pin。EDION 在髙島屋對面，是獨立補充停點。</p>
+          <div class="candidate-grid">
+            <div class="candidate-card"><span class="meal-label">已在地圖</span><b>なんばパークス</b><p>服裝、FREAK’S STORE、餐廳及天台花園；已有 pin。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Namba+Parks+Osaka" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card"><span class="meal-label">南海站直結</span><b>なんばCITY</b><p>商店一般 11:00–21:00，餐廳一般至 22:00；可同日連接 PARKS。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Namba+CITY+Osaka" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card"><span class="meal-label">南海站直結</span><b>なんばSkyO</b><p>站上商場／餐廳與生活服務；適合由 CITY 往 PARKS 時順路經過。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Namba+SkyO+Osaka" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card"><span class="meal-label">高架下商店街</span><b>なんばEKIKAN</b><p>南海難波站旁的商業走廊；與 CITY、PARKS、SkyO 同屬難波站購物圈。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Namba+EKIKAN+Osaka" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card"><span class="meal-label">已在地圖</span><b>大阪髙島屋</b><p>百貨、手信及地下食物；已有 pin，與 EDION 面對面。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Osaka+Takashimaya+Namba" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+            <div class="candidate-card must"><span class="meal-label">髙島屋對面</span><b>EDION なんば本店</b><p>8F 看手錶／珠寶；9F「なんばラーメン一座」拉麵樓層，11:00–22:00、最後點餐 21:30。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=EDION+Namba+Main+Store" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="food-decider panel" id="food-choices" aria-label="餐廳選擇決策板">
+      <div class="food-head">
+        <div class="food-head-copy">
+          <h2 class="panel-title">餐廳決策板 · 由你自己揀</h2>
+          <p>A–E 是大阪晚餐，K1–K10 是神戶晚餐，R1–R9 是拉麵／烏冬候選；10/6 可留在神戶食完再返難波。10/7 登機前已加入 KIX MENSHO；選擇會儲存在這部手機。</p>
+        </div>
+        <span class="status-pill">AUTO SAVE</span>
+      </div>
+
+      <div class="meal-rules" aria-label="餐飲規則">
+        <span class="meal-rule">燒肉 → 晚餐</span>
+        <span class="meal-rule">麵食 → 午餐</span>
+        <span class="meal-rule locked">10/5 演唱會後 → 磯丸水産（22:00 已訂位）</span>
+        <span class="meal-rule must">J 天婦羅蕎麥麵 → 必吃</span>
+        <span class="meal-rule locked">10/6 神戶午餐 → 牛柳吉列已選</span>
+        <span class="meal-rule locked">10/7 過保安後 → KIX MENSHO</span>
+        <span class="meal-rule">鰻魚／豬排 → 暫不排</span>
+        <span class="meal-rule">H → 到埗再決定</span>
+      </div>
+
+      <div class="food-layout">
+        <div class="food-column">
+          <article class="food-group">
+            <div class="food-group-head"><div><h3>晚餐日期分配</h3><p>10/6 可選大阪 A–E 或神戶 K1–K10；同一間重複選擇時會提示。</p></div><span class="type-chip food">DINNER</span></div>
+            <div class="choice-grid">
+              <label class="choice-slot"><span>10/4 SUN · 晚餐 · 已定但可改選</span><select id="dinner-1004" data-food-choice="dinner1004" aria-label="選擇 10月4日晚餐"><option value="A">A · 焼肉 万両（現有訂位）</option><option value="B">B · 肉匠なか田</option><option value="C">C · DINING あじと</option><option value="D">D · 心斎橋 和っか</option><option value="E">E · なるとや蔬菜串</option></select><small>現有 Google 訂位：萬兩 日本橋店 · 19:30 · 2 位；改選不會自動取消訂位</small></label>
+              <label class="choice-slot"><span>10/5 MON · 演唱會後 · 已定但可改選</span><select id="dinner-1005" data-food-choice="dinner1005" aria-label="選擇 10月5日演唱會後晚餐"><option value="F">F · 磯丸水産（現有訂位）</option><option value="E">E · なるとや蔬菜串（候選）</option><option value="H">H · 玄品 法善寺總本店（候選）</option></select><small>現有 Google 訂位：磯丸水産 なんば南海通り店 · 22:00 · 2 位；改選不會自動取消訂位。E／H 請當日再核對營業時間及空位。</small></label>
+              <label class="choice-slot"><span>10/6 TUE · 晚餐 · 大阪／神戶均可</span><select id="dinner-1006" data-food-choice="dinner1006" aria-label="選擇 10月6日晚餐"><option value="">尚未選擇</option><optgroup label="返回大阪食"><option value="A">A · 焼肉 万両</option><option value="B">B · 肉匠なか田</option><option value="C">C · DINING あじと</option><option value="D">D · 心斎橋 和っか</option><option value="E">E · なるとや蔬菜串</option></optgroup><optgroup label="留在神戶食完再返酒店"><option value="KB1">K1 · 神戸プレジール本店</option><option value="KB2">K2 · 炭焼肉 石田屋。Hanare</option><option value="KB3">K3 · モーリヤ三宮店</option><option value="KB4">K4 · KOBE BEEF RED ONE</option><option value="KB5">K5 · 銀平 三宮店</option><option value="KB6">K6 · うを勢総本店</option><option value="KB7">K7 · 郷土料理 からす</option><option value="KB8">K8 · 串乃家 神戸本店</option><option value="KB9">K9 · 明石焼き 蛸匠 神戸三宮本店</option><option value="KB10">K10 · FISHERMAN'S MARKET</option></optgroup></select><small>選 K1–K10：留在神戶晚餐，食完由三宮／元町／神戶站返回大阪難波；建議 18:00–19:00 開餐。</small></label>
+            </div>
+          </article>
+
+          <article class="food-group" id="kobe-dinner-options">
+            <div class="food-group-head"><div><h3>10/6 神戶晚餐候選 K1–K10</h3><p>全部按 10/6 星期二晚市篩選；分成神戶牛、海鮮和食、地道輕食。可預約／全席禁煙只按目前公開資料標示，訂位前再核對空位與臨時休業。</p></div><span class="type-chip food">10 OPTIONS</span></div>
+            <div class="food-options">
+              <div class="food-option must"><span class="food-code">K1</span><span class="meal-label">神戶牛 · 首選</span><b>神戸プレジール本店</b><p>JA 全農兵庫直營，可食神戶牛鐵板燒、蒸籠或涮涮鍋；三宮站約 5 分鐘。星期二晚市 17:00–22:00，可網上預約，晚餐另收 10% 服務費。</p><a href="https://kobeplaisir-honten.jp/access" target="_blank" rel="noreferrer">官方資料／預約 ↗</a></div>
+              <div class="food-option"><span class="food-code">K2</span><span class="meal-label">神戶牛燒肉</span><b>炭焼肉 石田屋。Hanare</b><p>想食燒肉而不是鐵板燒可選；三宮站附近，星期二營業 17:00–22:30。本店逢星期二休，所以特別改選星期三休的 Hanare。</p><a href="https://kobe-ishidaya.com/" target="_blank" rel="noreferrer">查看官方店舖資料 ↗</a></div>
+              <div class="food-option"><span class="food-code">K3</span><span class="meal-label">老字號鐵板燒</span><b>神戸牛ステーキ モーリヤ三宮店</b><p>創業逾百年的經典神戶牛鐵板燒路線；三宮店空間較寬敞，可於官方網站直接看套餐及網上預約。</p><a href="https://www.mouriya.co.jp/sannomiya/menu" target="_blank" rel="noreferrer">官方餐牌／預約 ↗</a></div>
+              <div class="food-option"><span class="food-code">K4</span><span class="meal-label">元町 · 較靈活</span><b>KOBE BEEF RED ONE</b><p>元町站約 3 分鐘，可只訂座後再選牛扒份量；11:00–21:30，全席禁煙。適合不想一開始就被高價套餐綁死。</p><a href="https://www.koubegyuu.com/redone/" target="_blank" rel="noreferrer">官方資料／預約 ↗</a></div>
+              <div class="food-option must"><span class="food-code">K5</span><span class="meal-label">海鮮和食 · 推薦</span><b>銀平 三宮店</b><p>朝獲鮮魚、刺身、煮魚及名物土鍋鯛飯；三宮站 2–4 分鐘，星期二 17:00–22:00，可網上預約。午餐食牛柳吉列後，晚餐轉魚最平衡。</p><a href="https://ginpei-sannomiya.com/" target="_blank" rel="noreferrer">官方資料／預約 ↗</a></div>
+              <div class="food-option"><span class="food-code">K6</span><span class="meal-label">壽司 · 老字號</span><b>うを勢総本店</b><p>三宮與元町之間的老字號壽司店，大件魚生與季節海鮮；星期二 16:30–22:00，可經 Gurunavi 訂座。</p><a href="https://www.uwosei.com/" target="_blank" rel="noreferrer">官方資料／預約 ↗</a></div>
+              <div class="food-option must"><span class="food-code">K7</span><span class="meal-label">地道居酒屋 · 最方便</span><b>郷土料理 からす</b><p>三宮站約 2 分鐘，神戶牛、淡路雞、神戶豬、直送鮮魚及瓦蕎麥都有；星期二 17:00–24:00、可網上預約、全席禁煙。行程拖晚時最穩陣。</p><a href="https://www.world-one-group.co.jp/shop_detail/karasu/" target="_blank" rel="noreferrer">官方資料／預約 ↗</a></div>
+              <div class="food-option"><span class="food-code">K8</span><span class="meal-label">創作串揚 · 禁煙</span><b>串乃家 神戸本店</b><p>三宮站約 2 分鐘，老字號創作串揚；可按胃口在 10–30 串之間停止。星期二 17:00–22:00，可網上預約、全席禁煙。</p><a href="https://kushinoya.foodre.jp/" target="_blank" rel="noreferrer">官方資料／預約 ↗</a></div>
+              <div class="food-option"><span class="food-code">K9</span><span class="meal-label">明石燒 · 輕鬆</span><b>明石焼き 蛸匠 神戸三宮本店</b><p>飯蛸明石燒、關東煮及章魚飯，三宮站 1–2 分鐘；星期二 17:00–23:00，可網上預約、全席禁煙。適合想食得輕巧。</p><a href="https://tabelog.com/hyogo/A2801/A280101/28074958/" target="_blank" rel="noreferrer">店舖資料／預約 ↗</a></div>
+              <div class="food-option"><span class="food-code">K10</span><span class="meal-label">Harborland · 景觀</span><b>FISHERMAN'S MARKET</b><p>MOSAIC 2F 海景海鮮自助餐，約 90 款、90 分鐘制；11:00–22:00，可預約。行完 Harborland 不想折返三宮時最順路。</p><a href="https://umie.jp/shops/detail/106" target="_blank" rel="noreferrer">官方資料／預約 ↗</a></div>
+            </div>
+          </article>
+
+          <article class="food-group">
+            <div class="food-group-head"><div><h3>晚餐候選 A–E</h3><p>燒肉與居酒屋只安排晚上。</p></div><span class="type-chip food">5 OPTIONS</span></div>
+            <div class="food-options">
+              <div class="food-option"><span class="food-code">A</span><span class="meal-label">燒肉</span><b>焼肉 万両 日本橋店</b><p>性價比及本地口碑路線；星期三休息，適合 10/4 或 10/6 晚上。</p><a href="https://yakiniku-manryo.orwst.com/nihonbashi/ja" target="_blank" rel="noreferrer">查看店舖資料 ↗</a></div>
+              <div class="food-option"><span class="food-code">B</span><span class="meal-label">高級燒肉</span><b>肉匠なか田 本店</b><p>想食一餐較高級和牛時選；星期一休息，不影響 10/4 或 10/6。</p><a href="https://tabelog.com/osaka/A2701/A270202/27001305/" target="_blank" rel="noreferrer">查看店舖資料 ↗</a></div>
+              <div class="food-option"><span class="food-code">C</span><span class="meal-label">居酒屋</span><b>DINING あじと</b><p>裏難波氣氛與創作料理，適合想食多款下酒菜的晚上。</p><a href="https://www.dining-ajito.com/" target="_blank" rel="noreferrer">查看官方網站 ↗</a></div>
+              <div class="food-option"><span class="food-code">D</span><span class="meal-label">和食居酒屋</span><b>心斎橋 和っか</b><p>季節料理與日本酒；星期一休息，保留作 10/4 或 10/6 晚餐備選。</p><a href="https://tabelog.com/osaka/A2701/A270201/27085403/" target="_blank" rel="noreferrer">查看店舖資料 ↗</a></div>
+              <div class="food-option"><span class="food-code">E</span><span class="meal-label">蔬菜串居酒屋</span><b>やさい串巻き なるとや</b><p>裏難波的蔬菜豚肉卷串燒；難波千日前 7-18，適合想吃較輕巧、多款串物的晚上。</p><a href="https://tabelog.com/osaka/A2701/A270202/27099675/" target="_blank" rel="noreferrer">查看店舖資料 ↗</a></div>
+            </div>
+          </article>
+
+          <article class="food-group">
+            <div class="food-group-head"><div><h3>午餐日期分配</h3><p>暫排 10/5 J 天婦羅蕎麥麵、10/6 L 神戶牛柳吉列、10/7 G 美々卯。I 鰻魚／K 吉列豬排飯保留備選，若要換入可在下拉選單調整。</p></div><span class="type-chip food">LUNCH</span></div>
+            <div class="choice-grid">
+              <label class="choice-slot"><span>10/5 MON · 午餐</span><select id="lunch-1005" data-food-choice="lunch1005" aria-label="選擇 10月5日午餐"><option value="">尚未選擇</option><option value="G">G · 美々卯 なんば店</option><option value="I">I · 鰻魚 Izumo LUCUA</option><option value="J">J · 天婦羅蕎麥麵（必吃）</option><option value="K">K · 吉列豬排飯</option></select></label>
+              <div class="choice-slot"><span>10/6 TUE · 神戶午餐</span><div class="locked-choice">L · グリル一平 三宮店 · 厚切牛柳吉列</div></div>
+              <label class="choice-slot"><span>10/7 WED · 午餐</span><select id="lunch-1007" data-food-choice="lunch1007" aria-label="選擇 10月7日午餐"><option value="">尚未選擇</option><option value="G">G · 美々卯 なんば店</option><option value="I">I · 鰻魚 Izumo LUCUA</option><option value="J">J · 天婦羅蕎麥麵（必吃）</option><option value="K">K · 吉列豬排飯</option></select></label>
+            </div>
+          </article>
+
+          <article class="food-group">
+            <div class="food-group-head"><div><h3>其餘午餐候選 G／I／J／K</h3><p>G 美々卯與 J 天婦羅蕎麥麵已暫排；I／K 保留備選，不在本次三餐內。</p></div><span class="type-chip food">4 OPTIONS</span></div>
+            <div class="food-options">
+              <div class="food-option"><span class="food-code">G</span><span class="meal-label">麵食</span><b>美々卯 なんば店</b><p>已按你的要求只列為午餐，主打大阪名物うどんすき。</p><a href="https://www.mimiu.co.jp/restaurant/namba/" target="_blank" rel="noreferrer">查看官方店舖頁 ↗</a></div>
+              <div class="food-option"><span class="food-code">I</span><span class="meal-label">暫不排</span><b>鰻魚 Izumo LUCUA</b><p>三個午餐時段已用完；保留作臨時替換選項。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Izumo+LUCUA+Osaka" target="_blank" rel="noreferrer">在 Google Maps 查看 ↗</a></div>
+              <div class="food-option must"><span class="food-code">J</span><span class="meal-label">必吃</span><b>天婦羅蕎麥麵</b><p>必須排入其中一日午餐；實際店舖留待你選定日期後再挑。</p></div>
+              <div class="food-option"><span class="food-code">K</span><span class="meal-label">暫不排</span><b>吉列豬排飯</b><p>三個午餐時段已用完；保留作臨時替換選項。</p></div>
+            </div>
+          </article>
+
+          <article class="food-group" id="noodle-options">
+            <div class="food-group-head"><div><h3>拉麵／烏冬選擇板 R1–R9</h3><p>MENSHO 已固定在回程登機前；其餘九間不會自動取代目前午餐。你可先選一間做首選，之後再決定換入哪一日。</p></div><span class="type-chip food">10 SHOPS</span></div>
+            <div class="choice-grid" style="grid-template-columns:1fr;margin-bottom:11px">
+              <label class="choice-slot"><span>目前拉麵／烏冬首選</span><select id="noodle-pick" data-food-choice="noodlePick" aria-label="選擇拉麵或烏冬首選"><option value="">尚未選擇</option><option value="R1">R1 · 本町製麺所 中華そば工房</option><option value="R2">R2 · 麺屋 ラパス</option><option value="R3">R3 · ラーメン大戦争 せんば心斎橋店</option><option value="R4">R4 · 本町製麺所 本店（烏冬）</option><option value="R5">R5 · 麺スタイル谷本家 大阪梅田店</option><option value="R6">R6 · MAIDOU 西安料理</option><option value="R7">R7 · うどん棒 大阪本店</option><option value="R8">R8 · 燃えよ麺助</option><option value="R9">R9 · 銀座 篝 ルクア大阪店</option></select><small>這個欄位只記錄你的首選，不會改動每日行程；選好後可再決定放入 10/5 或 10/7 午餐。</small></label>
+            </div>
+            <div class="food-options">
+              <div class="food-option must"><span class="food-code">R0</span><span class="meal-label">10/7 固定</span><b>MENSHO 關西機場店</b><p>招牌白松露香鶏白湯：濃厚雞湯加白松露香氣。位於 KIX T1 2F 國際線保安檢查後，完成報到及過保安後才可到達；06:30–24:55。</p><a href="https://www.kansai-airport.or.jp/shop-and-dine/dine/d101/" target="_blank" rel="noreferrer">機場官方位置／營業時間 ↗</a></div>
+              <div class="food-option"><span class="food-code">R1</span><span class="meal-label">魚介清湯</span><b>本町製麺所 中華そば工房</b><p>無添加醬油湯，以多款削節、北海道昆布、燒鱧及雞骨疊出鮮味；自家製圓麵／平麵可選。船場センタービル2号館 B2，適合本町購物日。</p><a href="https://www.joysemba50.jp/02n_16.html" target="_blank" rel="noreferrer">商場官方店舖資料 ↗</a></div>
+              <div class="food-option"><span class="food-code">R2</span><span class="meal-label">蜆味拌麵</span><b>麺屋 ラパス</b><p>不是傳統湯拉麵，主打帶忌廉感的 Lapas 拌麵／油そば；蜆味、Chicken Junkie、濃厚明太子等較有創意。堺筋本町站約 2 分鐘。</p><a href="https://www.instagram.com/rapas06/" target="_blank" rel="noreferrer">查看官方 Instagram ↗</a></div>
+              <div class="food-option"><span class="food-code">R3</span><span class="meal-label">醬油叉燒</span><b>ラーメン大戦争 せんば心斎橋店</b><p>招牌「ピストル」用名古屋コーチン雞湯配醬油，碗邊鋪滿薄切叉燒，份量與打卡感都強。11:00–23:00，逛本町／心齋橋時最順路。</p><a href="https://ramen-daisenso.com/" target="_blank" rel="noreferrer">查看官方店舖資料 ↗</a></div>
+              <div class="food-option"><span class="food-code">R4</span><span class="meal-label">傳統烏冬</span><b>本町製麺所 本店</b><p>店內每日製麵、長時間熟成的中粗彈牙烏冬，配山長商店鰹節高湯；煮好超過 20 分鐘的麵不供客。與 R1 是不同店，這間才是你說的傳統烏冬。</p><a href="https://www.da-shi.jp/apps/note/%E6%9C%AC%E7%94%BA%E8%A3%BD%E9%BA%BA%E6%89%80-%E6%9C%AC%E5%BA%97-%E6%97%A5%E3%80%85%E3%81%A0%E3%81%97%E3%81%AB%E5%90%88%E3%81%86%E9%BA%BA%E3%82%92%E6%8E%A2%E6%B1%82%E3%81%97%E3%81%A6%E3%81%84%E3%81%BE/" target="_blank" rel="noreferrer">查看官方介紹 ↗</a></div>
+              <div class="food-option"><span class="food-code">R5</span><span class="meal-label">雞貝／泡系</span><b>麺スタイル谷本家 大阪梅田店</b><p>可選清爽雞貝鹽／醬油、泡系鶏白湯，或較重口味的炙燒味噌與內臟拌麵。北新地站附近、全席禁煙；周一至六晚市開至 03:00。</p><a href="https://tanimotoke.menstyle.jp/" target="_blank" rel="noreferrer">查看官方餐牌／店舖資料 ↗</a></div>
+              <div class="food-option"><span class="food-code">R6</span><span class="meal-label">西安寬麵</span><b>MAIDOU 西安料理</b><p>你寫的「Maidou Noodle」較吻合這間；它不是日式拉麵店，特色是油潑 biangbiang 寬麵、涼皮、肉夾饃及羊肉湯麵。道頓堀東端，11:00–23:00、全席禁煙。</p><a href="https://tabelog.com/osaka/A2701/A270202/27106786/" target="_blank" rel="noreferrer">查看店舖資料 ↗</a></div>
+              <div class="food-option"><span class="food-code">R7</span><span class="meal-label">梅田地下冷烏冬</span><b>うどん棒 大阪本店</b><p>你說的梅田地下冷烏冬最吻合這間：大阪駅前第3ビル B2 的手打讚岐烏冬，冷やかけ以伊吹小魚乾冷湯、麵身彈牙見長。人氣高，麵售完會提早收店。</p><a href="https://www.udonbo.co.jp/" target="_blank" rel="noreferrer">查看官方網站 ↗</a></div>
+              <div class="food-option must"><span class="food-code">R8</span><span class="meal-label">鴨／貝清湯</span><b>燃えよ麺助</b><p>福島站旁的人氣行列店，雙招牌是紀州鴨そば與金色貝そば；清湯細緻、叉燒講究。星期一休息，10/5 不可排；10/6 或 10/7 去要預留排隊時間。</p><a href="https://www.instagram.com/moemen423/" target="_blank" rel="noreferrer">查看官方最新營業公告 ↗</a></div>
+              <div class="food-option"><span class="food-code">R9</span><span class="meal-label">LUCUA B2</span><b>銀座 篝 ルクア大阪店</b><p>招牌鶏白湯SOBA 濃郁但收口清爽，配季節蔬菜，適合 LUCUA 後備行程。位於 B2 バルチカ，11:00–23:00、20 席。</p><a href="https://www.lucua.jp/shopguide/id804.html" target="_blank" rel="noreferrer">查看 LUCUA 官方店舖頁 ↗</a></div>
+            </div>
+          </article>
+          <article class="food-group">
+            <div class="food-group-head"><div><h3>10/6 神戶午餐 · 已選</h3><p>厚切牛柳吉列配傳統燴汁；這道菜並非神戶牛。</p></div><span class="type-chip food">FIXED</span></div>
+            <div class="food-options"><div class="food-option must"><span class="food-code">L</span><span class="meal-label">牛柳吉列</span><b>グリル一平 三宮店</b><p>11:00 開始午餐、星期三休息；不設預約，到店先取整理券。10/6 星期二去之前再核對臨時休業。</p><a href="https://grill-ippei.co.jp/shop/sannomiya/" target="_blank" rel="noreferrer">查看官方店舖頁 ↗</a></div></div>
+          </article>
+        </div>
+
+        <aside class="food-column">
+          <article class="food-summary" aria-live="polite">
+            <strong>你的餐飲安排摘要</strong>
+            <p>10/4 萬兩日本橋店已訂 19:30；10/5 演唱會後磯丸水産已訂 22:00、2 位，兩項均透過 Google 確認。</p>
+            <div class="summary-list" id="food-summary-list"></div>
+            <div class="food-status" id="food-status">J 天婦羅蕎麥麵仍未安排。</div>
+            <div class="standby-control">
+              <label for="genpin-status">H · 玄品 法善寺総本店</label>
+              <select id="genpin-status" data-food-choice="genpin"><option value="later">保留候選 · 到埗再決定</option><option value="yes">想去 · 到埗再確認</option><option value="no">今次不去</option></select>
+            </div>
+            <div class="food-actions">
+              <button class="copy-button" id="copy-food" type="button">複製餐飲選擇</button>
+              <button class="ghost-button" id="reset-food" type="button">重設選擇</button>
+            </div>
+          </article>
+
+          <article class="food-option must"><span class="food-code">F</span><span class="meal-label">已訂位</span><b>10/5 · 磯丸水産 なんば南海通り店</b><p>Google 訂位已確認：22:00、2 位。演唱會後先回酒店接同行者，再前往用餐。</p><a href="https://isomaru.jp/1461/" target="_blank" rel="noreferrer">查看官方網站 ↗</a></article>
+          <article class="food-option"><span class="food-code">H</span><span class="meal-label">現場決定</span><b>玄品 法善寺総本店</b><p>先寫入候選，但不排固定日期、不預約；到大阪後再決定是否食。</p><a href="https://guenpin-houzenji.com/" target="_blank" rel="noreferrer">查看官方網站 ↗</a></article>
+        </aside>
+      </div>
+    </section>
+
+    <section class="trip-workbench panel" id="itinerary" aria-label="每日行程瀏覽器">
+      <div class="toolbar">
+        <div><h2 class="panel-title">Itinerary browser</h2><p class="panel-kicker" id="result-meta">四日行程 · 可按日期或關鍵字篩選</p></div>
+        <label><span class="sr-only">搜尋行程</span><input class="search" id="search" type="search" placeholder="搜尋地點、餐廳或活動"></label>
+        <div class="top-actions"><button class="ghost-button" id="edit-itinerary" type="button">編輯行程</button><button class="copy-button" id="copy-checklist" type="button">複製今日清單</button></div>
+      </div>
+      <div class="filter-row" aria-label="日期篩選">
+        <button class="filter-chip" type="button" aria-pressed="true" data-day="all">全部</button>
+        <button class="filter-chip" type="button" aria-pressed="false" data-day="10/4">10/4 抵埗</button>
+        <button class="filter-chip" type="button" aria-pressed="false" data-day="10/5">10/5 LANY</button>
+        <button class="filter-chip" type="button" aria-pressed="false" data-day="10/6">10/6 神戶</button>
+        <button class="filter-chip" type="button" aria-pressed="false" data-day="10/7">10/7 回程</button>
+      </div>
+      <div class="day-timeline" id="day-timeline"></div>
+
+      <article class="notes-panel">
+        <h3 class="panel-title">旅程備註</h3>
+        <p class="panel-kicker">可記低預約、交通或臨時想法；按儲存寫入這部手機。</p>
+        <label class="sr-only" for="trip-notes">旅程備註內容</label>
+        <textarea id="trip-notes" placeholder="例如：10/5 午餐想選哪間；餐廳預約結果；臨時改動…"></textarea>
+        <div class="note-actions"><button class="primary-link" id="save-notes" type="button">儲存備註</button></div>
+      </article>
+
+      <div class="breakdown-grid">
+        <article class="breakdown">
+          <h3 class="panel-title">行程分佈</h3><p class="panel-kicker" id="type-count">按目前行程內容更新</p>
+          <div class="stacked" id="type-stacked" aria-label="行程類型比例"></div>
+          <div class="legend" id="type-legend"></div>
+        </article>
+        <article class="breakdown">
+          <h3 class="panel-title">保存位置</h3><p class="panel-kicker">這部手機／瀏覽器</p>
+          <p class="panel-kicker" style="margin-top:13px;line-height:1.7">餐飲選擇、待辦、每日行程及備註只儲存在這部裝置。可匯出 JSON 交給 Codex；不會自動同步其他手機。清除網站資料會移除個人修改及私人票券。</p>
+        </article>
+      </div>
+
+      <article class="conflict-panel">
+        <strong>時間提醒 · 所有時間為當地時間</strong>
+        <p>原定 10/5 17:30 前返回難波準備演唱會，10/7 17:30 前由難波出發前往機場。修改行程後請重新核對這兩個時間。</p>
+      </article>
+
+      <details class="all-items">
+        <summary>Browse all items <span class="mono" id="all-count">29 ITEMS</span></summary>
+        <div class="item-browser" id="item-browser"></div>
+      </details>
+    </section>
+
+    <footer class="source-footer">
+      本頁沿用原行程；航班、營業時間與交通班次未在本次重新核實，出發前請按官方公告核對。<br>資料來源：<a href="https://app.notion.com/p/3e46a0b4b6f48000b201ef7e622275b5" target="_blank" rel="noreferrer">2026-09-23 Notion 工作頁</a> ·
+      <a href="https://www.klook.com/en-HK/activity/599-kansai-airport-namba-train-ticket-osaka/" target="_blank" rel="noreferrer">Klook Rapi:t</a> ·
+      <a href="https://www.nankai.co.jp/en_railway/ticket/rapit/" target="_blank" rel="noreferrer">南海電鐵</a> ·
+      <a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6559.htm" target="_blank" rel="noreferrer">日本國稅廳</a><br>
+      Rapi:t 來回四張已於 2026-09-23 在 Klook 付款及確認，合共 HK$284；班次與座位尚待安排。訂單編號及醫療代碼沒有複製到本 HTML。
+    </footer>
+    <section class="panel mobile-intro" id="offline-wallet">
+      <h2>私人離線票券包</h2><p>自行加入機票、酒店確認書、LANY 或 Rapi:t 票券 PDF／圖片。只存這部裝置，不上傳 GitHub，不會供朋友看到。清除網站資料或更換手機後需重新加入；請另留原檔備份。</p>
+      <label>選擇文件（單檔上限 20 MB）<input id="wallet-file" type="file" accept="application/pdf,image/jpeg,image/png,image/webp" multiple></label>
+      <p id="wallet-status" role="status"></p><div id="wallet-files"></div>
+    </section>
+  </main>
+  <nav class="mobile-tabs" aria-label="手機導覽"><a href="#itinerary">行程</a><a href="#food-choices">餐廳</a><a href="#noodle-options">拉麵</a><a href="#trip-map">地圖</a><a href="#task-panel">待辦</a></nav>
+  <dialog class="editor-dialog" id="day-editor">
+    <div class="editor-body">
+      <div class="editor-top"><div><h2>編輯每日行程</h2><p>修改時間、地點、備註或新增行程。按「儲存行程」才會寫入這部手機。</p></div><button class="ghost-button" type="button" data-close-dialog="day-editor">關閉</button></div>
+      <div class="editor-fields two">
+        <label class="editor-field">選擇日期<select id="editor-day-select"><option value="0">10/4 抵埗</option><option value="1">10/5 LANY</option><option value="2">10/6 神戶</option><option value="3">10/7 回程</option></select></label>
+        <label class="editor-field">當日標題<input id="editor-day-label" maxlength="150"></label>
+      </div>
+      <div class="editor-fields"><label class="editor-field">當日摘要<textarea id="editor-day-read" maxlength="1000"></textarea></label></div>
+      <div class="editor-rows" id="editor-day-rows"></div>
+      <div class="editor-actions"><button class="ghost-button" id="add-day-item" type="button">＋ 新增行程</button><div><button class="cancel-editor" type="button" data-close-dialog="day-editor">取消</button><button class="save-editor" id="save-day-editor" type="button">儲存行程</button></div></div>
+    </div>
+  </dialog>
+  <dialog class="editor-dialog" id="tasks-editor">
+    <div class="editor-body">
+      <div class="editor-top"><div><h2>管理待辦內容</h2><p>可增刪待辦及修改標題、備註、優先標籤。</p></div><button class="ghost-button" type="button" data-close-dialog="tasks-editor">關閉</button></div>
+      <div class="editor-rows" id="editor-task-rows"></div>
+      <div class="editor-actions"><button class="ghost-button" id="add-task-item" type="button">＋ 新增待辦</button><div><button class="cancel-editor" type="button" data-close-dialog="tasks-editor">取消</button><button class="save-editor" id="save-tasks-editor" type="button">儲存待辦</button></div></div>
+    </div>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite">已複製</div>
+
+  <script>
+    const TRIP = {
+      days: [
+        { day: "10/4", label: "抵埗 · 難波", read: "早機抵埗；唯一必做是 16:30 去 Lawson 取票。", density: "7 STOPS", width: 72, items: [
+          ["08:45", "UO686 香港起飛", "香港機場 T2", "transport"],
+          ["13:30", "抵達關西機場", "T1 · 入境、行李、海關", "transport"],
+          ["約14:30", "Rapi:t 前往難波", "落地後按實際時間選班次", "transport"],
+          ["15:10", "入住 Hotel IL Cuore", "難波站步行約 2 分鐘", "hotel"],
+          ["16:30", "Lawson Loppi 取 LANY 門票", "最重要 · 不延至演唱會當日", "show"],
+          ["19:30", "萬兩 日本橋店", "Google 訂位已確認 · 2 位", "food"],
+          ["晚餐後", "道頓堀（必去）、心齋橋、唐吉訶德", "道頓堀固定保留；其餘按體力縮短", "activity"]
+        ]},
+        { day: "10/5", label: "大阪市內 · LANY", read: "全程最密集；17:30 前一定返回難波。", density: "9 STOPS", width: 100, items: [
+          ["08:30", "大阪木津卸売市場", "大國町站 1 號出口步行 3 分鐘；海鮮早餐／市場採購，店舖多約 11:00 收市", "food"],
+          ["10:30", "あべのハルカス 300", "天王寺 · 展望台", "activity"],
+          ["12:30", "午餐 G／I／J／K 自選", "麵食、鰻魚、天婦羅蕎麥麵或吉列豬排飯", "food"],
+          ["14:00", "新世界、通天閣", "按體力停留", "activity"],
+          ["16:00", "返回酒店休息", "放低戰利品", "hotel"],
+          ["17:30", "必須已回到難波", "演唱會前硬死線", "show"],
+          ["18:00", "步行前往 Zepp Namba", "約 11 分鐘", "transport"],
+          ["19:00", "LANY 演唱會", "Edward 入場", "show"],
+          ["22:00", "磯丸水産 なんば南海通り店", "Google 訂位已確認 · 2 位；先回酒店接同行者", "food"]
+        ]},
+        { day: "10/6", label: "神戶美食一日遊", read: "午餐已選三宮的厚切牛柳吉列；下午元町與港邊，晚餐可留神戶食完再返難波。", density: "8 STOPS", width: 89, items: [
+          ["約09:00", "大阪難波出發往神戶三宮", "阪神線方向；班次及轉乘出發前再核對", "transport"],
+          ["約10:00", "抵達神戶三宮", "市中心輕鬆散步；不把上午排太滿", "transport"],
+          ["10:45", "グリル一平 三宮店取整理券", "午餐不設預約；店方可提早截止派券", "food"],
+          ["11:00", "L · 厚切牛柳吉列午餐", "ヘレビーフカツレツ配燴汁 · 非神戶牛", "food"],
+          ["13:00", "元町／南京町散步", "味噌醬餃子可作小食，不強制加餐", "activity"],
+          ["14:30", "美利堅公園／Harborland", "明石燒可作小食；按體力二選一", "activity"],
+          ["約16:30", "晚餐地點分流", "選神戶：留低至晚餐後返酒店；選大阪：此時由三宮回難波", "transport"],
+          ["18:00", "晚餐 A–E／K1–K10 自選", "大阪燒肉／居酒屋，或神戶牛／海鮮／地道料理", "food"]
+        ]},
+        { day: "10/7", label: "最後採購 · 回港", read: "11:00 退房；17:30 離開難波；過保安後食 MENSHO。", density: "8 STOPS", width: 88, items: [
+          ["11:00", "退房並寄存行李", "酒店前台", "hotel"],
+          ["11:30", "心齋橋、難波站購物圈（五商場＋EDION）", "CITY／PARKS／SkyO／EKIKAN／髙島屋；EDION 8F 手錶、9F 拉麵", "activity"],
+          ["13:00", "午餐 G／I／J／K 自選", "17:30 前離開難波，留意交通時間", "food"],
+          ["15:00", "大丸／高島屋地庫", "買手信食物", "activity"],
+          ["16:30", "返回酒店取行李", "不要延誤", "hotel"],
+          ["17:30", "Rapi:t 前往關西機場", "回程硬死線", "transport"],
+          ["約19:15", "MENSHO 關西機場店", "T1 2F · 國際線保安檢查後；白松露香鶏白湯，食完直接前往登機閘口", "food"],
+          ["20:40", "UO689 起飛", "關西 T1 → 香港", "transport"]
+        ]}
+      ],
+      tasks: [
+        { id: "rapit-out", title: "Rapi:t 去程 ×2", note: "KIX → Namba · 10/4", priority: "TODAY", done: false },
+        { id: "rapit-return", title: "Rapi:t 回程 ×2", note: "Namba → KIX · 10/7", priority: "TODAY", done: false },
+        { id: "dinner-select-1004", title: "10/4 晚餐：萬兩 日本橋店", note: "Google 已確認 · 19:30 · 2 位", priority: "DONE", done: true },
+        { id: "dinner-select-1006", title: "選定 10/6 晚餐（大阪／神戶）", note: "可留神戶食完再返難波", priority: "NEXT", done: false },
+        { id: "internet", title: "落實日本上網", note: "eSIM 或漫遊", priority: "9/27", done: false },
+        { id: "lawson", title: "離線保存 Lawson 取票碼", note: "9/30 起可取票", priority: "9/30", done: false },
+        { id: "offline", title: "手機離線總驗收", note: "兩部手機逐項打開", priority: "10/3", done: false }
+      ],
+      fixedDone: 7
+    };
+
+    (() => {
+      const $ = id => document.getElementById(id);
+      const esc = value => String(value ?? "").replace(/[&<>\"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'\"':"&quot;","'":"&#39;"}[char]));
+      const typeLabel = { transport: "交通", food: "飲食", show: "演出", hotel: "酒店", activity: "景點" };
+      const clone = value => JSON.parse(JSON.stringify(value));
+      const foodNames = {
+        A: "A · 焼肉 万両 日本橋店",
+        B: "B · 肉匠なか田 本店",
+        C: "C · DINING あじと",
+        D: "D · 心斎橋 和っか",
+        E: "E · やさい串巻き なるとや",
+        F: "磯丸水産 なんば南海通り店",
+        H: "H · 玄品 法善寺總本店",
+        G: "G · 美々卯 なんば店",
+        I: "I · 鰻魚 Izumo LUCUA",
+        J: "J · 天婦羅蕎麥麵（必吃）",
+        K: "K · 吉列豬排飯",
+        L: "L · グリル一平 三宮店 · 厚切牛柳吉列",
+        KB1: "K1 · 神戸プレジール本店",
+        KB2: "K2 · 炭焼肉 石田屋。Hanare",
+        KB3: "K3 · モーリヤ三宮店",
+        KB4: "K4 · KOBE BEEF RED ONE",
+        KB5: "K5 · 銀平 三宮店",
+        KB6: "K6 · うを勢総本店",
+        KB7: "K7 · 郷土料理 からす",
+        KB8: "K8 · 串乃家 神戸本店",
+        KB9: "K9 · 明石焼き 蛸匠 神戸三宮本店",
+        KB10: "K10 · FISHERMAN'S MARKET",
+        R1: "R1 · 本町製麺所 中華そば工房",
+        R2: "R2 · 麺屋 ラパス",
+        R3: "R3 · ラーメン大戦争 せんば心斎橋店",
+        R4: "R4 · 本町製麺所 本店（烏冬）",
+        R5: "R5 · 麺スタイル谷本家 大阪梅田店",
+        R6: "R6 · MAIDOU 西安料理",
+        R7: "R7 · うどん棒 大阪本店",
+        R8: "R8 · 燃えよ麺助",
+        R9: "R9 · 銀座 篝 ルクア大阪店"
+      };
+      let activeDay = "all";
+      let appState = null;
+      let saveBlocked = false;
+      let editingDay = null;
+      let editingDayIndex = 0;
+      let editingTasks = null;
+
+      function setSystemStatus(message, state) {
+        $("system-message").textContent = message;
+        $("system-bar").dataset.state = state;
+      }
+
+      function requireState() {
+        if (!appState || saveBlocked) {
+          showToast("資料未連接；請按重新載入資料");
+          return false;
+        }
+        return true;
+      }
+
+      function payload() {
+        return {
+          revision: appState.revision,
+          taskChecks: clone(appState.taskChecks),
+          taskItems: clone(appState.taskItems),
+          food: clone(appState.food),
+          days: clone(appState.days),
+          notes: appState.notes
+        };
+      }
+
+      function queueSave() {
+        if (!requireState()) return Promise.resolve(false);
+        try {
+          appState.revision = (appState.revision || 0) + 1;
+          appState.updatedAt = new Date().toISOString();
+          localStorage.setItem("osaka-mobile-state-v1", JSON.stringify(payload()));
+          setSystemStatus("已儲存在這部手機 · 不會自動同步或更改訂位", "saved");
+          return Promise.resolve(true);
+        } catch (error) {
+          setSystemStatus("未能儲存：儲存空間不足或瀏覽器限制。請先匯出修改，勿關閉本頁。", "error");
+          return Promise.resolve(false);
+        }
+      }
+
+      function loadTaskState() {
+        return appState?.taskChecks || {};
+      }
+
+      function saveTaskState(state) {
+        appState.taskChecks = state;
+        queueSave();
+      }
+
+      function loadFoodState() {
+        return appState?.food || { genpin: "later" };
+      }
+
+      function saveFoodState(state) {
+        appState.food = state;
+        syncDinnerTaskChecks();
+        queueSave();
+      }
+
+      function syncDinnerTaskChecks() {
+        let changed = false;
+        for (const [foodKey, taskId] of [["dinner1004", "dinner-select-1004"], ["dinner1006", "dinner-select-1006"]]) {
+          if (appState.food[foodKey] && !appState.taskChecks[taskId]) {
+            appState.taskChecks[taskId] = true;
+            changed = true;
+          } else if (!appState.food[foodKey] && appState.taskChecks[taskId]) {
+            delete appState.taskChecks[taskId];
+            changed = true;
+          }
+        }
+        return changed;
+      }
+
+      function renderFoodChoices() {
+        const state = loadFoodState();
+        document.querySelectorAll("[data-food-choice]").forEach(control => {
+          control.value = state[control.dataset.foodChoice] || (control.dataset.foodChoice === "genpin" ? "later" : "");
+        });
+
+        const rows = [
+          ["10/4 晚餐", (foodNames[state.dinner1004] || "待選 A–E") + (state.dinner1004 === "A" ? "（19:30 已訂位）" : "")],
+          ["10/5 午餐", foodNames[state.lunch1005] || "待選 G／I／J／K"],
+          ["10/5 晚餐", (foodNames[state.dinner1005] || foodNames.F) + (state.dinner1005 === "F" ? "（22:00 已訂位）" : "（候選；磯丸訂位仍保留）")],
+          ["10/6 午餐", foodNames[state.lunch1006] || "L · 神戶牛柳吉列待同步"],
+          ["10/6 晚餐", foodNames[state.dinner1006] || "待選大阪 A–E／神戶 K1–K10"],
+          ["10/7 午餐", foodNames[state.lunch1007] || "待選 G／I／J／K"],
+          ["麵店首選", foodNames[state.noodlePick] || "待選 R1–R9"],
+          ["10/7 登機前", "MENSHO 關西機場店（已排入行程）"]
+        ];
+        $("food-summary-list").innerHTML = rows.map(([date, name]) => `<div class="summary-line"><span>${esc(date)}</span><b>${esc(name)}</b></div>`).join("");
+
+        const lunches = [state.lunch1005, state.lunch1006, state.lunch1007].filter(Boolean);
+        const dinners = [state.dinner1004, state.dinner1005, state.dinner1006].filter(Boolean);
+        const duplicateLunch = new Set(lunches).size !== lunches.length;
+        const duplicateDinner = new Set(dinners).size !== dinners.length;
+        const missingTempuraSoba = !lunches.includes("J");
+        const missingMimiu = !lunches.includes("G");
+        const kobeLunchConflict = state.lunch1006 !== "L";
+        const messages = [];
+        if (missingTempuraSoba) messages.push("J 天婦羅蕎麥麵仍未安排");
+        if (missingMimiu) messages.push("G 美々卯午餐仍未安排");
+        if (duplicateLunch) messages.push("午餐有重複選擇");
+        if (duplicateDinner) messages.push("晚餐有重複選擇");
+        if (kobeLunchConflict) messages.push("10/6 神戶午餐資料尚未同步，請重新載入");
+        if (state.dinner1004 !== "A") messages.push("10/4 已改選候選餐廳；萬兩 19:30 訂位仍然保留");
+        if (state.dinner1005 !== "F") messages.push("10/5 已改選候選餐廳；磯丸 22:00 訂位仍然保留");
+        if (!messages.length) messages.push("必吃項目已安排，沒有重複餐廳");
+        const status = $("food-status");
+        status.textContent = messages.join("；") + "。";
+        status.classList.toggle("ready", !missingTempuraSoba && !missingMimiu && !duplicateLunch && !duplicateDinner && !kobeLunchConflict);
+        renderNextAction();
+      }
+
+      function copyFoodChoices() {
+        const state = loadFoodState();
+        const lines = [
+          "# 大阪餐飲選擇",
+          `- 10/4 晚餐：${foodNames[state.dinner1004] || "待選 A–E"}${state.dinner1004 === "A" ? "（19:30 已訂位）" : ""}`,
+          `- 10/5 午餐：${foodNames[state.lunch1005] || "待選 G／I／J／K"}`,
+          `- 10/5 演唱會後：${foodNames[state.dinner1005] || foodNames.F}${state.dinner1005 === "F" ? "（22:00 已訂位・2 位）" : "（候選；磯丸 22:00 訂位仍保留）"}`,
+          `- 10/6 午餐：${foodNames[state.lunch1006] || "神戶牛柳吉列待同步"}`,
+          `- 10/6 晚餐：${foodNames[state.dinner1006] || "待選大阪 A–E／神戶 K1–K10"}`,
+          `- 10/7 午餐：${foodNames[state.lunch1007] || "待選 G／I／J／K"}`,
+          `- 拉麵／烏冬首選：${foodNames[state.noodlePick] || "待選 R1–R9"}`,
+          `- 10/7 登機前：MENSHO 關西機場店（T1 國際線保安檢查後）`,
+          `- H 玄品 法善寺総本店：${state.genpin === "yes" ? "想去，到埗再確認" : state.genpin === "no" ? "今次不去" : "保留候選，到埗再決定"}`
+        ];
+        navigator.clipboard?.writeText(lines.join("\n")).then(() => showToast("已複製餐飲選擇"), () => showToast("未能存取剪貼簿"));
+      }
+
+      function renderTasks() {
+        const state = loadTaskState();
+        $("task-list").innerHTML = appState.taskItems.map(task => {
+          const checked = Boolean(state[task.id]);
+          const confirmedBooking = checked && ["rapit-out", "rapit-return"].includes(task.id);
+          const chosenInFoodBoard = ["dinner-select-1004", "dinner-select-1006"].includes(task.id);
+          const help = confirmedBooking ? "Klook 訂單已確認" : chosenInFoodBoard ? "請在餐廳決策板選擇" : "";
+          return `<div class="task-item"><input id="task-${esc(task.id)}" type="checkbox" ${checked ? "checked" : ""} ${help ? `disabled title="${help}"` : ""} data-task="${esc(task.id)}"><label for="task-${esc(task.id)}"><i class="task-check" aria-hidden="true"></i><span class="task-copy"><b>${esc(task.title)}</b><span>${esc(task.note)}</span></span><span class="priority">${checked ? "已完成" : esc(task.priority)}</span></label></div>`;
+        }).join("");
+        document.querySelectorAll("[data-task]").forEach(input => input.addEventListener("change", () => {
+          if (!requireState()) { input.checked = !input.checked; return; }
+          const next = loadTaskState();
+          next[input.dataset.task] = input.checked;
+          saveTaskState(next);
+          renderTasks();
+        }));
+        updateProgress();
+        renderRapitStatus();
+        renderNextAction();
+      }
+
+      function renderRapitStatus() {
+        const paid = Boolean(appState?.taskChecks?.["rapit-out"] && appState?.taskChecks?.["rapit-return"]);
+        $("rapit-stat-total").textContent = paid ? "HK$284" : "待核對";
+        $("rapit-stat-copy").textContent = paid ? "Rapi:t 已付款" : "Rapi:t 訂單狀態";
+      }
+
+      function renderNextAction() {
+        if (!appState) return;
+        const food = appState.food;
+        const checks = appState.taskChecks;
+        const paid = Boolean(checks["rapit-out"] && checks["rapit-return"]);
+        const dinnerRows = [
+          ["10/4", foodNames[food.dinner1004] || "A · 焼肉 万両", food.dinner1004 === "A" ? "19:30 · Google 已確認" : "改選候選 · 萬兩訂位仍保留", food.dinner1004 === "A" ? "已訂位" : "候選"],
+          ["10/5", foodNames[food.dinner1005] || foodNames.F, food.dinner1005 === "F" ? "22:00 · Google 已確認" : "改選候選 · 磯丸訂位仍保留", food.dinner1005 === "F" ? "已訂位" : "候選"],
+          ["10/6", foodNames[food.dinner1006] || "大阪 A–E／神戶 K1–K10", food.dinner1006?.startsWith("KB") ? "留神戶食完再返難波" : "可在大阪或神戶", food.dinner1006 ? "已選" : "待選"]
+        ];
+        const lunchRows = [
+          ["10/5", foodNames[food.lunch1005] || "午餐待選", "大阪市內", food.lunch1005 ? "已選" : "待選"],
+          ["10/6", foodNames[food.lunch1006] || "牛柳吉列待同步", "神戶三宮 · 不設預約", food.lunch1006 === "L" ? "已選" : "待同步"],
+          ["10/7", foodNames[food.lunch1007] || "午餐待選", "回程前", food.lunch1007 ? "已選" : "待選"]
+        ];
+        let next;
+        if (!paid) {
+          next = {
+            title: "先核對 Rapi:t 訂單", kicker: "旅程資料未能確認付款狀態", pill: "待核對",
+            focus: "Rapi:t 訂單", focusCopy: "查看 Klook 兩程各 2 位的訂單", counter: "交通",
+            note: "確認訂單後再處理下一項；請勿根據舊價格重複購買。",
+            href: "https://www.klook.com/zh-HK/bookings/", action: "開啟 Klook 訂單",
+            rows: [["10/4", "KIX → Namba", "2 位", "待核對"], ["10/7", "Namba → KIX", "2 位", "待核對"]],
+            alert: "旅程資料未能確認 Rapi:t 訂單，請先到 Klook 訂單頁核對。"
+          };
+        } else if (!food.dinner1004 || !food.dinner1006) {
+          const day = food.dinner1004 ? "10/6" : "10/4";
+          next = {
+            title: "下一步：選 " + day + " 晚餐", kicker: "Rapi:t 已完成 · 現在選餐廳", pill: "待選",
+            focus: day + " 晚餐", focusCopy: day === "10/6" ? "大阪 A–E／神戶 K1–K10 任選" : "從 A–E 選一間燒肉或居酒屋",
+            counter: food.dinner1004 ? "餐廳 2 / 3" : "餐廳 1 / 3",
+            note: "10/5 演唱會後磯丸水産 なんば南海通り店已透過 Google 訂位：22:00、2 位。H 玄品保留，到埗再決定。",
+            href: "#food-choices", action: "前往餐廳決策板", rows: dinnerRows,
+            alert: "Rapi:t 來回四張已付款確認。請選定 " + day + " 晚餐；10/6 可留神戶食完再返難波，選擇會自動儲存。"
+          };
+        } else if (![food.lunch1005, food.lunch1006, food.lunch1007].includes("J")) {
+          next = {
+            title: "下一步：安排必吃午餐", kicker: "兩晚晚餐已選 · 繼續完成餐廳安排", pill: "必吃",
+            focus: "天婦羅蕎麥麵", focusCopy: "在其中一天午餐選 J", counter: "餐廳 3 / 3",
+            note: "10/6 神戶牛柳吉列已選；餘下兩日午餐以美々卯與天婦羅蕎麥麵為主，鰻魚／吉列豬排飯暫不排。",
+            href: "#food-choices", action: "前往午餐選擇", rows: lunchRows,
+            alert: "10/4 和 10/6 晚餐已有選擇；請為必吃的天婦羅蕎麥麵選一個午餐時段。"
+          };
+        } else if (![food.lunch1005, food.lunch1006, food.lunch1007].includes("G")) {
+          next = {
+            title: "下一步：安排美々卯午餐", kicker: "天婦羅蕎麥麵已排 · 補齊指定午餐", pill: "午餐",
+            focus: "美々卯 なんば店", focusCopy: "在 10/5 或 10/7 午餐選 G", counter: "餐廳 3 / 3",
+            note: "10/6 神戶牛柳吉列已選；鰻魚及吉列豬排飯暫不排。",
+            href: "#food-choices", action: "前往午餐選擇", rows: lunchRows,
+            alert: "天婦羅蕎麥麵已安排；請為美々卯 なんば店保留一個午餐時段。"
+          };
+        } else if (!checks.internet) {
+          next = {
+            title: "下一步：落實日本上網", kicker: "餐廳主要選擇已完成", pill: "9/27 前",
+            focus: "eSIM 或漫遊", focusCopy: "決定兩人出發時的上網方式", counter: "上網",
+            note: "決定後到待辦勾選「落實日本上網」，需要的資料可寫入旅程備註。",
+            href: "#task-panel", action: "查看上網待辦",
+            rows: [["9/27", "日本上網", "eSIM 或漫遊", "待決定"]],
+            alert: "餐廳主要選擇已完成；下一步決定日本上網方式。"
+          };
+        } else if (!checks.lawson) {
+          next = {
+            title: "下一步：保存 Lawson 取票碼", kicker: "9/30 起可取票", pill: "9/30",
+            focus: "Lawson 取票", focusCopy: "把取票資料離線保存到手機", counter: "門票",
+            note: "確認兩部手機可離線打開後，再到待辦勾選完成。",
+            href: "#task-panel", action: "查看取票待辦",
+            rows: [["9/30", "LANY 門票", "Lawson 取票碼", "待保存"]],
+            alert: "上網方式已處理；下一步保存 Lawson 取票資料。"
+          };
+        } else if (!checks.offline) {
+          next = {
+            title: "下一步：手機離線總驗收", kicker: "出發前逐項實際打開", pill: "10/3",
+            focus: "兩部手機", focusCopy: "入境 QR、車票、門票、地圖", counter: "離線",
+            note: "全部實際打開並確認可用後，再到待辦勾選完成。",
+            href: "#task-panel", action: "查看離線待辦",
+            rows: [["10/3", "離線資料", "兩部手機逐項驗收", "待檢查"]],
+            alert: "出發前請用兩部手機實際驗收所有離線資料。"
+          };
+        } else {
+          const other = appState.taskItems.find(task => !checks[task.id] && !["rapit-out", "rapit-return", "dinner-select-1004", "dinner-select-1006"].includes(task.id));
+          next = other ? {
+            title: "下一步：" + other.title, kicker: "仍有待辦需要處理", pill: other.priority || "待辦",
+            focus: other.title, focusCopy: other.note, counter: "待辦",
+            note: "完成後到待辦勾選，主卡會轉到下一項。",
+            href: "#task-panel", action: "查看待辦",
+            rows: [[other.priority || "待辦", other.title, other.note, "未完成"]],
+            alert: other.title + " 尚未完成，請查看待辦。"
+          } : {
+            title: "目前待辦已處理", kicker: "出發前仍可再核對行程", pill: "已完成",
+            focus: "準備完成", focusCopy: "主要待辦已勾選", counter: "完成",
+            note: "Rapi:t 班次與座位仍按 Klook 憑證指引安排；出發前再看手機 QR。",
+            href: "#itinerary", action: "查看四日行程",
+            rows: [["10/4", "大阪出發", "按行程逐項核對", "已備妥"]],
+            alert: "目前待辦已處理；出發前再核對車票班次、座位和手機 QR。",
+            done: true
+          };
+        }
+        $("next-panel").classList.toggle("is-complete", Boolean(next.done));
+        $("next-title").textContent = next.title;
+        $("next-kicker").textContent = next.kicker;
+        $("next-pill").textContent = next.pill;
+        $("next-focus").textContent = next.focus;
+        $("next-focus-copy").textContent = next.focusCopy;
+        $("next-counter").textContent = next.counter;
+        $("next-note").textContent = next.note;
+        $("next-options").innerHTML = next.rows.map(([date, title, note, status]) =>
+          `<div class="direction"><time>${esc(date)}</time><div><b>${esc(title)}</b><span>${esc(note)}</span></div><em>${esc(status)}</em></div>`
+        ).join("");
+        $("next-action").href = next.href;
+        $("next-action").textContent = next.action;
+        $("next-action").target = next.href.startsWith("http") ? "_blank" : "_self";
+        $("alert-title").textContent = next.title;
+        $("alert-copy").textContent = next.alert;
+      }
+
+      function updateProgress() {
+        const state = loadTaskState();
+        const dynamicDone = appState.taskItems.filter(task => state[task.id]).length;
+        const total = TRIP.fixedDone + appState.taskItems.length;
+        const done = TRIP.fixedDone + dynamicDone;
+        const pct = Math.round(done / total * 100);
+        $("progress-pct").textContent = pct + "%";
+        $("progress-copy").textContent = done + " / " + total + " 已處理";
+        $("ring-value").style.strokeDashoffset = String(352 - 352 * pct / 100);
+        const open = appState.taskItems.length - dynamicDone;
+        $("open-count").textContent = open + " OPEN";
+      }
+
+      function visibleDays() {
+        const query = $("search").value.trim().toLowerCase();
+        const chosen = appState.food;
+        const foodForDay = { "10/4": chosen.dinner1004, "10/5": chosen.lunch1005, "10/6": chosen.lunch1006, "10/7": chosen.lunch1007 };
+        return appState.days.map(day => ({
+          ...day,
+          items: day.items.map(item => {
+            const isDinner = item[1].startsWith("晚餐 ") && item[1].includes("自選");
+            const isShowDinner = day.day === "10/5" && item[1] === "磯丸水産 なんば南海通り店";
+            const isLunch = item[1] === "午餐 G／I／J／K 自選";
+            const code = isDinner ? (day.day === "10/4" ? chosen.dinner1004 : chosen.dinner1006) : isShowDinner ? chosen.dinner1005 : isLunch ? foodForDay[day.day] : "";
+            if (isLunch && code) {
+              return [item[0], foodNames[code], code === "J" ? "已暫排必吃菜式 · 實際店舖待選" : "已在餐廳決策板選擇", item[3]];
+            }
+            if (isShowDinner && code && code !== "F") return [item[0], foodNames[code], "改選候選 · 磯丸 22:00 訂位仍保留；" + item[2], item[3]];
+            return code ? [item[0], foodNames[code], "已在餐廳決策板選擇 · " + item[2], item[3]] : item;
+          }).filter(item => {
+            const dayMatch = activeDay === "all" || day.day === activeDay;
+            const queryMatch = !query || item.join(" ").toLowerCase().includes(query) || day.label.toLowerCase().includes(query);
+            return dayMatch && queryMatch;
+          })
+        })).filter(day => day.items.length > 0);
+      }
+
+      function renderDays() {
+        if (!appState) return;
+        updateTripMetrics();
+        const days = visibleDays();
+        const count = days.reduce((sum, day) => sum + day.items.length, 0);
+        $("result-meta").textContent = count + " 個可見行程節點";
+        $("day-timeline").innerHTML = days.map(day => `
+          <article class="day-card">
+            <header class="day-head"><time>${esc(day.day)}<br>2026</time><div><h3>${esc(day.label)}</h3><p>${esc(day.read)}</p></div><span class="density">${esc(day.density)}</span></header>
+            <div class="schedule-line"><i style="width:${day.width}%"></i></div>
+            <div class="event-list">${day.items.map(item => `<div class="event-row"><time class="event-time">${esc(item[0])}</time><div class="event-main"><b>${esc(item[1])}</b><span>${esc(item[2])}</span></div><span class="type-chip ${esc(item[3])}">${esc(typeLabel[item[3]] || item[3])}</span></div>`).join("")}</div>
+          </article>`).join("") || `<article class="conflict-panel"><strong>找不到相符行程</strong><p>請清除搜尋字詞或切換到「全部」。</p></article>`;
+        renderBrowser(days);
+        window.renderOfflineRoutes?.(appState.days);
+      }
+
+      function updateTripMetrics() {
+        const items = appState.days.flatMap(day => day.items);
+        const definitions = [
+          ["transport", "交通", "var(--blue)"],
+          ["activity", "景點", "var(--cyan)"],
+          ["food", "飲食", "var(--yellow)"],
+          ["show", "演出", "var(--pink)"],
+          ["hotel", "酒店", "var(--green)"]
+        ];
+        $("type-count").textContent = items.length + " 個行程節點 · 隨編輯更新";
+        $("type-stacked").innerHTML = definitions.map(([kind, label, color]) => {
+          const pct = items.length ? items.filter(item => item[3] === kind).length / items.length * 100 : 0;
+          return `<i style="width:${pct}%;background:${color}" title="${label} ${Math.round(pct)}%"></i>`;
+        }).join("");
+        $("type-legend").innerHTML = definitions.map(([kind, label]) => {
+          const count = items.filter(item => item[3] === kind).length;
+          return `<span>${label} ${count}</span>`;
+        }).join("");
+      }
+
+      function renderBrowser(days) {
+        const rows = days.flatMap(day => day.items.map(item => ({ day: day.day, item })));
+        $("all-count").textContent = rows.length + " ITEMS";
+        $("item-browser").innerHTML = rows.map(({day, item}) => `<div class="browser-row"><time>${esc(day)}<br>${esc(item[0])}</time><div><b>${esc(item[1])}</b><span>${esc(item[2])}</span></div><span class="type-chip ${esc(item[3])}">${esc(typeLabel[item[3]] || item[3])}</span></div>`).join("");
+      }
+
+      function copyChecklist() {
+        if (!appState) return showToast("資料仍在載入");
+        const state = loadTaskState();
+        const open = appState.taskItems.filter(task => !state[task.id]);
+        const text = [
+          "# 大阪旅程下一步",
+          ...open.map(task => `- [ ] ${task.title} — ${task.note} (${task.priority})`),
+          "",
+          state["rapit-out"] && state["rapit-return"]
+            ? "Rapi:t 10/4 去程及 10/7 回程各 2 位已付款確認，合共 HK$284；尚待安排班次及座位。"
+            : "Rapi:t 訂單狀態待核對；請到 Klook 訂單頁確認。"
+        ].join("\n");
+        navigator.clipboard?.writeText(text).then(() => showToast("已複製待辦清單"), () => showToast("未能存取剪貼簿"));
+      }
+
+      function renderDayEditorRows() {
+        $("editor-day-label").value = editingDay.label;
+        $("editor-day-read").value = editingDay.read;
+        $("editor-day-rows").innerHTML = editingDay.items.map((item, index) => {
+          const fixed = false;
+          return `<div class="editor-row ${fixed ? "fixed" : ""}" data-day-row="${index}">
+            <label class="editor-field">時間<input class="edit-time" maxlength="40" value="${esc(item[0])}" ${fixed ? "readonly" : ""}></label>
+            <label class="editor-field">地點／事項<input class="edit-title" maxlength="200" value="${esc(item[1])}" ${fixed ? "readonly" : ""}></label>
+            <label class="editor-field">備註<input class="edit-note" maxlength="800" value="${esc(item[2])}" ${fixed ? "readonly" : ""}></label>
+            <label class="editor-field">類型<select class="edit-kind" ${fixed ? "disabled" : ""}>${Object.entries(typeLabel).map(([key, label]) => `<option value="${key}" ${item[3] === key ? "selected" : ""}>${label}</option>`).join("")}</select></label>
+            <button type="button" data-remove-day="${index}" ${fixed ? "disabled" : ""}>${fixed ? "固定" : "刪除"}</button>
+          </div>`;
+        }).join("");
+      }
+
+      function readDayEditor() {
+        editingDay.label = $("editor-day-label").value.trim();
+        editingDay.read = $("editor-day-read").value.trim();
+        editingDay.items = [...$("editor-day-rows").querySelectorAll("[data-day-row]")].map(row => [
+          row.querySelector(".edit-time").value.trim(),
+          row.querySelector(".edit-title").value.trim(),
+          row.querySelector(".edit-note").value.trim(),
+          row.querySelector(".edit-kind").value
+        ]);
+        editingDay.density = editingDay.items.length + " STOPS";
+      }
+
+      function openDayEditor(index) {
+        if (!requireState()) return;
+        editingDayIndex = index;
+        editingDay = clone(appState.days[index]);
+        $("editor-day-select").value = String(index);
+        renderDayEditorRows();
+        if (!$("day-editor").open) $("day-editor").showModal();
+      }
+
+      function renderTaskEditorRows() {
+        $("editor-task-rows").innerHTML = editingTasks.map((task, index) => `<div class="editor-row task" data-task-row="${index}" data-task-id="${esc(task.id)}">
+          <label class="editor-field">待辦標題<input class="edit-task-title" maxlength="200" value="${esc(task.title)}"></label>
+          <label class="editor-field">備註<input class="edit-task-note" maxlength="500" value="${esc(task.note)}"></label>
+          <label class="editor-field">優先標籤<input class="edit-task-priority" maxlength="40" value="${esc(task.priority)}"></label>
+          <button type="button" data-remove-task="${index}">刪除</button>
+        </div>`).join("");
+      }
+
+      function readTaskEditor() {
+        editingTasks = [...$("editor-task-rows").querySelectorAll("[data-task-row]")].map(row => ({
+          id: row.dataset.taskId,
+          title: row.querySelector(".edit-task-title").value.trim(),
+          note: row.querySelector(".edit-task-note").value.trim(),
+          priority: row.querySelector(".edit-task-priority").value.trim()
+        }));
+      }
+
+      function openTaskEditor() {
+        if (!requireState()) return;
+        editingTasks = clone(appState.taskItems);
+        renderTaskEditorRows();
+        $("tasks-editor").showModal();
+      }
+
+      async function bootstrap() {
+        try {
+          let saved = null, warning = "";
+          try {
+            const local = localStorage.getItem("osaka-mobile-state-v1");
+            if (local) saved = JSON.parse(local);
+          } catch { warning = "本機儲存無法讀取；目前顯示公開行程。"; }
+          if (saved && !saved.days?.some(day => day.day === "10/4")) {
+            saved = null;
+            warning = "忽略了不屬於大阪的資料；顯示原始大阪行程。";
+          }
+          if (!saved) {
+            const response = await fetch("./trip-data.json");
+            if (!response.ok) throw new Error("請先連網完整開啟一次");
+            saved = await response.json();
+            if (!saved.days?.some(day => day.day === "10/4")) throw new Error("資料不屬於大阪行程，請重新載入");
+          }
+          appState = {
+            revision: saved.revision || 0,
+            taskChecks: saved.taskChecks || {},
+            taskItems: Array.isArray(saved.taskItems) ? saved.taskItems : TRIP.tasks.map(({done, ...task}) => task),
+            food: {dinner1004:"A",dinner1005:"F",noodlePick:"",...(saved.food || {})},
+            days: Array.isArray(saved.days) ? saved.days : clone(TRIP.days),
+            notes: saved.notes || ""
+          };
+          syncDinnerTaskChecks();
+          saveBlocked = false;
+          $("trip-notes").value = appState.notes;
+          renderTasks(); renderFoodChoices(); renderDays();
+          setSystemStatus(warning || "手機行程已載入 · 修改只存在這部裝置", warning ? "error" : "saved");
+        } catch (error) {
+          setSystemStatus("行程未能載入：" + error.message, "error");
+        }
+      }
+      $("export-state").addEventListener("click", () => {
+        if (!appState) return;
+        const blob = new Blob([JSON.stringify(payload(), null, 2)], {type:"application/json"});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a"); a.href=url; a.download="osaka-my-trip.json"; a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 10000);
+      });
+
+      function showToast(message) {
+        const toast = $("toast");
+        toast.textContent = message;
+        toast.classList.add("show");
+        window.setTimeout(() => toast.classList.remove("show"), 1500);
+      }
+
+      document.querySelectorAll(".tab").forEach(tab => tab.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach(item => item.setAttribute("aria-selected", "false"));
+        document.querySelectorAll(".profile-view").forEach(item => item.classList.remove("active"));
+        tab.setAttribute("aria-selected", "true");
+        document.querySelector(`[data-panel="${tab.dataset.view}"]`)?.classList.add("active");
+      }));
+
+      document.querySelectorAll(".filter-chip").forEach(button => button.addEventListener("click", () => {
+        activeDay = button.dataset.day;
+        document.querySelectorAll(".filter-chip").forEach(item => item.setAttribute("aria-pressed", "false"));
+        button.setAttribute("aria-pressed", "true");
+        renderDays();
+      }));
+
+      $("search").addEventListener("input", renderDays);
+      $("copy-checklist").addEventListener("click", copyChecklist);
+      document.querySelectorAll("[data-food-choice]").forEach(control => control.addEventListener("change", () => {
+        if (!requireState()) { renderFoodChoices(); return; }
+        const next = loadFoodState();
+        next[control.dataset.foodChoice] = control.value;
+        saveFoodState(next);
+        renderFoodChoices();
+        renderTasks();
+        renderDays();
+      }));
+      $("copy-food").addEventListener("click", copyFoodChoices);
+      $("reset-food").addEventListener("click", () => {
+        if (!requireState()) return;
+        if (!window.confirm("重設未確定的餐飲選擇？10/4 萬兩及 10/5 磯丸水産已訂位，會繼續保留。")) return;
+        appState.food = { dinner1004: "A", dinner1005: "F", dinner1006: "", lunch1005: "", lunch1006: "L", lunch1007: "", noodlePick: "", genpin: "later" };
+        syncDinnerTaskChecks();
+        renderFoodChoices();
+        renderTasks();
+        renderDays();
+        queueSave();
+      });
+      $("print-page").addEventListener("click", () => window.print());
+      $("reset-tasks").addEventListener("click", () => {
+        if (!requireState()) return;
+        if (!window.confirm("重設手動待辦勾選？已確認的 Rapi:t 訂單和餐廳選擇會保留。此變更會儲存到這部手機。")) return;
+        appState.taskChecks = Object.fromEntries(["rapit-out", "rapit-return"]
+          .filter(id => appState.taskChecks[id])
+          .map(id => [id, true]));
+        syncDinnerTaskChecks();
+        renderTasks();
+        queueSave();
+      });
+
+      $("reload-system").addEventListener("click", () => location.reload());
+      $("edit-itinerary").addEventListener("click", () => {
+        if (!requireState()) return;
+        openDayEditor(activeDay === "all" ? 0 : appState.days.findIndex(day => day.day === activeDay));
+      });
+      $("edit-tasks").addEventListener("click", openTaskEditor);
+      document.querySelectorAll("[data-close-dialog]").forEach(button => button.addEventListener("click", () => $(button.dataset.closeDialog).close()));
+      $("editor-day-select").addEventListener("change", event => {
+        const next = Number(event.target.value);
+        if (!window.confirm("切換日期會捨棄目前尚未儲存的行程修改。繼續？")) {
+          event.target.value = String(editingDayIndex);
+          return;
+        }
+        openDayEditor(next);
+      });
+      $("editor-day-rows").addEventListener("click", event => {
+        const button = event.target.closest("[data-remove-day]");
+        if (!button || button.disabled) return;
+        readDayEditor();
+        editingDay.items.splice(Number(button.dataset.removeDay), 1);
+        renderDayEditorRows();
+      });
+      $("add-day-item").addEventListener("click", () => {
+        readDayEditor();
+        editingDay.items.push(["", "新行程", "", "activity"]);
+        renderDayEditorRows();
+        $("editor-day-rows").lastElementChild?.scrollIntoView({ block: "nearest" });
+      });
+      $("save-day-editor").addEventListener("click", async () => {
+        if (!requireState()) return;
+        readDayEditor();
+        if (!editingDay.label || editingDay.items.some(item => !item[1])) {
+          showToast("請填妥當日標題及每項行程名稱");
+          return;
+        }
+        appState.days[editingDayIndex] = clone(editingDay);
+        renderDays();
+        if (await queueSave()) $("day-editor").close();
+      });
+      $("editor-task-rows").addEventListener("click", event => {
+        const button = event.target.closest("[data-remove-task]");
+        if (!button) return;
+        readTaskEditor();
+        editingTasks.splice(Number(button.dataset.removeTask), 1);
+        renderTaskEditorRows();
+      });
+      $("add-task-item").addEventListener("click", () => {
+        readTaskEditor();
+        editingTasks.push({ id: "user-" + Date.now() + "-" + Math.random().toString(36).slice(2, 7), title: "新待辦", note: "", priority: "NEXT" });
+        renderTaskEditorRows();
+      });
+      $("save-tasks-editor").addEventListener("click", async () => {
+        if (!requireState()) return;
+        readTaskEditor();
+        if (editingTasks.some(task => !task.title)) {
+          showToast("待辦標題不能留空");
+          return;
+        }
+        appState.taskItems = clone(editingTasks);
+        renderTasks();
+        if (await queueSave()) $("tasks-editor").close();
+      });
+      $("save-notes").addEventListener("click", async () => {
+        if (!requireState()) return;
+        appState.notes = $("trip-notes").value;
+        if (await queueSave()) showToast("旅程備註已存入這部手機");
+      });
+
+      bootstrap();
+    })();
+  </script>
+</body>
+</html>

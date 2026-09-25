@@ -1,0 +1,15 @@
+const CACHE='osaka-lany-2026-v1';
+const SHELL=['./','./index.html','./trip-data.json','./places.json','./mobile.js','./mobile.css','./manifest.webmanifest','./icon.svg','./apple-touch-icon.png'];
+self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));});
+self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('osaka-lany-2026-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));});
+self.addEventListener('fetch',event=>{
+  const url=new URL(event.request.url);
+  if(event.request.method!=='GET'||url.origin!==self.location.origin||!url.pathname.startsWith(new URL(self.registration.scope).pathname))return;
+  if(event.request.mode==='navigate'){
+    event.respondWith(fetch(event.request).then(async response=>{
+      if(!response.ok)throw Error('HTTP '+response.status);
+      const cache=await caches.open(CACHE);await cache.put('./index.html',response.clone());return response;
+    }).catch(()=>caches.open(CACHE).then(cache=>cache.match('./index.html'))));return;
+  }
+  event.respondWith(caches.open(CACHE).then(cache=>cache.match(event.request)).then(cached=>cached||fetch(event.request)));
+});
