@@ -1056,6 +1056,8 @@
       function payload() {
         return {
           revision: appState.revision,
+          publishedRevision: appState.publishedRevision,
+          editedDays: clone(appState.editedDays),
           taskChecks: clone(appState.taskChecks),
           taskItems: clone(appState.taskItems),
           food: clone(appState.food),
@@ -1487,6 +1489,18 @@
         if (!localState || !publishedState) return { state: localState || publishedState, changed: false };
         let changed = false;
         const merged = { ...localState, taskChecks: { ...(localState.taskChecks || {}) } };
+        const publishedRevision = Number(publishedState.revision) || 0;
+        const localPublishedRevision = Number(localState.publishedRevision) || 0;
+        if (publishedRevision > localPublishedRevision && Array.isArray(publishedState.days)) {
+          const editedDays = localState.editedDays || {};
+          merged.days = publishedState.days.map(publishedDay => {
+            const localDay = localState.days?.find(day => day.day === publishedDay.day);
+            return editedDays[publishedDay.day] && localDay ? clone(localDay) : clone(publishedDay);
+          });
+          merged.editedDays = { ...editedDays };
+          merged.publishedRevision = publishedRevision;
+          changed = true;
+        }
         const needsBookingTaskSync = !merged.food?.booking1006TaskSynced && publishedState.food?.dinner1006 === "KH";
         if (needsBookingTaskSync) {
           merged.food = { ...(merged.food || {}), dinner1006: "KH", booking1006HarborApplied: true, booking1006TaskSynced: true };
@@ -1553,7 +1567,7 @@
           }
           let published = null;
           try {
-            const response = await fetch("./trip-data.json?release=53");
+            const response = await fetch("./trip-data.json?release=54");
             if (!response.ok) throw new Error("行程資料目前未能更新");
             published = await response.json();
             if (!published.days?.some(day => day.day === "10/4")) throw new Error("資料不屬於大阪行程，請重新載入");
@@ -1563,12 +1577,20 @@
           if (!saved) {
             saved = published;
           } else if (published) {
+            if ((Number(saved.publishedRevision) || 0) < (Number(published.revision) || 0)) {
+              try {
+                const backupKey = "osaka-mobile-state-before-release-" + published.revision;
+                if (!localStorage.getItem(backupKey)) localStorage.setItem(backupKey, JSON.stringify(saved));
+              } catch { warning = "舊行程備份未能儲存；建議先匯出目前行程。"; }
+            }
             const result = mergePublishedCompletions(saved, published);
             saved = result.state;
             mergedPublished = result.changed;
           }
           appState = {
             revision: saved.revision || 0,
+            publishedRevision: saved.publishedRevision || published?.revision || 0,
+            editedDays: saved.editedDays || {},
             taskChecks: saved.taskChecks || {},
             taskItems: Array.isArray(saved.taskItems) ? saved.taskItems : TRIP.tasks.map(({done, ...task}) => task),
             food: {dinner1004:"A",dinner1005:"F",noodlePick:"",...(saved.food || {})},
@@ -1687,6 +1709,7 @@
           return;
         }
         appState.days[editingDayIndex] = clone(editingDay);
+        appState.editedDays[editingDay.day] = true;
         renderDays();
         if (await queueSave()) $("day-editor").close();
       });

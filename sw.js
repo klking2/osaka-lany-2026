@@ -1,4 +1,4 @@
-const CACHE='osaka-lany-2026-v11';
+const CACHE='osaka-lany-2026-v12';
 const SHELL=['./','./index.html','./trip-data.json','./places.json','./mobile.js','./mobile.css','./manifest.webmanifest','./icon.svg','./apple-touch-icon.png'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('osaka-lany-2026-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));});
