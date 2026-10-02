@@ -1487,8 +1487,9 @@
         if (!localState || !publishedState) return { state: localState || publishedState, changed: false };
         let changed = false;
         const merged = { ...localState, taskChecks: { ...(localState.taskChecks || {}) } };
-        if (!merged.food?.booking1006HarborApplied && publishedState.food?.dinner1006 === "KH") {
-          merged.food = { ...(merged.food || {}), dinner1006: "KH", booking1006HarborApplied: true };
+        const needsBookingTaskSync = !merged.food?.booking1006TaskSynced && publishedState.food?.dinner1006 === "KH";
+        if (needsBookingTaskSync) {
+          merged.food = { ...(merged.food || {}), dinner1006: "KH", booking1006HarborApplied: true, booking1006TaskSynced: true };
           changed = true;
         }
         for (const [id, isDone] of Object.entries(publishedState.taskChecks || {})) {
@@ -1508,9 +1509,10 @@
             return { ...task, note: publishedTask.note, priority: "DONE" };
           });
           const dinnerTask = publishedState.taskItems.find(task => task.id === "dinner-select-1006");
-          const localDinnerTask = merged.taskItems.find(task => task.id === "dinner-select-1006");
-          if (dinnerTask && localDinnerTask && localDinnerTask.title === "選定 10/6 晚餐（大阪／神戶）") {
-            Object.assign(localDinnerTask, dinnerTask);
+          if (needsBookingTaskSync && dinnerTask) {
+            const index = merged.taskItems.findIndex(task => task.id === dinnerTask.id);
+            if (index < 0) merged.taskItems.push(clone(dinnerTask));
+            else merged.taskItems[index] = clone(dinnerTask);
             changed = true;
           }
           const cancelTask = publishedState.taskItems.find(task => task.id === "cancel-k7-1006");
@@ -1551,7 +1553,7 @@
           }
           let published = null;
           try {
-            const response = await fetch("./trip-data.json");
+            const response = await fetch("./trip-data.json?release=53");
             if (!response.ok) throw new Error("行程資料目前未能更新");
             published = await response.json();
             if (!published.days?.some(day => day.day === "10/4")) throw new Error("資料不屬於大阪行程，請重新載入");

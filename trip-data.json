@@ -1,5 +1,5 @@
 {
-  "revision": 52,
+  "revision": 53,
   "taskChecks": {
     "rapit-out": true,
     "rapit-return": true,
@@ -76,6 +76,7 @@
     "dinner1004": "A",
     "dinner1006": "KH",
     "booking1006HarborApplied": true,
+    "booking1006TaskSynced": true,
     "lunch1005": "J",
     "lunch1006": "L",
     "lunch1007": "G",
