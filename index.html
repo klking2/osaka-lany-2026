@@ -1487,8 +1487,8 @@
         if (!localState || !publishedState) return { state: localState || publishedState, changed: false };
         let changed = false;
         const merged = { ...localState, taskChecks: { ...(localState.taskChecks || {}) } };
-        if (!merged.food?.dinner1006 && publishedState.food?.dinner1006 === "KH") {
-          merged.food = { ...(merged.food || {}), dinner1006: "KH" };
+        if (!merged.food?.booking1006HarborApplied && publishedState.food?.dinner1006 === "KH") {
+          merged.food = { ...(merged.food || {}), dinner1006: "KH", booking1006HarborApplied: true };
           changed = true;
         }
         for (const [id, isDone] of Object.entries(publishedState.taskChecks || {})) {
