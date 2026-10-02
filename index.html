@@ -462,7 +462,7 @@
         <span class="brandmark" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M4 16.5 9 12l3 2.5L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 7h4v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
-        <div><strong>Osaka Trip Console</strong><span>手機離線版 · 更新 2026-09-29</span></div>
+        <div><strong>Osaka Trip Console</strong><span>手機離線版 · 更新 2026-10-02</span></div>
       </div>
       <div class="top-actions">
         <a class="primary-link" href="https://klking2.github.io/taipei-lany-2026/">台北 LANY Console</a>
@@ -555,7 +555,7 @@
             </div>
             <div class="route-summary">
               <h3>難波作基地，四日不搬酒店</h3>
-              <p>固定事項已完成；現在只收斂交通、餐廳、上網與離線資料。免稅 QR 已正式關閉，不再消耗時間。</p>
+              <p>UO686 網上登機已完成，兩位電子登機證已發出；請把 QR 圖片加到私人離線票券包。免稅 QR 已關閉。</p>
               <div class="route-stats">
                 <div class="route-stat"><b>4 日</b><span>10/4 → 10/7</span></div>
                 <div class="route-stat"><b>2 人</b><span>母子同行</span></div>
@@ -594,6 +594,7 @@
             <div class="metric-tile"><span class="metric-label">免稅 QR</span><div class="metric-value">關閉</div><div class="metric-note">影相驗證太麻煩，不再申請</div></div>
             <div class="metric-tile"><span class="metric-label">住宿</span><div class="metric-value">3 晚</div><div class="metric-note">難波同一酒店，不搬房</div></div>
             <div class="metric-tile"><span class="metric-label">演唱會</span><div class="metric-value">19:00</div><div class="metric-note">10/5 Zepp Namba</div></div>
+            <div class="metric-tile"><span class="metric-label">UO686 登機證</span><div class="metric-value">已發出</div><div class="metric-note">網上登機完成 · 兩張 QR 圖片在私人 Drive 資料夾；尚待加入此手機離線票券包</div><a class="metric-note" href="#offline-wallet">前往私人離線票券包 ↗</a></div>
             <div class="metric-tile"><span class="metric-label">Rapi:t</span><div class="metric-value">HK$284</div><div class="metric-note">兩程四張已付款；班次及座位待安排</div><a class="metric-note" href="https://www.klook.com/zh-HK/bookings/" target="_blank" rel="noreferrer">查看 Klook 訂單 ↗</a></div>
           </div>
         </article>
@@ -921,7 +922,7 @@
     const TRIP = {
       days: [
         { day: "10/4", label: "抵埗 · 難波", read: "早機抵埗；唯一必做是 16:30 去 Lawson 取票。", density: "7 STOPS", width: 72, items: [
-          ["08:45", "UO686 香港起飛", "香港機場 T2", "transport"],
+          ["08:45", "UO686 香港起飛", "香港機場 T2 · 網上登機已完成，兩位電子登機證已發出", "transport"],
           ["13:30", "抵達關西機場", "T1 · 入境、行李、海關", "transport"],
           ["約14:30", "Rapi:t 前往難波", "落地後按實際時間選班次", "transport"],
           ["15:10", "入住 Hotel IL Cuore", "難波站步行約 2 分鐘", "hotel"],
@@ -968,6 +969,7 @@
         { id: "dinner-select-1006", title: "選定 10/6 晚餐（大阪／神戶）", note: "可留神戶食完再返難波", priority: "NEXT", done: false },
         { id: "internet", title: "落實日本上網", note: "eSIM 或漫遊", priority: "9/27", done: false },
         { id: "lawson", title: "離線保存 Lawson 取票碼", note: "9/30 起可取票", priority: "9/30", done: false },
+        { id: "boarding-passes", title: "離線保存 UO686 兩張電子登機證", note: "網上登機已完成；把兩張 QR 圖片加入私人離線票券包，並在飛行模式打開確認", priority: "10/3", done: false },
         { id: "offline", title: "手機離線總驗收", note: "兩部手機逐項打開", priority: "10/3", done: false }
       ],
       fixedDone: 7
@@ -1242,6 +1244,15 @@
             rows: [["9/30", "LANY 門票", "Lawson 取票碼", "待保存"]],
             alert: "上網方式已處理；下一步保存 Lawson 取票資料。"
           };
+        } else if (!checks["boarding-passes"]) {
+          next = {
+            title: "下一步：保存 UO686 電子登機證", kicker: "網上登機已完成 · 兩張 QR 登機證已發出", pill: "10/3 前",
+            focus: "加入私人離線票券包", focusCopy: "把 Drive 內兩張登機證圖片存進此手機", counter: "登機證",
+            note: "請在私人離線票券包選取兩張圖片；確認保存後，在飛行模式重新打開查看。圖片只保存在這部手機的瀏覽器。",
+            href: "#offline-wallet", action: "前往私人離線票券包",
+            rows: [["10/4", "UO686 香港 → 關西", "兩位登機證已發出", "待存入手機"]],
+            alert: "網上登機已完成。請把兩張登機證圖片加入私人離線票券包，並離線打開核對。"
+          };
         } else if (!checks.offline) {
           next = {
             title: "下一步：手機離線總驗收", kicker: "出發前逐項實際打開", pill: "10/3",
@@ -1468,11 +1479,15 @@
             days: Array.isArray(saved.days) ? saved.days : clone(TRIP.days),
             notes: saved.notes || ""
           };
+          const boardingTask = TRIP.tasks.find(task => task.id === "boarding-passes");
+          const needsBoardingTaskMigration = Boolean(boardingTask) && !appState.taskItems.some(task => task.id === boardingTask.id);
+          if (needsBoardingTaskMigration) appState.taskItems.push(clone(boardingTask));
           syncDinnerTaskChecks();
           saveBlocked = false;
           $("trip-notes").value = appState.notes;
           renderTasks(); renderFoodChoices(); renderDays();
           setSystemStatus(warning || "手機行程已載入 · 修改只存在這部裝置", warning ? "error" : "saved");
+          if (needsBoardingTaskMigration) await queueSave();
         } catch (error) {
           setSystemStatus("行程未能載入：" + error.message, "error");
         }
