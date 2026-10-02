@@ -1454,9 +1454,34 @@
         $("tasks-editor").showModal();
       }
 
+      function mergePublishedCompletions(localState, publishedState) {
+        if (!localState || !publishedState) return { state: localState || publishedState, changed: false };
+        let changed = false;
+        const merged = { ...localState, taskChecks: { ...(localState.taskChecks || {}) } };
+        for (const [id, isDone] of Object.entries(publishedState.taskChecks || {})) {
+          if (!isDone || merged.taskChecks[id]) continue;
+          merged.taskChecks[id] = true;
+          changed = true;
+        }
+        if (Array.isArray(merged.taskItems) && Array.isArray(publishedState.taskItems)) {
+          const publishedDone = new Map(publishedState.taskItems
+            .filter(task => publishedState.taskChecks?.[task.id])
+            .map(task => [task.id, task]));
+          merged.taskItems = merged.taskItems.map(task => {
+            const publishedTask = publishedDone.get(task.id);
+            if (!publishedTask) return task;
+            if (task.priority === "DONE" && task.note === publishedTask.note) return task;
+            changed = true;
+            return { ...task, note: publishedTask.note, priority: "DONE" };
+          });
+        }
+        merged.revision = Math.max(Number(localState.revision) || 0, Number(publishedState.revision) || 0);
+        return { state: merged, changed };
+      }
+
       async function bootstrap() {
         try {
-          let saved = null, warning = "";
+          let saved = null, warning = "", mergedPublished = false;
           try {
             const local = localStorage.getItem("osaka-mobile-state-v1");
             if (local) saved = JSON.parse(local);
@@ -1465,11 +1490,21 @@
             saved = null;
             warning = "忽略了不屬於大阪的資料；顯示原始大阪行程。";
           }
-          if (!saved) {
+          let published = null;
+          try {
             const response = await fetch("./trip-data.json");
-            if (!response.ok) throw new Error("請先連網完整開啟一次");
-            saved = await response.json();
-            if (!saved.days?.some(day => day.day === "10/4")) throw new Error("資料不屬於大阪行程，請重新載入");
+            if (!response.ok) throw new Error("行程資料目前未能更新");
+            published = await response.json();
+            if (!published.days?.some(day => day.day === "10/4")) throw new Error("資料不屬於大阪行程，請重新載入");
+          } catch (error) {
+            if (!saved) throw new Error("請先連網完整開啟一次");
+          }
+          if (!saved) {
+            saved = published;
+          } else if (published) {
+            const result = mergePublishedCompletions(saved, published);
+            saved = result.state;
+            mergedPublished = result.changed;
           }
           appState = {
             revision: saved.revision || 0,
@@ -1487,7 +1522,7 @@
           $("trip-notes").value = appState.notes;
           renderTasks(); renderFoodChoices(); renderDays();
           setSystemStatus(warning || "手機行程已載入 · 修改只存在這部裝置", warning ? "error" : "saved");
-          if (needsBoardingTaskMigration) await queueSave();
+          if (needsBoardingTaskMigration || mergedPublished) await queueSave();
         } catch (error) {
           setSystemStatus("行程未能載入：" + error.message, "error");
         }

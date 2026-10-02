@@ -1,9 +1,13 @@
 {
-  "revision": 43,
+  "revision": 44,
   "taskChecks": {
     "rapit-out": true,
     "rapit-return": true,
-    "dinner-select-1004": true
+    "dinner-select-1004": true,
+    "internet": true,
+    "exchange-jpy": true,
+    "lawson": true,
+    "boarding-passes": true
   },
   "taskItems": [
     {
@@ -33,20 +37,20 @@
     {
       "id": "internet",
       "title": "落實日本上網",
-      "note": "深水埗首選 Circle Sim：鴨寮街189號（254排檔，港鐵A2出口），每日12:00–19:00；KDDI日本5G+ 4日12GB實體SIM HK$95；兩部手機如要獨立上網需各一張，離線保存啟用說明",
-      "priority": "9/27"
+      "note": "已完成：日本 SIM 卡 2 張已購買",
+      "priority": "DONE"
     },
     {
       "id": "exchange-jpy",
       "title": "唱日圓 JPY",
-      "note": "首選小女孩找換店（上環）；出發前即日查現鈔賣出價並預留，牌價愈低愈好",
-      "priority": "BEFORE 10/4"
+      "note": "已完成：用 HK$10,000 兌換日圓",
+      "priority": "DONE"
     },
     {
       "id": "lawson",
       "title": "離線保存 Lawson 取票碼",
-      "note": "9/30 起可取票",
-      "priority": "9/30"
+      "note": "已完成：Lawson 取票碼已離線保存",
+      "priority": "DONE"
     },
     {
       "id": "offline",
@@ -57,8 +61,8 @@
     {
       "id": "boarding-passes",
       "title": "離線保存 UO686 兩張電子登機證",
-      "note": "網上登機已完成；把兩張 QR 圖片加入私人離線票券包，並在飛行模式打開確認",
-      "priority": "10/3"
+      "note": "已完成：兩張 UO686 電子登機證 QR 已離線保存",
+      "priority": "DONE"
     }
   ],
   "food": {
