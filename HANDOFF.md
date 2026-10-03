@@ -1,14 +1,14 @@
 # 大阪 LANY 2026｜另一部 Mac / Codex 接手
 
 更新：2026-10-03。行程網站公開可讀，不需登入 ChatGPT：
-https://klking2.github.io/osaka-lany-2026/?v=55
+https://klking2.github.io/osaka-lany-2026/?v=56
 
 ## 專案在哪裏
 
 - GitHub 原始碼（公開、用來發布網站）：https://github.com/klking2/osaka-lany-2026 ，`main` 分支。
 - Google Drive 工作資料夾：`我的雲端硬碟/大阪之旅/osaka-trip-mobile`。在另一部 Mac，從 Finder 的 Google Drive 找這個資料夾；不要照搬這部 Mac 的 `/Users/kingclaw/...` 路徑。
-- 這部 Mac 的 `~/Documents/ChatGPT/2026)/osaka-trip-mobile` 只是指向上述 Drive 資料夾的捷徑。
-- revision 54 原始基線提交：`27a1bdf`；目前目標基線為 `trip-data.json` revision 55（MacBook 修正發布）。另一部 Mac 接手時，先核對自己的資料夾已同步到至少這個版本。
+- 這部 MacBook 的獨立 checkout：`~/Documents/ChatGPT/travel/osaka-trip-mobile`。其他機器需實測自己的路徑。
+- revision 54 原始基線提交：`27a1bdf`；目前目標基線為 `trip-data.json` revision 56（私人版本同步）。另一部 Mac 接手時，先核對自己的資料夾已同步到至少這個版本。
 
 ## 明天在另一部 Mac
 
@@ -18,9 +18,13 @@ https://klking2.github.io/osaka-lany-2026/?v=55
 4. 修改行程基線主要用 `trip-data.json`；地點資料用 `places.json`；頁面互動用 `index.html` / `mobile.js`。保留已確認訂位，勿把私人 QR、登機證、取票碼、密碼或其他私人票券放入公開 repo。
 5. 要讓所有人看到改動，還要把修改提交並推送到 GitHub `main`，等 GitHub Pages 顯示 `built`，再回讀公開網址確認。**只改 Google Drive 檔案不會自動更新公開網站。** 推送需要所用 GitHub 帳戶對 repo 有寫入權；Codex 帳戶本身不等於 GitHub 發布權限。
 
-## 目前未接通的功能
+## 私人跨裝置版本
 
-網站內的選餐、待辦、備註及個人行程修改仍存在各裝置的瀏覽器 localStorage；私人票券在該瀏覽器 IndexedDB。它們不會因 Google Drive 同步原始碼而跨手機／Mac 同步。網頁直接寫回 Google Drive 的雙向同步暫停在 Google Cloud 帳戶持有人需自行接受服務條款之前；勿宣稱已完成。
+revision 56 加入手動 Google Drive 私人版本：裝置 A 連接 Google 並儲存，裝置 B 連接同一帳戶、更新清單、選取版本載入。行程、待辦、選餐、備註及票券可一併傳送；不會自動合併兩機編輯。載入前備份本機行程，票券只新增並依內容去重，不刪除原有票券。
+
+Cloud 專案 `osaka-lany-sync-padking4-2026`，Drive API 已啟用；OAuth Web client 設定在公開的 `sync-config.json`（client ID 不是 secret）。權限僅 `drive.appdata` 和 `userinfo.email`；私人資料留在登入帳戶的 appDataFolder。測試模式需指定測試用戶，首次授權由使用者自行完成。
+
+驗收：Node 格式／雜湊檢查與本機瀏覽器保存、載入、票券去重、備份回復及失敗保護已通過；Google 傳輸在這輪瀏覽器測試使用模擬回應。真實 Drive 往返及兩部實體裝置仍待本人首次授權後驗收，不可把模擬測試當作實機完成。
 
 ## 可直接交給另一部 Mac 上 Codex 的提示
 
@@ -34,4 +38,4 @@ https://klking2.github.io/osaka-lany-2026/?v=55
 
 revision 55 修正備註內的舊 R3 字眼，也對已儲存舊備註的瀏覽器作一次精確字串更新，保留其他個人備註及手動行程。
 
-私人同步仍未驗收：本次 MacBook 實際登入指定帳戶後，Google Cloud 要求帳戶持有人啟用兩步驟驗證及接受首次使用條款；完成後才能配置行程專用 OAuth。
+上述 Cloud 帳戶設定障礙已由本人處理，Web client 已建立；目前待辦改為首次網頁 OAuth 授權及真實 Drive 往返驗收。

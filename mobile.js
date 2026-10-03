@@ -1,4 +1,4 @@
-/* Public app shell; personal edits and attachments remain on this device. */
+/* Public app shell; optional private snapshots are handled by private-sync.js. */
 (() => {
   const $ = id => document.getElementById(id);
   const el = (tag, text, className) => { const n=document.createElement(tag); if(text!==undefined)n.textContent=text; if(className)n.className=className; return n; };
@@ -34,7 +34,7 @@
       const registration=await navigator.serviceWorker.getRegistration();
       if(!registration?.active)throw Error('離線服務尚未啟用');
       const assets=['./index.html','./trip-data.json','./places.json','./mobile.js','./mobile.css'];
-      const cache=await caches.open('osaka-lany-2026-v13');
+      const cache=await caches.open('osaka-lany-2026-v14');
       const found=await Promise.all(assets.map(path=>cache.match(new URL(path,location.href).href)));
       if(found.some(x=>!x))throw Error('下載未完整'); ready=true; connection();
     }).catch(()=>status('離線包未完成：請保持連網並重新載入。私人瀏覽模式可能不支援。'));
@@ -60,6 +60,7 @@
     });
     walletStatus.textContent=files.length?'已儲存 '+files.length+' 份文件在這部裝置。':'尚未加入私人文件。';
   }
+  window.addEventListener('osaka-wallet-updated',()=>{if(db)renderWallet().catch(()=>{walletStatus.textContent='票券已新增，請重新載入查看。';});});
   request.onsuccess=()=>{db=request.result;renderWallet().catch(()=>{walletStatus.textContent='文件讀取失敗，請重新載入。';});};
   $('wallet-file').addEventListener('change',async event=>{
     if(!db){walletStatus.textContent='文件儲存尚未就緒，請稍後重試。';return;}

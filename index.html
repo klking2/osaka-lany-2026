@@ -11,6 +11,8 @@
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
   <script defer src="./mobile.js"></script>
+  <script defer src="./sync-core.js"></script>
+  <script defer src="./private-sync.js"></script>
   <style>
     :root {
       color-scheme: light;
@@ -902,8 +904,18 @@
       <a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6559.htm" target="_blank" rel="noreferrer">日本國稅廳</a><br>
       Rapi:t 來回四張已於 2026-09-23 在 Klook 付款及確認，合共 HK$284；班次與座位尚待安排。訂單編號及醫療代碼沒有複製到本 HTML。
     </footer>
+    <section class="panel mobile-intro" id="private-sync">
+      <h2>跨裝置私人同步</h2>
+      <p>兩部裝置登入同一 Google 帳戶。先在有最新資料的裝置儲存，再於另一裝置選版本載入。同步包含行程、待辦、選餐、備註與票券；不會自動上傳、不會修改真實訂位。</p>
+      <p>版本存於此應用程式專用的私人 Drive 空間，不會出現在公開網站。載入前會備份本機行程；票券只新增缺少的內容。每份上限 20 MB，合計 64 MB。</p>
+      <label>這部裝置名稱 <input id="sync-device" maxlength="60" placeholder="例如：MacBook 或 iPhone"></label>
+      <div class="mobile-actions"><button id="sync-connect" type="button" disabled>連接 Google Drive</button><button id="sync-upload" type="button" disabled>儲存到私人 Drive</button><button id="sync-list" type="button" disabled>更新版本清單</button><button id="sync-disconnect" type="button" disabled>中斷連接</button></div>
+      <label>私人版本 <select id="sync-versions"><option value="">尚未連接</option></select></label>
+      <div class="mobile-actions"><button id="sync-restore" type="button" disabled>載入所選版本</button><button id="sync-undo" type="button">還原載入前的行程</button></div>
+      <p id="sync-status" role="status" aria-live="polite">正在讀取同步設定…</p>
+    </section>
     <section class="panel mobile-intro" id="offline-wallet">
-      <h2>私人離線票券包</h2><p>自行加入機票、酒店確認書、LANY 或 Rapi:t 票券 PDF／圖片。只存這部裝置，不上傳 GitHub，不會供朋友看到。清除網站資料或更換手機後需重新加入；請另留原檔備份。</p>
+      <h2>私人離線票券包</h2><p>自行加入機票、酒店確認書、LANY 或 Rapi:t 票券 PDF／圖片。只存這部裝置，不上傳 GitHub，不會供朋友看到。可在上方登入 Google Drive，手動保存及載入私人版本；請另留原檔備份。</p>
       <label>選擇文件（單檔上限 20 MB）<input id="wallet-file" type="file" accept="application/pdf,image/jpeg,image/png,image/webp" multiple></label>
       <p id="wallet-status" role="status"></p><div id="wallet-files"></div>
     </section>
@@ -1056,6 +1068,7 @@
       function payload() {
         return {
           revision: appState.revision,
+          updatedAt: appState.updatedAt || "",
           publishedRevision: appState.publishedRevision,
           editedDays: clone(appState.editedDays),
           taskChecks: clone(appState.taskChecks),
@@ -1072,7 +1085,8 @@
           appState.revision = (appState.revision || 0) + 1;
           appState.updatedAt = new Date().toISOString();
           localStorage.setItem("osaka-mobile-state-v1", JSON.stringify(payload()));
-          setSystemStatus("已儲存在這部手機 · 不會自動同步或更改訂位", "saved");
+          setSystemStatus("已儲存在這部手機 · 可到私人同步保存版本", "saved");
+          window.dispatchEvent(new Event("osaka-state-saved"));
           return Promise.resolve(true);
         } catch (error) {
           setSystemStatus("未能儲存：儲存空間不足或瀏覽器限制。請先匯出修改，勿關閉本頁。", "error");
@@ -1572,7 +1586,7 @@
           }
           let published = null;
           try {
-            const response = await fetch("./trip-data.json?release=55");
+            const response = await fetch("./trip-data.json?release=56");
             if (!response.ok) throw new Error("行程資料目前未能更新");
             published = await response.json();
             if (!published.days?.some(day => day.day === "10/4")) throw new Error("資料不屬於大阪行程，請重新載入");
@@ -1594,6 +1608,7 @@
           }
           appState = {
             revision: saved.revision || 0,
+            updatedAt: saved.updatedAt || "",
             publishedRevision: saved.publishedRevision || published?.revision || 0,
             editedDays: saved.editedDays || {},
             taskChecks: saved.taskChecks || {},
@@ -1747,6 +1762,29 @@
         if (await queueSave()) showToast("旅程備註已存入這部手機");
       });
 
+      window.osakaPrivateState = {
+        read: () => appState ? payload() : null,
+        backup: () => {
+          if (!appState) throw Error("行程尚未載入");
+          const key = "osaka-before-cloud-load-" + Date.now();
+          localStorage.setItem(key, JSON.stringify(payload()));
+          localStorage.setItem("osaka-before-cloud-load-latest", key);
+        },
+        apply: incoming => {
+          const next = window.OsakaSyncCore.state(incoming);
+          localStorage.setItem("osaka-mobile-state-v1", JSON.stringify(next));
+          appState = next;
+          $("trip-notes").value = next.notes;
+          renderTasks(); renderFoodChoices(); renderDays();
+          setSystemStatus("私人版本已存入這部裝置 · 不會修改真實訂位", "saved");
+        },
+        undo: () => {
+          const key = localStorage.getItem("osaka-before-cloud-load-latest");
+          const saved = key && localStorage.getItem(key);
+          if (!saved) throw Error("尚未有載入前的行程備份");
+          window.osakaPrivateState.apply(JSON.parse(saved));
+        }
+      };
       bootstrap();
     })();
   </script>

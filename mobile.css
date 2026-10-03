@@ -45,3 +45,5 @@
   .toast { bottom:95px; }
 }
 @media print { .mobile-tabs,.mobile-actions,#offline-wallet { display:none!important; } }
+
+#private-sync label{display:block;margin:12px 0}#private-sync input,#private-sync select{max-width:100%;min-height:44px;padding:8px;border:1px solid #ccd5df;border-radius:8px;font:inherit}#private-sync select{width:100%}#private-sync button:disabled{opacity:.5;cursor:not-allowed}#sync-status{overflow-wrap:anywhere}
