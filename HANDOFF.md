@@ -24,7 +24,7 @@ revision 56 加入手動 Google Drive 私人版本：裝置 A 連接 Google 並�
 
 Cloud 專案 `osaka-lany-sync-padking4-2026`，Drive API 已啟用；OAuth Web client 設定在公開的 `sync-config.json`（client ID 不是 secret）。權限僅 `drive.appdata` 和 `userinfo.email`；私人資料留在登入帳戶的 appDataFolder。測試模式需指定測試用戶，首次授權由使用者自行完成。
 
-驗收：Node 格式／雜湊檢查與本機瀏覽器保存、載入、票券去重、備份回復及失敗保護已通過；Google 傳輸在這輪瀏覽器測試使用模擬回應。真實 Drive 往返及兩部實體裝置仍待本人首次授權後驗收，不可把模擬測試當作實機完成。
+驗收：本人已完成首次 Google 授權。真實 Drive 上傳及 SHA-256 回讀通過；正式網站與 localhost（各自獨立 localStorage／IndexedDB）雙向載入、圖片 bytes 一致、重複載入去重、行程備份回復均通過。既有行程完整保留，本機測試圖片已移除，最新正式版本不含測試圖。Node 與模擬傳輸的格式／損壞／401 失敗保護測試亦通過。尚未操作第二部實體手機或 Mac，該裝置仍需本人登入同一帳戶並載入驗收。
 
 ## 可直接交給另一部 Mac 上 Codex 的提示
 
@@ -38,4 +38,4 @@ Cloud 專案 `osaka-lany-sync-padking4-2026`，Drive API 已啟用；OAuth Web c
 
 revision 55 修正備註內的舊 R3 字眼，也對已儲存舊備註的瀏覽器作一次精確字串更新，保留其他個人備註及手動行程。
 
-上述 Cloud 帳戶設定障礙已由本人處理，Web client 已建立；目前待辦改為首次網頁 OAuth 授權及真實 Drive 往返驗收。
+上述 Cloud 帳戶設定、首次網頁 OAuth 授權及真實 Drive 往返驗收已完成；第二部實體裝置仍需登入同一帳戶並載入最新「MacBook 正式網站」版本。
