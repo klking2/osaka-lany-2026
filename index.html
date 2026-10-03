@@ -13,9 +13,9 @@
   <script defer src="./guides.js?v=62"></script>
   <script defer src="./reading.js?v=62"></script>
   <script defer src="./install.js"></script>
-  <script defer src="./mobile.js?v=62"></script>
+  <script defer src="./mobile.js?v=63"></script>
   <script defer src="./sync-core.js"></script>
-  <script defer src="./private-sync.js"></script>
+  <script defer src="./private-sync.js?v=63"></script>
   <style>
     :root {
       color-scheme: light;
@@ -458,10 +458,10 @@
       .panel, .soft-alert { box-shadow: none; break-inside: avoid; }
     }
   </style>
-  <link rel="stylesheet" href="./mobile.css?v=62">
+  <link rel="stylesheet" href="./mobile.css?v=63">
 </head>
 <body>
-  <p class="guide-preview-note">版本 62 · 已加入逐站詳細步驟。直接查看：<a href="#guide-kix-arrival">關西機場抵埗</a> · <a href="#guide-rapit-out">找 Rapi:t 前往難波</a> · <a href="#guide-loppi">Loppi 取 LANY 門票</a>。</p>
+  <p class="guide-preview-note">版本 63 · 私人票券圖片可在頁內直接放大。<a href="#offline-wallet">查看我的票券圖片</a>。逐站詳細步驟：<a href="#guide-kix-arrival">關西機場抵埗</a> · <a href="#guide-rapit-out">找 Rapi:t 前往難波</a> · <a href="#guide-loppi">Loppi 取 LANY 門票</a>。</p>
   <main class="soft-saas-shell">
     <header class="topbar">
       <div class="brandline">
@@ -641,7 +641,7 @@
             <div class="metric-tile"><span class="metric-label">免稅 QR</span><div class="metric-value">關閉</div><div class="metric-note">影相驗證太麻煩，不再申請</div></div>
             <div class="metric-tile"><span class="metric-label">住宿</span><div class="metric-value">3 晚</div><div class="metric-note">難波同一酒店，不搬房</div></div>
             <div class="metric-tile"><span class="metric-label">演唱會</span><div class="metric-value">18:45</div><div class="metric-note">10/5 開演 · LANY 預計 19:45</div></div>
-            <div class="metric-tile"><span class="metric-label">UO686 登機證</span><div class="metric-value">已發出</div><div class="metric-note">網上登機完成 · 兩張 QR 圖片在私人 Drive 資料夾；已確認離線保存；請在本手機試開</div><a class="metric-note" href="#offline-wallet">前往私人離線票券包 ↗</a><br><a class="metric-note" href="#boarding-guide">已有登機證：查看上機步驟 ↗</a></div>
+            <div class="metric-tile"><span class="metric-label">UO686 登機證</span><div class="metric-value">已發出</div><div class="metric-note">網上登機完成 · 兩張 QR 圖片在私人 Drive 資料夾；請在本手機載入私人票券後試開</div><a class="metric-note" href="#offline-wallet">前往私人離線票券包 ↗</a><br><a class="metric-note" href="#boarding-guide">已有登機證：查看上機步驟 ↗</a></div>
             <div class="metric-tile"><span class="metric-label">Rapi:t</span><div class="metric-value">HK$284</div><div class="metric-note">兩程四張已付款；班次及座位待安排</div><a class="metric-note" href="https://www.klook.com/zh-HK/bookings/" target="_blank" rel="noreferrer">查看 Klook 訂單 ↗</a></div>
           </div>
         </article>
@@ -976,17 +976,22 @@
       <label>這部裝置名稱 <input id="sync-device" maxlength="60" placeholder="例如：MacBook 或 iPhone"></label>
       <div class="mobile-actions"><button id="sync-connect" type="button" disabled>連接 Google Drive</button><button id="sync-upload" type="button" disabled>儲存到私人 Drive</button><button id="sync-list" type="button" disabled>更新版本清單</button><button id="sync-disconnect" type="button" disabled>中斷連接</button></div>
       <label>私人版本 <select id="sync-versions"><option value="">尚未連接</option></select></label>
-      <div class="mobile-actions"><button id="sync-restore" type="button" disabled>載入所選版本</button><button id="sync-undo" type="button">還原載入前的行程</button></div>
+      <div class="mobile-actions"><button id="sync-restore-wallet" type="button" disabled>只加入票券（保留手機行程）</button><button id="sync-restore" type="button" disabled>載入完整行程版本</button><button id="sync-undo" type="button">還原載入前的行程</button></div>
       <p id="sync-status" role="status" aria-live="polite">正在讀取同步設定…</p>
     </details>
     <details class="reading-toggle panel mobile-intro" id="offline-wallet">
-      <summary class="reading-heading"><h2>私人離線票券包</h2></summary>
-      <p>自行加入機票、酒店確認書、LANY 或 Rapi:t 票券 PDF／圖片。只存這部裝置，不上傳 GitHub，不會供朋友看到。可在上方登入 Google Drive，手動保存及載入私人版本；請另留原檔備份。</p>
+      <summary class="reading-heading"><h2>我的票券圖片 · 私人離線票券包</h2></summary>
+      <p>登機證、入境海關 QR、Loppi 取票碼及訂位詳情可直接在這裏看圖、放大，載入後可離線查看。圖片留在本機／私人 Drive，不會公開；請另留原檔備份。</p>
+      <p>手機第一次使用：連接同一 Google 帳戶 → 選擇含圖片的私人版本 → 按「只加入票券（保留手機行程）」。</p><div class="mobile-actions"><a href="#private-sync">從私人 Drive 加入圖片</a></div>
       <label>選擇文件（單檔上限 20 MB）<input id="wallet-file" type="file" accept="application/pdf,image/jpeg,image/png,image/webp" multiple></label>
       <p id="wallet-status" role="status"></p><div id="wallet-files"></div>
     </details>
   </main>
-  <nav class="mobile-tabs" aria-label="手機導覽"><a href="#itinerary">行程</a><a href="#food-choices">餐廳</a><a href="#noodle-options">拉麵</a><a href="#trip-map">地圖</a><a href="#task-panel">待辦</a></nav>
+  <nav class="mobile-tabs" aria-label="手機導覽"><a href="#itinerary">行程</a><a href="#food-choices">餐廳</a><a href="#noodle-options">拉麵</a><a href="#trip-map">地圖</a><a href="#task-panel">待辦</a><a href="#offline-wallet">票券</a></nav>
+  <dialog id="wallet-viewer" class="wallet-viewer" aria-labelledby="wallet-viewer-title">
+    <div class="wallet-viewer-toolbar"><h2 id="wallet-viewer-title">私人票券</h2><button id="wallet-viewer-zoom" type="button">原始大小</button><button id="wallet-viewer-close" type="button">關閉</button></div>
+    <div class="wallet-viewer-content"><img id="wallet-viewer-image" alt=""></div>
+  </dialog>
   <dialog class="editor-dialog" id="day-editor">
     <div class="editor-body">
       <div class="editor-top"><div><h2>編輯每日行程</h2><p>修改時間、地點、備註或新增行程。按「儲存行程」才會寫入這部手機。</p></div><button class="ghost-button" type="button" data-close-dialog="day-editor">關閉</button></div>
@@ -1955,7 +1960,7 @@
           }
           let published = null;
           try {
-            const response = await fetch("./trip-data.json?release=62");
+            const response = await fetch("./trip-data.json?release=63");
             if (!response.ok) throw new Error("行程資料目前未能更新");
             published = await response.json();
             if (!published.days?.some(day => day.day === "10/4")) throw new Error("資料不屬於大阪行程，請重新載入");

@@ -2,7 +2,7 @@
 
 > 詳細指南版本62：37個節點／32張可收合指南；內容、相容性及驗收記錄見 [PREVIEW-62.md](PREVIEW-62.md)。
 
-靜態 GitHub Pages 行程網站，不需登入 ChatGPT。本次發布行程基線為 revision 62；個人修改存在 localStorage，私人票券存在 IndexedDB。
+靜態 GitHub Pages 行程網站，不需登入 ChatGPT。本次發布行程基線為 revision 63；個人修改存在 localStorage，私人票券存在 IndexedDB。
 
 ## 私人跨裝置版本
 
@@ -21,3 +21,7 @@
 發布時遞增 `sw.js` 的 CACHE 版本及 `trip-data.json` 的 revision。新版本更新未手動編輯的日期，保留手動修改，升級前保留瀏覽器備份。也可用「匯出我的修改」備份 JSON。
 
 網站操作不會更改真實訂位；本次功能更新未重新核實航班時間或餐廳營業資料。
+
+## 私人圖片版本63
+
+票券區直接顯示圖片，支援頁內放大／原始大小及離線閱讀；手機導覽加入票券入口。Drive新增「只加入票券（保留手機行程）」，只新增缺少的附件，不覆寫行程、備註或選餐。圖片和QR只留本機IndexedDB及私人Drive，沒有加入公開repo或離線SHELL。重複匯入同一圖片依內容去重。

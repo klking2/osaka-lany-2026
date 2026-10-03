@@ -10,6 +10,7 @@
     $('sync-connect').disabled=busy||!client;
     for(const id of ['sync-upload','sync-list','sync-disconnect'])$(id).disabled=busy||!connected;
     $('sync-restore').disabled=busy||!connected||!$('sync-versions').value;
+    $('sync-restore-wallet').disabled=busy||!connected||!$('sync-versions').value;
     $('sync-versions').disabled=busy;$('sync-undo').disabled=busy;
   }
   async function work(fn){if(busy)return;busy=true;controls();try{await fn();}catch(e){message(e.message||'同步失敗；本機資料仍保留。');}finally{busy=false;controls();}}
@@ -99,6 +100,15 @@
     window.osakaPrivateState.apply(snapshot.state);
     message('已載入 '+snapshot.device+' 的私人行程，新增 '+count+' 份票券；原有票券保留。這不會修改真實訂位。');
   }
+  async function restoreWalletOnly(){
+    const file=files.find(f=>f.id===$('sync-versions').value);if(!file)throw Error('請先選擇版本');
+    message('正在下載及校驗私人票券…');
+    const downloaded=await readSnapshot(file.id);const snapshot=await C.snapshot(JSON.parse(downloaded.text));
+    const count=await addWallet(snapshot.files);
+    message('已加入 '+count+' 份私人票券；重複圖片已略過，手機行程、備註與原有票券均保留。');
+    location.hash='#offline-wallet';window.revealReading?.('#offline-wallet',true);
+  }
+  $('sync-restore-wallet').onclick=()=>work(restoreWalletOnly);
   $('sync-undo').onclick=()=>work(async()=>{if(confirm('還原最近一次載入前的行程、待辦、選餐及備註？票券保持現狀。')){window.osakaPrivateState.undo();message('已還原載入前的行程；票券保持現狀。');}});
   $('sync-upload').onclick=()=>work(upload);
   $('sync-list').onclick=()=>work(async()=>{const n=await listVersions();message(email+' · 找到 '+n+' 個私人版本（最多顯示最新 500 個）');});

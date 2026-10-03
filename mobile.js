@@ -33,8 +33,8 @@
       // Check actual shell contents, not just registration success.
       const registration=await navigator.serviceWorker.getRegistration();
       if(!registration?.active)throw Error('離線服務尚未啟用');
-      const assets=['./guide-data.json?v=62','./guides.js?v=62','./index.html','./trip-data.json','./places.json?v=62','./mobile.js?v=62','./mobile.css?v=62'];
-      const cache=await caches.open('osaka-lany-2026-v21');
+      const assets=['./guide-data.json?v=62','./guides.js?v=62','./index.html','./trip-data.json','./places.json?v=62','./mobile.js?v=63','./mobile.css?v=63'];
+      const cache=await caches.open('osaka-lany-2026-v22');
       const found=await Promise.all(assets.map(path=>cache.match(new URL(path,location.href).href)));
       if(found.some(x=>!x))throw Error('下載未完整'); ready=true; connection();
     }).catch(()=>status('離線包未完成：請保持連網並重新載入。私人瀏覽模式可能不支援。'));
@@ -45,29 +45,55 @@
   request.onupgradeneeded=()=>request.result.createObjectStore('files',{keyPath:'id'});
   request.onerror=()=>{walletStatus.textContent='這個瀏覽器不能儲存私人票券；請保留原 PDF／圖片。';$('wallet-file').disabled=true;};
   const operation=(mode,fn)=>new Promise((resolve,reject)=>{const tx=db.transaction('files',mode);let result;const r=fn(tx.objectStore('files'));r.onsuccess=()=>{result=r.result;};tx.oncomplete=()=>resolve(result);tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error);});
+  const viewer=$('wallet-viewer'),viewerImage=$('wallet-viewer-image');
+  const closeViewer=()=>{if(viewer.open)viewer.close();};
+  $('wallet-viewer-close').onclick=closeViewer;
+  $('wallet-viewer-zoom').onclick=()=>{
+    const zoomed=viewerImage.classList.toggle('actual-size');
+    $('wallet-viewer-zoom').textContent=zoomed?'適合螢幕':'原始大小';
+  };
+  viewer.addEventListener('close',()=>{viewerImage.removeAttribute('src');viewerImage.classList.remove('actual-size');});
+  function showImage(file,url){
+    $('wallet-viewer-title').textContent=file.name;
+    viewerImage.alt=file.name;viewerImage.src=url;viewerImage.classList.remove('actual-size');
+    $('wallet-viewer-zoom').textContent='原始大小';viewer.showModal();
+  }
   async function renderWallet() {
-    objectUrls.splice(0).forEach(url=>URL.revokeObjectURL(url)); $('wallet-files').replaceChildren();
+    closeViewer();objectUrls.splice(0).forEach(url=>URL.revokeObjectURL(url));$('wallet-files').replaceChildren();
     const files=await operation('readonly',store=>store.getAll());
+    files.sort((a,b)=>a.name.localeCompare(b.name,'zh-Hant'));
     files.forEach(file=>{
-      const row=el('div',undefined,'wallet-row'); row.append(el('span',file.name));
-      const url=URL.createObjectURL(file.blob); objectUrls.push(url);
-      const open=el('a','開啟'); open.href=url; open.target='_blank'; open.rel='noopener';
-      const save=el('a','下載備份'); save.href=url; save.download=file.name;
-      const remove=el('button','移除'); remove.type='button'; remove.onclick=async()=>{
+      const row=el('article',undefined,'wallet-card');row.append(el('h3',file.name));
+      const url=URL.createObjectURL(file.blob);objectUrls.push(url);
+      if(['image/jpeg','image/png','image/webp'].includes(file.blob.type)){
+        const preview=el('button',undefined,'wallet-image-button');preview.type='button';preview.setAttribute('aria-label','放大 '+file.name);
+        const img=el('img');img.src=url;img.alt=file.name;img.loading='lazy';img.decoding='async';preview.append(img);
+        preview.onclick=()=>showImage(file,url);row.append(preview);
+        row.append(el('p','點圖片放大；原圖儲存在本機，可離線查看。','wallet-image-hint'));
+      }
+      const actions=el('div',undefined,'wallet-actions');
+      const open=el('a','開啟原檔');open.href=url;open.target='_blank';open.rel='noopener';
+      const save=el('a','下載備份');save.href=url;save.download=file.name;
+      const remove=el('button','移除');remove.type='button';remove.onclick=async()=>{
         if(!confirm('只移除這部裝置內的「'+file.name+'」？原檔不受影響。'))return;
-        try {await operation('readwrite',store=>store.delete(file.id));await renderWallet();}catch{walletStatus.textContent='未能移除，請重試。';}
-      }; row.append(open,save,remove); $('wallet-files').append(row);
+        try{await operation('readwrite',store=>store.delete(file.id));await renderWallet();}catch{walletStatus.textContent='未能移除，請重試。';}
+      };
+      actions.append(open,save,remove);row.append(actions);$('wallet-files').append(row);
     });
-    walletStatus.textContent=files.length?'已儲存 '+files.length+' 份文件在這部裝置。':'尚未加入私人文件。';
+    walletStatus.textContent=files.length?'已儲存 '+files.length+' 份私人文件 · 圖片可直接點開放大。':'這部裝置尚未有票券圖片。可從私人 Drive「只加入票券」，或在下方選擇圖片。';
   }
   window.addEventListener('osaka-wallet-updated',()=>{if(db)renderWallet().catch(()=>{walletStatus.textContent='票券已新增，請重新載入查看。';});});
   request.onsuccess=()=>{db=request.result;renderWallet().catch(()=>{walletStatus.textContent='文件讀取失敗，請重新載入。';});};
   $('wallet-file').addEventListener('change',async event=>{
     if(!db){walletStatus.textContent='文件儲存尚未就緒，請稍後重試。';return;}
     try {
+      const existing=await operation('readonly',store=>store.getAll());
+      const digest=async blob=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',await blob.arrayBuffer()))).map(b=>b.toString(16).padStart(2,'0')).join('');
+      const hashes=new Set(await Promise.all(existing.map(f=>digest(f.blob))));
       for(const file of event.target.files) {
         if(!['application/pdf','image/jpeg','image/png','image/webp'].includes(file.type)||file.size>20*1024*1024)throw Error('只接受 20 MB 內的 PDF／JPG／PNG／WebP。');
-        await operation('readwrite',store=>store.put({id:crypto.randomUUID(),name:file.name,blob:file}));
+        const hash=await digest(file);if(hashes.has(hash))continue;
+        await operation('readwrite',store=>store.add({id:crypto.randomUUID(),name:file.name,blob:file}));hashes.add(hash);
       }
       await renderWallet();
     }catch(error){walletStatus.textContent='未能完成儲存：'+error.message+' 請保留原檔。';}
