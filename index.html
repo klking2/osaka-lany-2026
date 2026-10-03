@@ -10,6 +10,7 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <script defer src="./install.js"></script>
   <script defer src="./mobile.js"></script>
   <script defer src="./sync-core.js"></script>
   <script defer src="./private-sync.js"></script>
@@ -477,9 +478,22 @@
       <span id="system-message">正在載入手機行程…</span>
       <button id="reload-system" type="button">重新載入資料</button>
     </div>
-    <section class="mobile-intro panel">
+    <section class="mobile-intro panel" id="install-section">
       <strong>大阪・神戶，放進手機。</strong>
-      <p>iPhone：Safari「分享」→「加入主畫面」。Android：瀏覽器選單「安裝應用程式」。第一次請連網開啟，待下方顯示離線包已備妥，再開飛行模式測試。</p>
+      <div class="mobile-actions install-actions"><button id="install-app" type="button" aria-controls="install-help">＋ 加入手機主畫面</button></div>
+      <p id="install-status" role="status" aria-live="polite">加入後可從手機桌面直接開啟行程。</p>
+      <details id="install-help">
+        <summary>查看 iPhone／Android 加入方法</summary>
+        <div class="install-guide">
+          <h3>iPhone／iPad</h3>
+          <ol><li>用 <strong>Safari</strong> 開啟本頁。</li><li>按瀏覽器的「分享」圖示（方框向上箭嘴）；若未顯示，先展開瀏覽器選單。</li><li>選「加入主畫面」，如有「打開為網頁 App」請保持開啟，再按「加入」。</li></ol>
+          <p>找不到「加入主畫面」：在分享清單底部按「編輯動作」，加入該選項。</p>
+          <h3>Android</h3>
+          <ol><li>用 <strong>Chrome</strong> 開啟本頁。</li><li>按上方「加入手機主畫面」；如未出現安裝視窗，開啟 Chrome「⋮」選單。</li><li>選「加入主畫面」或「安裝應用程式」，按畫面指示確認。</li></ol>
+          <p>如果在 WhatsApp、Gmail 或其他 App 內開啟，請先複製本頁網址，貼到 Safari／Chrome。</p>
+        </div>
+      </details>
+      <p>第一次請連網開啟，待下方顯示離線包已備妥，再開飛行模式測試。</p>
       <p id="offline-status" role="status">離線包準備中…</p>
       <p>行程、餐廳特色、地址與路線示意可離線；Google 地圖及即時導航需要網絡。手機修改只存在這部裝置，不會自動同步 Drive／Codex 或改動真實訂位。</p>
       <div class="mobile-actions"><a href="#itinerary">查看四日行程</a><a href="#offline-wallet">私人票券包</a><button id="export-state" type="button">匯出我的修改</button></div>
@@ -1586,7 +1600,7 @@
           }
           let published = null;
           try {
-            const response = await fetch("./trip-data.json?release=56");
+            const response = await fetch("./trip-data.json?release=57");
             if (!response.ok) throw new Error("行程資料目前未能更新");
             published = await response.json();
             if (!published.days?.some(day => day.day === "10/4")) throw new Error("資料不屬於大阪行程，請重新載入");

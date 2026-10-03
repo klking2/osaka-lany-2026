@@ -47,3 +47,5 @@
 @media print { .mobile-tabs,.mobile-actions,#offline-wallet { display:none!important; } }
 
 #private-sync label{display:block;margin:12px 0}#private-sync input,#private-sync select{max-width:100%;min-height:44px;padding:8px;border:1px solid #ccd5df;border-radius:8px;font:inherit}#private-sync select{width:100%}#private-sync button:disabled{opacity:.5;cursor:not-allowed}#sync-status{overflow-wrap:anywhere}
+
+.install-actions{margin-top:16px}.mobile-actions #install-app{background:#304fc3;color:#fff;border-color:#304fc3;font:inherit;font-weight:700;min-height:48px}.mobile-actions #install-app:disabled{background:#e5f7ee;color:#196342;border-color:#b7ddc9;cursor:default}#install-help{border:1px solid #dfe5f4;border-radius:12px;padding:12px 16px}#install-help summary{cursor:pointer;font-weight:700;min-height:32px}.install-guide{overflow-wrap:anywhere}.install-guide h3{font-size:18px;margin:18px 0 8px}.install-guide strong{font-size:inherit}.install-guide ol{padding-left:24px;line-height:1.8}.install-guide li{margin:8px 0}

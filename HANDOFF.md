@@ -1,14 +1,14 @@
 # 大阪 LANY 2026｜另一部 Mac / Codex 接手
 
 更新：2026-10-03。行程網站公開可讀，不需登入 ChatGPT：
-https://klking2.github.io/osaka-lany-2026/?v=56
+https://klking2.github.io/osaka-lany-2026/?v=57
 
 ## 專案在哪裏
 
 - GitHub 原始碼（公開、用來發布網站）：https://github.com/klking2/osaka-lany-2026 ，`main` 分支。
 - Google Drive 工作資料夾：`我的雲端硬碟/大阪之旅/osaka-trip-mobile`。在另一部 Mac，從 Finder 的 Google Drive 找這個資料夾；不要照搬這部 Mac 的 `/Users/kingclaw/...` 路徑。
 - 這部 MacBook 的獨立 checkout：`~/Documents/ChatGPT/travel/osaka-trip-mobile`。其他機器需實測自己的路徑。
-- revision 54 原始基線提交：`27a1bdf`；目前目標基線為 `trip-data.json` revision 56（私人版本同步）。另一部 Mac 接手時，先核對自己的資料夾已同步到至少這個版本。
+- revision 54 原始基線提交：`27a1bdf`；目前目標基線為 `trip-data.json` revision 57（加入手機主畫面入口）。另一部 Mac 接手時，先核對自己的資料夾已同步到至少這個版本。
 
 ## 明天在另一部 Mac
 
@@ -39,3 +39,7 @@ Cloud 專案 `osaka-lany-sync-padking4-2026`，Drive API 已啟用；OAuth Web c
 revision 55 修正備註內的舊 R3 字眼，也對已儲存舊備註的瀏覽器作一次精確字串更新，保留其他個人備註及手動行程。
 
 上述 Cloud 帳戶設定、首次網頁 OAuth 授權及真實 Drive 往返驗收已完成；第二部實體裝置仍需登入同一帳戶並載入最新「MacBook 正式網站」版本。
+
+## revision 57 手機主畫面入口
+
+頁首新增「加入手機主畫面」按鈕。支援 beforeinstallprompt 的瀏覽器按下後開啟安裝提示；其他瀏覽器展開 iPhone／Android 指引，iPhone 需本人在 Safari 分享選單按「加入主畫面」。390px 手機寬度無橫向溢出，按鈕高度 50px；模擬安裝接受／取消／完成狀態及 iPhone 指引分支通過。未操作使用者實體手機安裝。行程、訂位、私人同步內容未改動。

@@ -1,5 +1,5 @@
-const CACHE='osaka-lany-2026-v14';
-const SHELL=['./','./index.html','./trip-data.json','./places.json','./mobile.js','./sync-core.js','./private-sync.js','./sync-config.json','./mobile.css','./manifest.webmanifest','./icon.svg','./apple-touch-icon.png'];
+const CACHE='osaka-lany-2026-v15';
+const SHELL=['./','./index.html','./trip-data.json','./places.json','./mobile.js','./install.js','./sync-core.js','./private-sync.js','./sync-config.json','./mobile.css','./manifest.webmanifest','./icon.svg','./apple-touch-icon.png'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('osaka-lany-2026-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',event=>{
