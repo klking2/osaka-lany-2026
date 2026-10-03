@@ -10,9 +10,9 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
-  <script defer src="./reading.js?v=60"></script>
+  <script defer src="./reading.js?v=61"></script>
   <script defer src="./install.js"></script>
-  <script defer src="./mobile.js?v=60"></script>
+  <script defer src="./mobile.js?v=61"></script>
   <script defer src="./sync-core.js"></script>
   <script defer src="./private-sync.js"></script>
   <style>
@@ -457,7 +457,7 @@
       .panel, .soft-alert { box-shadow: none; break-inside: avoid; }
     }
   </style>
-  <link rel="stylesheet" href="./mobile.css?v=60">
+  <link rel="stylesheet" href="./mobile.css?v=61">
 </head>
 <body>
   <main class="soft-saas-shell">
@@ -840,21 +840,21 @@
 
           <details class="reading-toggle food-group">
       <summary class="reading-heading"><h3>午餐日期分配</h3></summary>
-            <div class="food-group-head"><div><p>暫排 10/5 J 天婦羅蕎麥麵、10/6 L 神戶牛柳吉列、10/7 G 美々卯。I 鰻魚／K 吉列豬排飯保留備選，若要換入可在下拉選單調整。</p></div><span class="type-chip food">LUNCH</span></div>
+            <div class="food-group-head"><div><p>10/5 12:30 已選 J 石臼挽蕎麦 弦（Harukas 12F，現場候位）；10/6 L 神戶牛柳吉列、10/7 G 美々卯照原安排。I 鰻魚／K 吉列豬排飯保留備選，若要換入可在下拉選單調整。</p></div><span class="type-chip food">LUNCH</span></div>
             <div class="choice-grid">
-              <label class="choice-slot"><span>10/5 MON · 午餐</span><select id="lunch-1005" data-food-choice="lunch1005" aria-label="選擇 10月5日午餐"><option value="">尚未選擇</option><option value="G">G · 美々卯 なんば店</option><option value="I">I · 鰻魚 Izumo LUCUA</option><option value="J">J · 天婦羅蕎麥麵（必吃）</option><option value="K">K · 吉列豬排飯</option></select></label>
+              <label class="choice-slot"><span>10/5 MON · 午餐</span><select id="lunch-1005" data-food-choice="lunch1005" aria-label="選擇 10月5日午餐"><option value="">尚未選擇</option><option value="G">G · 美々卯 なんば店</option><option value="I">I · 鰻魚 Izumo LUCUA</option><option value="J">J · 石臼挽蕎麦 弦 · 天婦羅蕎麥麵</option><option value="K">K · 吉列豬排飯</option></select></label>
               <div class="choice-slot"><span>10/6 TUE · 神戶午餐</span><div class="locked-choice">L · グリル一平 三宮店 · 厚切牛柳吉列</div></div>
-              <label class="choice-slot"><span>10/7 WED · 午餐</span><select id="lunch-1007" data-food-choice="lunch1007" aria-label="選擇 10月7日午餐"><option value="">尚未選擇</option><option value="G">G · 美々卯 なんば店</option><option value="I">I · 鰻魚 Izumo LUCUA</option><option value="J">J · 天婦羅蕎麥麵（必吃）</option><option value="K">K · 吉列豬排飯</option></select></label>
+              <label class="choice-slot"><span>10/7 WED · 午餐</span><select id="lunch-1007" data-food-choice="lunch1007" aria-label="選擇 10月7日午餐"><option value="">尚未選擇</option><option value="G">G · 美々卯 なんば店</option><option value="I">I · 鰻魚 Izumo LUCUA</option><option value="J">J · 石臼挽蕎麦 弦 · 天婦羅蕎麥麵</option><option value="K">K · 吉列豬排飯</option></select></label>
             </div>
           </details>
 
           <details class="reading-toggle food-group">
       <summary class="reading-heading"><h3>其餘午餐候選 G／I／J／K</h3></summary>
-            <div class="food-group-head"><div><p>G 美々卯與 J 天婦羅蕎麥麵已暫排；I／K 保留備選，不在本次三餐內。</p></div><span class="type-chip food">4 OPTIONS</span></div>
+            <div class="food-group-head"><div><p>J 已選 Harukas 12F「石臼挽蕎麦 弦」，G 美々卯暫排10/7；I／K 保留備選，不在本次三餐內。</p></div><span class="type-chip food">4 OPTIONS</span></div>
             <div class="food-options">
               <div class="food-option"><span class="food-code">G</span><span class="meal-label">麵食</span><b>美々卯 なんば店</b><p>已按你的要求只列為午餐，主打大阪名物うどんすき。</p><a href="https://www.mimiu.co.jp/restaurant/namba/" target="_blank" rel="noreferrer">查看官方店舖頁 ↗</a></div>
               <div class="food-option"><span class="food-code">I</span><span class="meal-label">暫不排</span><b>鰻魚 Izumo LUCUA</b><p>三個午餐時段已用完；保留作臨時替換選項。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Izumo+LUCUA+Osaka" target="_blank" rel="noreferrer">在 Google Maps 查看 ↗</a></div>
-              <div class="food-option must"><span class="food-code">J</span><span class="meal-label">必吃</span><b>天婦羅蕎麥麵</b><p>必須排入其中一日午餐；實際店舖留待你選定日期後再挑。</p></div>
+              <div class="food-option must" id="lunch1005-gen"><span class="food-code">J</span><span class="meal-label">10/5 12:30 已選 · 現場候位</span><b>石臼挽蕎麦 弦（あべのハルカス12F）</b><p>看完 HARUKAS 300 後，下樓到近鐵本店塔館12F用餐；建議12:15到店候位，午餐後前往新世界。已選定餐廳，尚未訂位。</p><p>想食冷麵：海老天せいろ（冷蕎麥＋蝦天婦羅）；想食熱麵：海老天ぷら，點餐時選「そば」。店家餐單兩款各列¥1,738；兩位餐點約¥3,476，另點飲品另計，以當日餐單為準。</p><p>地址：大阪市阿倍野区阿倍野筋1-1-43，あべのハルカス近鉄本店 タワー館12F。官方列11:00–22:00、最後點餐21:00；休館依百貨安排。電話：+81 6-6654-9083，可電話查詢訂位。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=石臼挽蕎麦+弦+あべのハルカス+12F" target="_blank" rel="noopener noreferrer">Google 地圖／導航 ↗</a><br><a href="https://abenoharukas.d-kintetsu.co.jp/restaurant/75/index.html" target="_blank" rel="noreferrer">官方樓層／營業資料 ↗</a> · <a href="https://hitosara.com/0004028765/food.html" target="_blank" rel="noreferrer">店家餐單 ↗</a><p>2026-10-03 核對；12:30 是行程用餐時間，未有訂位確認。</p></div>
               <div class="food-option"><span class="food-code">K</span><span class="meal-label">暫不排</span><b>吉列豬排飯</b><p>三個午餐時段已用完；保留作臨時替換選項。</p></div>
             </div>
           </details>
@@ -1023,7 +1023,7 @@
         { day: "10/5", label: "大阪市內 · LANY", read: "全程最密集；16:00 回酒店休息，17:15 左右步行去 Zepp，預留時間等 17:45 開場。", density: "10 STOPS", width: 100, items: [
           ["08:30", "大阪木津卸売市場", "大國町站 1 號出口步行 3 分鐘；海鮮早餐／市場採購，店舖多約 11:00 收市", "food"],
           ["10:30", "あべのハルカス 300", "天王寺 · 展望台", "activity"],
-          ["12:30", "午餐 G／I／J／K 自選", "麵食、鰻魚、天婦羅蕎麥麵或吉列豬排飯", "food"],
+          ["12:30", "石臼挽蕎麦 弦（あべのハルカス12F）", "已選定，未訂位／現場候位；看完 HARUKAS 300 下樓至近鐵本店塔館12F，建議12:15到店。海老天せいろ（冷蕎麥＋蝦天婦羅）或海老天ぷら蕎麥（熱），餐單各¥1,738，當日價為準；11:00–22:00，L.O.21:00。用餐後前往新世界。", "food"],
           ["14:00", "新世界、通天閣", "按體力停留", "activity"],
           ["16:00", "返回酒店休息", "放低戰利品", "hotel"],
           ["17:15", "由酒店步行前往 Zepp Namba", "約 11 分鐘；目標 17:30 前到場", "transport"],
@@ -1082,7 +1082,7 @@
         H: "H · 玄品 法善寺總本店",
         G: "G · 美々卯 なんば店",
         I: "I · 鰻魚 Izumo LUCUA",
-        J: "J · 天婦羅蕎麥麵（必吃）",
+        J: "J · 石臼挽蕎麦 弦 · 天婦羅蕎麥麵",
         K: "K · 吉列豬排飯",
         L: "L · グリル一平 三宮店 · 厚切牛柳吉列",
         KB1: "K1 · 神戸プレジール本店",
@@ -1430,10 +1430,10 @@
           items: day.items.map(item => {
             const isDinner = item[1].startsWith("晚餐 ") && item[1].includes("自選");
             const isShowDinner = day.day === "10/5" && item[1] === "磯丸水産 なんば南海通り店";
-            const isLunch = item[1] === "午餐 G／I／J／K 自選";
+            const isLunch = item[1] === "午餐 G／I／J／K 自選" || item[1] === "石臼挽蕎麦 弦（あべのハルカス12F）";
             const code = isDinner ? (day.day === "10/4" ? chosen.dinner1004 : chosen.dinner1006) : isShowDinner ? chosen.dinner1005 : isLunch ? foodForDay[day.day] : "";
             if (isLunch && code) {
-              return [item[0], foodNames[code], code === "J" ? "已暫排必吃菜式 · 實際店舖待選" : "已在餐廳決策板選擇", item[3]];
+              return [item[0], foodNames[code], code === "J" ? "已選定，未訂位／現場候位；看完 HARUKAS 300 下樓至近鐵本店塔館12F，建議12:15到店。海老天せいろ（冷蕎麥＋蝦天婦羅）或海老天ぷら蕎麥（熱），餐單各¥1,738，當日價為準；11:00–22:00，L.O.21:00。用餐後前往新世界。" : "已在餐廳決策板選擇", item[3]];
             }
             if (isShowDinner && code && code !== "F") return [item[0], foodNames[code], "改選候選 · 磯丸 22:00 訂位仍保留；" + item[2], item[3]];
             return code ? [item[0], foodNames[code], "已在餐廳決策板選擇 · " + item[2], item[3]] : item;
