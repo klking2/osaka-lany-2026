@@ -33,8 +33,8 @@
       // Check actual shell contents, not just registration success.
       const registration=await navigator.serviceWorker.getRegistration();
       if(!registration?.active)throw Error('離線服務尚未啟用');
-      const assets=['./guide-data.json?v=62','./guides.js?v=62','./index.html','./trip-data.json','./places.json?v=62','./mobile.js?v=63','./mobile.css?v=63'];
-      const cache=await caches.open('osaka-lany-2026-v22');
+      const assets=['./guide-data.json?v=62','./guides.js?v=62','./index.html','./trip-data.json','./places.json?v=62','./mobile.js?v=64','./mobile.css?v=64'];
+      const cache=await caches.open('osaka-lany-2026-v23');
       const found=await Promise.all(assets.map(path=>cache.match(new URL(path,location.href).href)));
       if(found.some(x=>!x))throw Error('下載未完整'); ready=true; connection();
     }).catch(()=>status('離線包未完成：請保持連網並重新載入。私人瀏覽模式可能不支援。'));
@@ -53,8 +53,11 @@
     $('wallet-viewer-zoom').textContent=zoomed?'適合螢幕':'原始大小';
   };
   viewer.addEventListener('close',()=>{viewerImage.removeAttribute('src');viewerImage.classList.remove('actual-size');});
+  function ticketTitle(name){
+    return name.replace(/^\d+[a-z]?[-_ ]+/i,'').replace(/\.(png|jpe?g|webp|pdf)$/i,'').replace('入境海關QR','Visit Japan Web 入境／海關 QR').replace(/-/g,' · ');
+  }
   function showImage(file,url){
-    $('wallet-viewer-title').textContent=file.name;
+    $('wallet-viewer-title').textContent=ticketTitle(file.name);
     viewerImage.alt=file.name;viewerImage.src=url;viewerImage.classList.remove('actual-size');
     $('wallet-viewer-zoom').textContent='原始大小';viewer.showModal();
   }
@@ -63,13 +66,16 @@
     const files=await operation('readonly',store=>store.getAll());
     files.sort((a,b)=>a.name.localeCompare(b.name,'zh-Hant'));
     files.forEach(file=>{
-      const row=el('article',undefined,'wallet-card');row.append(el('h3',file.name));
+      const title=ticketTitle(file.name);
+      const row=el('details',undefined,'wallet-card reading-toggle');
+      const summary=el('summary',title,'wallet-title');row.append(summary);
+      const content=el('div',undefined,'wallet-content');row.append(content);
       const url=URL.createObjectURL(file.blob);objectUrls.push(url);
       if(['image/jpeg','image/png','image/webp'].includes(file.blob.type)){
-        const preview=el('button',undefined,'wallet-image-button');preview.type='button';preview.setAttribute('aria-label','放大 '+file.name);
-        const img=el('img');img.src=url;img.alt=file.name;img.loading='lazy';img.decoding='async';preview.append(img);
-        preview.onclick=()=>showImage(file,url);row.append(preview);
-        row.append(el('p','點圖片放大；原圖儲存在本機，可離線查看。','wallet-image-hint'));
+        const preview=el('button',undefined,'wallet-image-button');preview.type='button';preview.setAttribute('aria-label','放大 '+title);
+        const img=el('img');img.src=url;img.alt=title;img.loading='lazy';img.decoding='async';preview.append(img);
+        preview.onclick=()=>showImage(file,url);content.append(preview);
+        content.append(el('p','點圖片放大；原圖儲存在本機，可離線查看。','wallet-image-hint'));
       }
       const actions=el('div',undefined,'wallet-actions');
       const open=el('a','開啟原檔');open.href=url;open.target='_blank';open.rel='noopener';
@@ -78,9 +84,9 @@
         if(!confirm('只移除這部裝置內的「'+file.name+'」？原檔不受影響。'))return;
         try{await operation('readwrite',store=>store.delete(file.id));await renderWallet();}catch{walletStatus.textContent='未能移除，請重試。';}
       };
-      actions.append(open,save,remove);row.append(actions);$('wallet-files').append(row);
+      actions.append(open,save,remove);content.append(actions);$('wallet-files').append(row);
     });
-    walletStatus.textContent=files.length?'已儲存 '+files.length+' 份私人文件 · 圖片可直接點開放大。':'這部裝置尚未有票券圖片。可從私人 Drive「只加入票券」，或在下方選擇圖片。';
+    walletStatus.textContent=files.length?'已儲存 '+files.length+' 份私人文件 · 點票券標題展開圖片，再點圖片放大。':'這部裝置尚未有票券圖片。可從私人 Drive「只加入票券」，或在下方選擇圖片。';
   }
   window.addEventListener('osaka-wallet-updated',()=>{if(db)renderWallet().catch(()=>{walletStatus.textContent='票券已新增，請重新載入查看。';});});
   request.onsuccess=()=>{db=request.result;renderWallet().catch(()=>{walletStatus.textContent='文件讀取失敗，請重新載入。';});};
