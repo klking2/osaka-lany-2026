@@ -33,8 +33,8 @@
       // Check actual shell contents, not just registration success.
       const registration=await navigator.serviceWorker.getRegistration();
       if(!registration?.active)throw Error('離線服務尚未啟用');
-      const assets=['./index.html','./trip-data.json','./places.json','./mobile.js','./mobile.css'];
-      const cache=await caches.open('osaka-lany-2026-v17');
+      const assets=['./index.html','./trip-data.json','./places.json','./mobile.js?v=59','./mobile.css?v=59'];
+      const cache=await caches.open('osaka-lany-2026-v18');
       const found=await Promise.all(assets.map(path=>cache.match(new URL(path,location.href).href)));
       if(found.some(x=>!x))throw Error('下載未完整'); ready=true; connection();
     }).catch(()=>status('離線包未完成：請保持連網並重新載入。私人瀏覽模式可能不支援。'));
