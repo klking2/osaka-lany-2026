@@ -1501,6 +1501,11 @@
           merged.publishedRevision = publishedRevision;
           changed = true;
         }
+        // Apply the exact published wording correction once; keep personal notes intact.
+        if (publishedRevision >= 55 && localPublishedRevision < 55 && typeof merged.notes === "string" && merged.notes.includes("先吃R3")) {
+          merged.notes = merged.notes.replaceAll("先吃R3", "先吃已選的くそオヤジ最後のひとふり なんば店");
+          changed = true;
+        }
         const needsBookingTaskSync = !merged.food?.booking1006TaskSynced && publishedState.food?.dinner1006 === "KH";
         if (needsBookingTaskSync) {
           merged.food = { ...(merged.food || {}), dinner1006: "KH", booking1006HarborApplied: true, booking1006TaskSynced: true };
@@ -1567,7 +1572,7 @@
           }
           let published = null;
           try {
-            const response = await fetch("./trip-data.json?release=54");
+            const response = await fetch("./trip-data.json?release=55");
             if (!response.ok) throw new Error("行程資料目前未能更新");
             published = await response.json();
             if (!published.days?.some(day => day.day === "10/4")) throw new Error("資料不屬於大阪行程，請重新載入");
