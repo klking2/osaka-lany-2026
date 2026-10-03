@@ -10,9 +10,10 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
-  <script defer src="./reading.js?v=61"></script>
+  <script defer src="./guides.js?v=62"></script>
+  <script defer src="./reading.js?v=62"></script>
   <script defer src="./install.js"></script>
-  <script defer src="./mobile.js?v=61"></script>
+  <script defer src="./mobile.js?v=62"></script>
   <script defer src="./sync-core.js"></script>
   <script defer src="./private-sync.js"></script>
   <style>
@@ -457,9 +458,10 @@
       .panel, .soft-alert { box-shadow: none; break-inside: avoid; }
     }
   </style>
-  <link rel="stylesheet" href="./mobile.css?v=61">
+  <link rel="stylesheet" href="./mobile.css?v=62">
 </head>
 <body>
+  <p class="guide-preview-note">版本 62 · 已加入逐站詳細步驟。直接查看：<a href="#guide-kix-arrival">關西機場抵埗</a> · <a href="#guide-rapit-out">找 Rapi:t 前往難波</a> · <a href="#guide-loppi">Loppi 取 LANY 門票</a>。</p>
   <main class="soft-saas-shell">
     <header class="topbar">
       <div class="brandline">
@@ -613,19 +615,19 @@
             <div class="route-stop"><time>DAY 1 · 10/4</time><b>KIX → 難波</b><span>取票 · 道頓堀</span></div>
             <div class="route-stop"><time>DAY 2 · 10/5</time><b>大阪市內</b><span>17:45 開場 · 18:45 開演</span></div>
             <div class="route-stop"><time>DAY 3 · 10/6</time><b>神戶</b><span>三宮洋食 · 元町 · 港邊</span></div>
-            <div class="route-stop"><time>DAY 4 · 10/7</time><b>難波 → KIX</b><span>17:30 離開</span></div>
+            <div class="route-stop"><time>DAY 4 · 10/7</time><b>難波 → KIX</b><span>17:40–18:00 抵達機場目標</span></div>
           </div>
         </article>
       </section>
 
       <aside class="right-stack">
         <article class="campaign-panel panel" id="next-panel">
-          <div class="panel-head"><div><h2 class="panel-title" id="next-title">下一步：處理 K7 備用訂位</h2><p class="panel-kicker" id="next-kicker">THE HARBOR 已選；兩張訂位仍有效</p></div><span class="status-pill" id="next-pill">待處理</span></div>
+          <div class="panel-head"><div><h2 class="panel-title" id="next-title">下一步：手機離線總驗收</h2><p class="panel-kicker" id="next-kicker">兩張晚餐訂位依要求保留</p></div><span class="status-pill" id="next-pill">待處理</span></div>
           <div class="rapit-card">
-            <div class="rapit-price"><div><strong id="next-focus">10/6 THE HARBOR</strong><span id="next-focus-copy">19:30 · 2 位 · Google 已確認</span></div><span id="next-counter">K7 待處理</span></div>
+            <div class="rapit-price"><div><strong id="next-focus">10/6 THE HARBOR</strong><span id="next-focus-copy">19:30 · 2 位 · Google 已確認</span></div><span id="next-counter">兩張保留</span></div>
             <div class="direction-grid" id="next-options">
               <div class="direction"><time>10/4</time><div><b>萬兩 日本橋店</b><span>19:30 · Google 訂位</span></div><em>已確認</em></div>
-              <div class="direction"><time>10/6</time><div><b>THE HARBOR 19:30</b><span>已選；K7 19:00 備用訂位仍有效</span></div><em>待處理</em></div>
+              <div class="direction"><time>10/6</time><div><b>THE HARBOR 19:30</b><span>K7 19:00亦保留</span></div><em>待處理</em></div>
             </div>
             <p class="rapit-note" id="next-note">10/5 演唱會後磯丸水産 なんば南海通り店已透過 Google 訂位：22:00、2 位。</p>
             <a class="primary-link full-button" id="next-action" href="#food-choices">前往餐廳決策板</a>
@@ -657,7 +659,7 @@
           <div class="journey-stat"><strong>4</strong><span>旅程日數</span></div>
           <div class="journey-stat"><strong>3</strong><span>酒店晚數</span></div>
           <div class="journey-stat"><strong>34–40m</strong><span>Rapi:t 車程</span></div>
-          <div class="journey-stat"><strong>17:30</strong><span>10/7 離開難波</span></div>
+          <div class="journey-stat"><strong>15:45</strong><span>10/7 回酒店取行李</span></div>
           <div class="journey-stat"><strong>23:59</strong><span>10/5 Lawson 取票死線</span></div>
         </div>
         <div class="activity-bars" aria-label="四日行程密度">
@@ -792,20 +794,20 @@
         <div class="food-column">
           <details class="reading-toggle food-group">
       <summary class="reading-heading"><h3>晚餐日期分配</h3></summary>
-            <div class="food-group-head"><div><p>10/6 首選 THE HARBOR，K7 仍為有效備用訂位；改選只改行程，不會取消訂位。</p></div><span class="type-chip food">DINNER</span></div>
+            <div class="food-group-head"><div><p>10/6 THE HARBOR與K7均依要求保留；改選只改行程，不會取消訂位。</p></div><span class="type-chip food">DINNER</span></div>
             <div class="choice-grid">
               <label class="choice-slot"><span>10/4 SUN · 晚餐 · 已定但可改選</span><select id="dinner-1004" data-food-choice="dinner1004" aria-label="選擇 10月4日晚餐"><option value="A">A · 焼肉 万両（現有訂位）</option><option value="B">B · 肉匠なか田</option><option value="C">C · DINING あじと</option><option value="D">D · 心斎橋 和っか</option><option value="E">E · なるとや蔬菜串</option></select><small>現有 Google 訂位：萬兩 日本橋店 · 19:30 · 2 位；改選不會自動取消訂位</small></label>
               <label class="choice-slot"><span>10/5 MON · 演唱會後 · 已定但可改選</span><select id="dinner-1005" data-food-choice="dinner1005" aria-label="選擇 10月5日演唱會後晚餐"><option value="F">F · 磯丸水産（現有訂位）</option><option value="E">E · なるとや蔬菜串（候選）</option><option value="H">H · 玄品 法善寺總本店（候選）</option></select><small>現有 Google 訂位：磯丸水産 なんば南海通り店 · 22:00 · 2 位；改選不會自動取消訂位。E／H 請當日再核對營業時間及空位。</small></label>
-              <label class="choice-slot"><span>10/6 TUE · 晚餐 · 兩張已訂位，待擇一</span><select id="dinner-1006" data-food-choice="dinner1006" aria-label="選擇 10月6日晚餐"><option value="">兩張已訂位 · 尚未擇一</option><optgroup label="已訂位 · 留在神戶"><option value="KB7">K7 · 郷土料理 からす · 19:00</option><option value="KH">KH · THE HARBOR · 19:30</option></optgroup><optgroup label="其他大阪候選"><option value="A">A · 焼肉 万両</option><option value="B">B · 肉匠なか田</option><option value="C">C · DINING あじと</option><option value="D">D · 心斎橋 和っか</option><option value="E">E · なるとや蔬菜串</option></optgroup><optgroup label="其他神戶候選"><option value="KB1">K1 · 神戸プレジール本店</option><option value="KB2">K2 · 炭焼肉 石田屋。Hanare</option><option value="KB3">K3 · モーリヤ三宮店</option><option value="KB4">K4 · KOBE BEEF RED ONE</option><option value="KB5">K5 · 銀平 三宮店</option><option value="KB6">K6 · うを勢総本店</option><option value="KB8">K8 · 串乃家 神戸本店</option><option value="KB9">K9 · 明石焼き 蛸匠 神戸三宮本店</option><option value="KB10">K10 · FISHERMAN'S MARKET</option></optgroup></select><small>K7 19:00、THE HARBOR 19:30，均為 2 位 Google 訂座。揀好後須自行取消另一張；THE HARBOR 自助餐、禁煙與付款方式仍待酒店回覆。</small></label>
+              <label class="choice-slot"><span>10/6 TUE · 晚餐 · 兩張已訂位，依要求保留</span><select id="dinner-1006" data-food-choice="dinner1006" aria-label="選擇 10月6日晚餐"><option value="">兩張均保留 · 未選顯示主項</option><optgroup label="已訂位 · 留在神戶"><option value="KB7">K7 · 郷土料理 からす · 19:00</option><option value="KH">KH · THE HARBOR · 19:30</option></optgroup><optgroup label="其他大阪候選"><option value="A">A · 焼肉 万両</option><option value="B">B · 肉匠なか田</option><option value="C">C · DINING あじと</option><option value="D">D · 心斎橋 和っか</option><option value="E">E · なるとや蔬菜串</option></optgroup><optgroup label="其他神戶候選"><option value="KB1">K1 · 神戸プレジール本店</option><option value="KB2">K2 · 炭焼肉 石田屋。Hanare</option><option value="KB3">K3 · モーリヤ三宮店</option><option value="KB4">K4 · KOBE BEEF RED ONE</option><option value="KB5">K5 · 銀平 三宮店</option><option value="KB6">K6 · うを勢総本店</option><option value="KB8">K8 · 串乃家 神戸本店</option><option value="KB9">K9 · 明石焼き 蛸匠 神戸三宮本店</option><option value="KB10">K10 · FISHERMAN'S MARKET</option></optgroup></select><small>K7 19:00、THE HARBOR 19:30，均為2位Google訂座，依你的決定兩張都保留。HARBOR每位¥6,600含稅任食蟹，酒店2F、禁煙、到店付款。</small></label>
             </div>
           </details>
 
           <details class="reading-toggle food-group" id="kobe-bookings">
       <summary class="reading-heading"><h3>10/6 兩張已確認訂位</h3></summary>
-            <div class="food-group-head"><div><p>THE HARBOR 為首選，K7 為未取消備用訂位；行程內改選不會通知餐廳。</p></div><span class="type-chip food">K7 待處理</span></div>
+            <div class="food-group-head"><div><p>THE HARBOR及K7均依你的決定保留；行程內改選不會通知餐廳。</p></div><span class="type-chip food">兩張保留</span></div>
             <div class="food-options">
-              <div class="food-option must"><span class="food-code">K7</span><span class="meal-label">Google 已確認 · 19:00 · 2 位</span><b>郷土料理 からす</b><p>神戶三宮，僅訂座。若不去，按訂位電郵條款處理；已知取消期限為 10/5 20:00（日本時間），出發前請再核對電郵。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=郷土料理+からす+神戸三宮" target="_blank" rel="noreferrer">Google 地圖 ↗</a></div>
-              <div class="food-option must"><span class="food-code">KH</span><span class="meal-label">Google 已確認 · 19:30 · 2 位</span><b>THE HARBOR</b><p>神戶港塔酒店內，僅訂座；自助餐、禁煙及現場付款仍待酒店回覆。若不去，已知取消期限為 10/5 17:30（日本時間），出發前請再核對電郵。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=The+Harbor+Kobe+Port+Tower+Hotel" target="_blank" rel="noreferrer">Google 地圖 ↗</a></div>
+              <div class="food-option must"><span class="food-code">K7</span><span class="meal-label">Google 已確認 · 19:00 · 2 位</span><b>郷土料理 からす</b><p>神戶三宮，2位席位預約；依你的決定保留，未執行取消。地址加納町4-3-5，詳見逐站指南。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=郷土料理+からす+神戸三宮" target="_blank" rel="noreferrer">Google 地圖 ↗</a></div>
+              <div class="food-option must"><span class="food-code">KH</span><span class="meal-label">Google 已確認 · 19:30 · 2 位</span><b>THE HARBOR</b><p>神戶港塔酒店2F；最新更正每位¥6,600、兩位¥13,200，含稅及任食蟹。全店禁煙、入口以現金或信用卡付款；20:30最後點餐、21:00結束。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=The+Harbor+Kobe+Port+Tower+Hotel" target="_blank" rel="noreferrer">Google 地圖 ↗</a></div>
             </div>
           </details>
 
@@ -925,7 +927,7 @@
         <button class="filter-chip" type="button" aria-pressed="false" data-day="10/6">10/6 神戶</button>
         <button class="filter-chip" type="button" aria-pressed="false" data-day="10/7">10/7 回程</button>
       </div>
-      <div class="day-timeline" id="day-timeline"></div>
+      <p id="guide-status" role="status">詳細指南載入中…</p><nav class="guide-index" id="guide-index" aria-label="當日完整指南"></nav><div class="day-timeline" id="day-timeline"></div>
 
       <details class="reading-toggle notes-panel">
       <summary class="reading-heading"><h3 class="panel-title">旅程備註</h3></summary>
@@ -950,7 +952,7 @@
 
       <article class="conflict-panel">
         <strong>時間提醒 · 所有時間為當地時間</strong>
-        <p>10/5 最新官方時間：Zepp Namba 17:45 開場、18:45 開演；Alysha 預計 18:45–19:15，LANY 預計 19:45 起，完場時間未公布。建議 17:15 左右由酒店步行前往場館。22:00 磯丸訂位仍確認，但演出後須回酒店接同行者，可能趕不及。10/7 仍須預留 17:30 離開難波前往機場。</p>
+        <p>10/5 最新官方時間：Zepp Namba 17:45 開場、18:45 開演；Alysha 預計 18:45–19:15，LANY 預計 19:45 起，完場時間未公布。建議 17:15 左右由酒店步行前往場館。22:00 磯丸訂位仍確認，但演出後須回酒店接同行者，可能趕不及。10/7 15:45取行李，目標17:40–18:00抵達機場；MENSHO只在有時間時用餐。</p>
       </article>
 
       <details class="all-items">
@@ -960,7 +962,7 @@
     </details>
 
     <footer class="source-footer">
-      本頁沿用原行程；航班、營業時間與交通班次未在本次重新核實，出發前請按官方公告核對。<br>資料來源：<a href="https://app.notion.com/p/3e46a0b4b6f48000b201ef7e622275b5" target="_blank" rel="noreferrer">2026-09-23 Notion 工作頁</a> ·
+      逐站指南附資料來源與核對日期；估算時間不代表已訂班次，航班、月台與臨時營業變更依當日官方公告。<br>資料來源：<a href="https://app.notion.com/p/3e46a0b4b6f48000b201ef7e622275b5" target="_blank" rel="noreferrer">2026-09-23 Notion 工作頁</a> ·
       <a href="https://www.klook.com/en-HK/activity/599-kansai-airport-namba-train-ticket-osaka/" target="_blank" rel="noreferrer">Klook Rapi:t</a> ·
       <a href="https://www.nankai.co.jp/en_railway/ticket/rapit/" target="_blank" rel="noreferrer">南海電鐵</a> ·
       <a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6559.htm" target="_blank" rel="noreferrer">日本國稅廳</a><br>
@@ -1008,64 +1010,333 @@
 
   <script>
     const TRIP = {
-      days: [
-        { day: "10/4", label: "抵埗 · 難波", read: "15:10 入住後約15:30去食くそオヤジ最後のひとふり なんば店（已選）；之後取LANY門票、回酒店休息，19:30萬兩訂位照舊。", density: "9 STOPS", width: 90, items: [
-          ["08:45", "UO686 香港起飛", "香港機場 T2 · 網上登機已完成，兩位電子登機證已發出", "transport"],
-          ["13:30", "抵達關西機場", "T1 · 入境、行李、海關", "transport"],
-          ["約14:30", "Rapi:t 前往難波", "落地後按實際時間選班次", "transport"],
-          ["15:10", "入住 Hotel IL Cuore", "難波站步行約 2 分鐘", "hotel"],
-          ["約15:30", "くそオヤジ最後のひとふり なんば店", "已選：貝出汁醬油拉麵，約15:30用餐；店在難波站步行圈。若航班／入住延誤，先確認當日營業與排隊，再按實際情況縮短停留；R10–R12 保留後備。", "food"],
-          ["約16:30", "Lawson Loppi 取 LANY 門票", "拉麵後取票 · 最重要，不延至演唱會當日", "show"],
-          ["約17:00", "回 Hotel IL Cuore 休息", "取票後回酒店放低物品、休息；19:30 萬兩日本橋店訂位照舊。", "hotel"],
-          ["19:30", "萬兩 日本橋店", "Google 訂位已確認 · 2 位", "food"],
-          ["晚餐後", "道頓堀（必去）、心齋橋、唐吉訶德", "道頓堀固定保留；其餘按體力縮短", "activity"]
-        ]},
-        { day: "10/5", label: "大阪市內 · LANY", read: "全程最密集；16:00 回酒店休息，17:15 左右步行去 Zepp，預留時間等 17:45 開場。", density: "10 STOPS", width: 100, items: [
-          ["08:30", "大阪木津卸売市場", "大國町站 1 號出口步行 3 分鐘；海鮮早餐／市場採購，店舖多約 11:00 收市", "food"],
-          ["10:30", "あべのハルカス 300", "天王寺 · 展望台", "activity"],
-          ["12:30", "石臼挽蕎麦 弦（あべのハルカス12F）", "已選定，未訂位／現場候位；看完 HARUKAS 300 下樓至近鐵本店塔館12F，建議12:15到店。海老天せいろ（冷蕎麥＋蝦天婦羅）或海老天ぷら蕎麥（熱），餐單各¥1,738，當日價為準；11:00–22:00，L.O.21:00。用餐後前往新世界。", "food"],
-          ["14:00", "新世界、通天閣", "按體力停留", "activity"],
-          ["16:00", "返回酒店休息", "放低戰利品", "hotel"],
-          ["17:15", "由酒店步行前往 Zepp Namba", "約 11 分鐘；目標 17:30 前到場", "transport"],
-          ["17:45", "Zepp Namba 開場", "官方通知：原 18:00，改為 17:45", "show"],
-          ["18:45", "Alysha 暖場演出", "官方通知：預計 18:45–19:15", "show"],
-          ["19:45", "LANY 演唱會", "官方通知：預計 19:45 開始；完場時間未公布", "show"],
-          ["22:00", "磯丸水産 なんば南海通り店", "Google 訂位仍確認 · 2 位；散場時間未明，接同行者後可能趕不及", "food"]
-        ]},
-        { day: "10/6", label: "神戶美食一日遊", read: "午餐已選三宮牛柳吉列；晚餐首選 THE HARBOR 19:30 已訂位。K7 19:00 備用訂位仍有效。", density: "8 STOPS", width: 89, items: [
-          ["約09:00", "大阪難波出發往神戶三宮", "阪神線方向；班次及轉乘出發前再核對", "transport"],
-          ["約10:00", "抵達神戶三宮", "市中心輕鬆散步；不把上午排太滿", "transport"],
-          ["10:45", "グリル一平 三宮店取整理券", "午餐不設預約；店方可提早截止派券", "food"],
-          ["11:00", "L · 厚切牛柳吉列午餐", "ヘレビーフカツレツ配燴汁 · 非神戶牛", "food"],
-          ["13:00", "元町／南京町散步", "味噌醬餃子可作小食，不強制加餐", "activity"],
-          ["14:30", "美利堅公園／Harborland", "明石燒可作小食；按體力二選一", "activity"],
-          ["約16:30", "晚餐前核對 THE HARBOR", "THE HARBOR 港塔酒店 19:30 已訂座；自助餐、禁煙及付款方式待酒店回覆。K7 備用訂位尚未取消", "transport"],
-          ["19:30", "THE HARBOR · 晚餐首選", "Google 訂座已確認 · 2 位；僅訂座。K7 19:00 備用訂位仍有效。", "food"]
-        ]},
-        { day: "10/7", label: "最後採購 · 回港", read: "11:00 退房；17:30 離開難波；過保安後食 MENSHO。", density: "8 STOPS", width: 88, items: [
-          ["11:00", "退房並寄存行李", "酒店前台", "hotel"],
-          ["11:30", "心齋橋、難波站購物圈（五商場＋EDION）", "CITY／PARKS／SkyO／EKIKAN／髙島屋；EDION 8F 手錶、9F 拉麵", "activity"],
-          ["13:00", "午餐 G／I／J／K 自選", "17:30 前離開難波，留意交通時間", "food"],
-          ["15:00", "大丸／高島屋地庫", "買手信食物", "activity"],
-          ["16:30", "返回酒店取行李", "不要延誤", "hotel"],
-          ["17:30", "Rapi:t 前往關西機場", "回程硬死線", "transport"],
-          ["約19:15", "MENSHO 關西機場店", "T1 2F · 國際線保安檢查後；白松露香鶏白湯，食完直接前往登機閘口", "food"],
-          ["20:40", "UO689 起飛", "關西 T1 → 香港", "transport"]
-        ]}
-      ],
-      tasks: [
-        { id: "rapit-out", title: "Rapi:t 去程 ×2", note: "KIX → Namba · 10/4", priority: "TODAY", done: false },
-        { id: "rapit-return", title: "Rapi:t 回程 ×2", note: "Namba → KIX · 10/7", priority: "TODAY", done: false },
-        { id: "dinner-select-1004", title: "10/4 晚餐：萬兩 日本橋店", note: "Google 已確認 · 19:30 · 2 位", priority: "DONE", done: true },
-        { id: "dinner-select-1006", title: "10/6 晚餐首選：THE HARBOR", note: "19:30、2 位 Google 訂位已確認；僅訂座，細節待酒店回覆。K7 19:00 備用訂位仍有效。", priority: "DONE", done: true },
-        { id: "cancel-k7-1006", title: "確認 THE HARBOR 後處理 K7 備用訂位", note: "若不去 K7，依確認電郵在 10/5 20:00（日本時間）前取消；行程改選不會自動取消。", priority: "NEXT", done: false },
-        { id: "internet", title: "落實日本上網", note: "eSIM 或漫遊", priority: "9/27", done: false },
-        { id: "lawson", title: "離線保存 Lawson 取票碼", note: "9/30 起可取票", priority: "9/30", done: false },
-        { id: "boarding-passes", title: "離線保存 UO686 兩張電子登機證", note: "網上登機已完成；把兩張 QR 圖片加入私人離線票券包，並在飛行模式打開確認", priority: "10/3", done: false },
-        { id: "offline", title: "手機離線總驗收", note: "兩部手機逐項打開", priority: "10/3", done: false }
-      ],
-      fixedDone: 7
-    };
+  "days": [
+    {
+      "day": "10/4",
+      "label": "抵埗 · 難波",
+      "read": "抵埗後按實際時間乘Rapi:t，入住／午餐順延；今天完成Lawson紙本取票，19:30万両訂位固定。",
+      "density": "9 STOPS",
+      "width": 90,
+      "items": [
+        [
+          "08:45",
+          "UO686 香港起飛",
+          "香港時間08:45；目標05:45到T2 U區寄艙，07:45寄艙截止、08:15關閘。",
+          "transport"
+        ],
+        [
+          "13:30",
+          "抵達關西機場",
+          "日本時間13:30；入境、領行李、海關後到T1 1F公眾大堂，約14:30只屬估算。",
+          "transport"
+        ],
+        [
+          "出關後",
+          "Rapi:t 前往難波",
+          "T1上2F往關西空港站南海區；用已購QR票選可趕上的班次。",
+          "transport"
+        ],
+        [
+          "到難波後",
+          "入住 Hotel IL Cuore",
+          "由車站西側步行到酒店；月台到前台另預留10–20分鐘，隨列車順延。",
+          "hotel"
+        ],
+        [
+          "入住後",
+          "くそオヤジ最後のひとふり なんば店",
+          "已選、未訂位；貝出汁醬油拉麵。延誤時先完成取票，午餐彈性。",
+          "food"
+        ],
+        [
+          "約16:30",
+          "Lawson Loppi 取 LANY 門票",
+          "今天完成：專用碼→申込券→30分鐘內櫃檯換正式票，並核對GOLD贈品換領券。",
+          "show"
+        ],
+        [
+          "約17:00",
+          "回 Hotel IL Cuore 休息",
+          "取票後回酒店放低物品、休息；19:30 萬兩日本橋店訂位照舊。",
+          "hotel"
+        ],
+        [
+          "19:30",
+          "萬兩 日本橋店",
+          "Google 訂位已確認 · 2 位",
+          "food"
+        ],
+        [
+          "晚餐後",
+          "道頓堀（必去）、心齋橋、唐吉訶德",
+          "道頓堀固定保留；其餘按體力縮短",
+          "activity"
+        ]
+      ]
+    },
+    {
+      "day": "10/5",
+      "label": "大阪市內 · LANY",
+      "read": "木津早餐主選魚市食堂、備用まるよし；12:30弦現場候位。16:00酒店休息，17:15出發Zepp，入場前領GOLD贈品。",
+      "density": "10 STOPS",
+      "width": 100,
+      "items": [
+        [
+          "08:30",
+          "大阪木津卸売市場",
+          "現場候位：159號木津魚市食堂／備用158號まるよし；約09:30離開往天王寺。",
+          "food"
+        ],
+        [
+          "10:30",
+          "あべのハルカス 300",
+          "天王寺 · 展望台",
+          "activity"
+        ],
+        [
+          "12:30",
+          "石臼挽蕎麦 弦（あべのハルカス12F）",
+          "已選定，未訂位／現場候位；看完 HARUKAS 300 下樓至近鐵本店塔館12F，建議12:15到店。海老天せいろ（冷蕎麥＋蝦天婦羅）或海老天ぷら蕎麥（熱），餐單各¥1,738，當日價為準；11:00–22:00，L.O.21:00。用餐後前往新世界。",
+          "food"
+        ],
+        [
+          "14:00",
+          "新世界、通天閣",
+          "街區散步為主；登塔可選，約15:15–15:30離開，保留16:00酒店休息。",
+          "activity"
+        ],
+        [
+          "16:00",
+          "返回酒店休息",
+          "放低戰利品",
+          "hotel"
+        ],
+        [
+          "17:15",
+          "由酒店步行前往 Zepp Namba",
+          "約11分鐘；目標17:30抵達，先領GOLD贈品再排隊，帶正式票＋換領券。",
+          "show"
+        ],
+        [
+          "17:45",
+          "Zepp Namba 開場",
+          "17:45開門；按票區／整理番號入場，贈品換領18:45截止。",
+          "show"
+        ],
+        [
+          "18:45",
+          "Alysha 暖場演出",
+          "官方通知：預計 18:45–19:15",
+          "show"
+        ],
+        [
+          "19:45",
+          "LANY 演唱會",
+          "官方通知：預計 19:45 開始；完場時間未公布",
+          "show"
+        ],
+        [
+          "22:00",
+          "磯丸水産 なんば南海通り店",
+          "Google 訂位仍確認 · 2 位；散場時間未明，回酒店接同行者後可能趕不及",
+          "food"
+        ]
+      ]
+    },
+    {
+      "day": "10/6",
+      "label": "神戶美食一日遊",
+      "read": "阪神大阪難波往神戶三宮；一平現場取號。からす19:00與HARBOR19:30兩張訂位均依要求保留；晚餐後補齊返難波路線。",
+      "density": "10 STOPS",
+      "width": 89,
+      "items": [
+        [
+          "約09:00",
+          "大阪難波出發往神戶三宮",
+          "阪神／近鐵大阪難波站；優先快速急行神戶三宮行，非南海或JR難波。",
+          "transport"
+        ],
+        [
+          "約10:00",
+          "抵達神戶三宮",
+          "市中心輕鬆散步；不把上午排太滿",
+          "transport"
+        ],
+        [
+          "10:45",
+          "グリル一平 三宮店取整理券",
+          "午餐不設預約；店方可提早截止派券",
+          "food"
+        ],
+        [
+          "11:00",
+          "L · 厚切牛柳吉列午餐",
+          "ヘレビーフカツレツ配燴汁 · 非神戶牛",
+          "food"
+        ],
+        [
+          "13:00",
+          "元町／南京町散步",
+          "味噌醬餃子可作小食，不強制加餐",
+          "activity"
+        ],
+        [
+          "14:30",
+          "美利堅公園／Harborland",
+          "明石燒可作小食；按體力二選一",
+          "activity"
+        ],
+        [
+          "約16:30",
+          "晚餐前休息及查看訂位",
+          "兩張依要求保留；HARBOR酒店2F，每位¥6,600含稅任食蟹，現場付款。",
+          "transport"
+        ],
+        [
+          "19:00",
+          "郷土料理 からす · K7",
+          "已確認2位，依用戶要求保留；此張與HARBOR各自獨立，見對應指南。",
+          "food"
+        ],
+        [
+          "19:30",
+          "THE HARBOR · 晚餐首選",
+          "已確認2位；每位¥6,600，合共¥13,200，含稅任食蟹；20:30最後點餐、21:00結束。",
+          "food"
+        ],
+        [
+          "晚餐後",
+          "神戶晚餐後返回難波",
+          "HARBOR經阪神元町／からす經阪神三宮；核對大阪難波方向及轉車，預留60–90分鐘。",
+          "transport"
+        ]
+      ]
+    },
+    {
+      "day": "10/7",
+      "label": "最後採購 · 回港",
+      "read": "11:00退房寄存；13:00美々卯高島屋7F；15:45取行李，目標17:40–18:00抵達KIX。MENSHO視登機時間決定。",
+      "density": "8 STOPS",
+      "width": 88,
+      "items": [
+        [
+          "11:00",
+          "退房並寄存行李",
+          "酒店前台",
+          "hotel"
+        ],
+        [
+          "11:30",
+          "心齋橋、難波站購物圈（五商場＋EDION）",
+          "CITY／PARKS／SkyO／EKIKAN／髙島屋；EDION 8F 手錶、9F 拉麵",
+          "activity"
+        ],
+        [
+          "13:00",
+          "午餐 G／I／J／K 自選",
+          "美々卯なんば店，高島屋7F；已選、未訂位，現場候位。",
+          "food"
+        ],
+        [
+          "15:00",
+          "大丸／高島屋地庫",
+          "買手信食物",
+          "activity"
+        ],
+        [
+          "15:45",
+          "返回酒店取行李",
+          "出示寄存牌、點算行李；預留整理及步行車站時間。",
+          "hotel"
+        ],
+        [
+          "約16:30起",
+          "Rapi:t 前往關西機場",
+          "按實際班次選車，目標17:40–18:00到KIX；非已指定列車。",
+          "transport"
+        ],
+        [
+          "有時間才吃",
+          "MENSHO 關西機場店",
+          "先完成寄艙／安檢／出境並核對閘口；能在19:55前到閘才用餐。",
+          "food"
+        ],
+        [
+          "20:40",
+          "UO689 起飛",
+          "日本時間20:40，KIX T1；19:40寄艙截止，目標19:55或登機證要求更早時間到閘。",
+          "transport"
+        ]
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "rapit-out",
+      "title": "Rapi:t 去程 ×2",
+      "note": "KIX → Namba · 10/4",
+      "priority": "DONE",
+      "done": true
+    },
+    {
+      "id": "rapit-return",
+      "title": "Rapi:t 回程 ×2",
+      "note": "Namba → KIX · 10/7",
+      "priority": "DONE",
+      "done": true
+    },
+    {
+      "id": "dinner-select-1004",
+      "title": "10/4 晚餐：萬兩 日本橋店",
+      "note": "Google 已確認 · 19:30 · 2 位",
+      "priority": "DONE",
+      "done": true
+    },
+    {
+      "id": "dinner-select-1006",
+      "title": "10/6 晚餐：兩張訂位均保留",
+      "note": "からす19:00、THE HARBOR19:30，均2位，依用戶要求保留。HARBOR每位¥6,600含稅及任食蟹，酒店2F、全店禁煙、到店付款。",
+      "priority": "DONE",
+      "done": true
+    },
+    {
+      "id": "internet",
+      "title": "落實日本上網",
+      "note": "已完成：日本 SIM 卡 2 張已購買",
+      "priority": "DONE",
+      "done": true
+    },
+    {
+      "id": "exchange-jpy",
+      "title": "唱日圓 JPY",
+      "note": "已完成：用 HK$10,000 兌換日圓",
+      "priority": "DONE",
+      "done": true
+    },
+    {
+      "id": "lawson",
+      "title": "離線保存 Lawson 取票碼",
+      "note": "已完成：Lawson 取票碼已離線保存",
+      "priority": "DONE",
+      "done": true
+    },
+    {
+      "id": "offline",
+      "title": "手機離線總驗收",
+      "note": "兩部手機試開指南及私人票券；Rapi:t有效乘車QR另需按票券頁連網使用",
+      "priority": "10/3",
+      "done": false
+    },
+    {
+      "id": "boarding-passes",
+      "title": "離線保存 UO686 兩張電子登機證",
+      "note": "已完成：兩張 UO686 電子登機證 QR 已離線保存",
+      "priority": "DONE",
+      "done": true
+    }
+  ],
+  "fixedDone": 7
+};
 
     (() => {
       const $ = id => document.getElementById(id);
@@ -1240,7 +1511,7 @@
           `- 10/5 午餐：${foodNames[state.lunch1005] || "待選 G／I／J／K"}`,
           `- 10/5 演唱會後：${foodNames[state.dinner1005] || foodNames.F}${state.dinner1005 === "F" ? "（22:00 已訂位・2 位）" : "（候選；磯丸 22:00 訂位仍保留）"}`,
           `- 10/6 午餐：${foodNames[state.lunch1006] || "神戶牛柳吉列待同步"}`,
-          `- 10/6 晚餐：${foodNames[state.dinner1006] || "THE HARBOR 首選"}；THE HARBOR 19:30、K7 19:00 均已訂座，K7 備用訂位仍須處理`,
+          `- 10/6 晚餐：${foodNames[state.dinner1006] || "THE HARBOR 首選"}；THE HARBOR 19:30、K7 19:00 均已訂座，兩張依用戶要求保留`,
           `- 10/7 午餐：${foodNames[state.lunch1007] || "待選 G／I／J／K"}`,
           `- 拉麵／烏冬首選：${foodNames[state.noodlePick] || "待選 R1–R12"}`,
           `- 10/7 登機前：MENSHO 關西機場店（T1 國際線保安檢查後）`,
@@ -1284,7 +1555,7 @@
         const dinnerRows = [
           ["10/4", foodNames[food.dinner1004] || "A · 焼肉 万両", food.dinner1004 === "A" ? "19:30 · Google 已確認" : "改選候選 · 萬兩訂位仍保留", food.dinner1004 === "A" ? "已訂位" : "候選"],
           ["10/5", foodNames[food.dinner1005] || foodNames.F, food.dinner1005 === "F" ? "22:00 · Google 已確認" : "改選候選 · 磯丸訂位仍保留", food.dinner1005 === "F" ? "已訂位" : "候選"],
-          ["10/6", foodNames[food.dinner1006] || "THE HARBOR", food.dinner1006 === "KH" ? "19:30 已確認；K7 19:00 備用仍有效" : "THE HARBOR 19:30／K7 19:00 均已確認", food.dinner1006 ? "已選" : "待擇一"]
+          ["10/6", foodNames[food.dinner1006] || "THE HARBOR", food.dinner1006 === "KH" ? "19:30已確認；K7 19:00亦保留" : "THE HARBOR 19:30／K7 19:00 均已確認", "兩張保留"]
         ];
         const lunchRows = [
           ["10/5", foodNames[food.lunch1005] || "午餐待選", "大阪市內", food.lunch1005 ? "已選" : "待選"],
@@ -1304,20 +1575,12 @@
         } else if (!food.dinner1004 || !food.dinner1006) {
           const day = food.dinner1004 ? "10/6" : "10/4";
           next = {
-            title: day === "10/6" ? "下一步：10/6 兩張訂位擇一" : "下一步：選 " + day + " 晚餐", kicker: day === "10/6" ? "K7 與 THE HARBOR 均已確認" : "Rapi:t 已完成 · 現在選餐廳", pill: day === "10/6" ? "待擇一" : "待選",
-            focus: day + " 晚餐", focusCopy: day === "10/6" ? "K7 19:00／THE HARBOR 19:30，兩間選一" : "從 A–E 選一間燒肉或居酒屋",
+            title: day === "10/6" ? "10/6 兩張訂位均保留" : "下一步：選 " + day + " 晚餐", kicker: day === "10/6" ? "K7 與 THE HARBOR 均已確認" : "Rapi:t 已完成 · 現在選餐廳", pill: day === "10/6" ? "保留" : "待選",
+            focus: day + " 晚餐", focusCopy: day === "10/6" ? "K7 19:00／THE HARBOR 19:30，兩張均保留" : "從 A–E 選一間燒肉或居酒屋",
             counter: food.dinner1004 ? "餐廳 2 / 3" : "餐廳 1 / 3",
-            note: day === "10/6" ? "K7 與 THE HARBOR 都是 2 位 Google 訂座。選擇後仍須取消另一張；THE HARBOR 自助餐／禁煙／付款方式待酒店確認。" : "10/5 演唱會後磯丸水産已透過 Google 訂位：22:00、2 位。",
+            note: day === "10/6" ? "K7與THE HARBOR均為2位已確認訂座；依用戶要求兩張保留，HARBOR方案已獲酒店回覆。" : "10/5 演唱會後磯丸水産已透過 Google 訂位：22:00、2 位。",
             href: "#food-choices", action: "前往餐廳決策板", rows: dinnerRows,
-            alert: day === "10/6" ? "K7 19:00 與 THE HARBOR 19:30 都已確認。請選一間，並按期限取消另一張；行程選擇不會自動取消餐廳訂位。" : "Rapi:t 來回四張已付款確認。請選定 10/4 晚餐。"
-          };
-        } else if (food.dinner1006 === "KH" && !checks["cancel-k7-1006"]) {
-          next = {
-            title: "下一步：處理 K7 備用訂位", kicker: "THE HARBOR 已選 · K7 尚未取消", pill: "待處理",
-            focus: "10/6 THE HARBOR", focusCopy: "19:30 · 2 位 · Google 已確認", counter: "K7 待處理",
-            note: "THE HARBOR 僅訂座；自助餐、禁煙及付款方式待酒店回覆。若確定不去 K7，依確認電郵在 10/5 20:00（日本時間）前取消。",
-            href: "#kobe-bookings", action: "查看兩張訂位", rows: dinnerRows,
-            alert: "10/6 THE HARBOR 已選，但 K7 19:00 的 Google 備用訂位仍有效。請在確認後按期限處理；此頁不會自動取消訂位。"
+            alert: day === "10/6" ? "K7 19:00與THE HARBOR19:30均已確認；兩張依要求保留。" : "Rapi:t 來回四張已付款確認。請選定 10/4 晚餐。"
           };
         } else if (![food.lunch1005, food.lunch1006, food.lunch1007].includes("J")) {
           next = {
@@ -1365,10 +1628,10 @@
         } else if (!checks.offline) {
           next = {
             title: "下一步：手機離線總驗收", kicker: "出發前逐項實際打開", pill: "10/3",
-            focus: "兩部手機", focusCopy: "入境 QR、車票、門票、地圖", counter: "離線",
-            note: "全部實際打開並確認可用後，再到待辦勾選完成。",
+            focus: "兩部手機", focusCopy: "指南、登機證、取票資料；另測乘車QR", counter: "離線",
+            note: "指南及私人文件先試離線打開；Rapi:t有效乘車QR另按票券規則連網開啟。完成後再勾選。",
             href: "#task-panel", action: "查看離線待辦",
-            rows: [["10/3", "離線資料", "兩部手機逐項驗收", "待檢查"]],
+            rows: [["10/3", "離線資料", "兩部手機逐項驗收；乘車QR依票券規則連網開啟", "待檢查"]],
             alert: "出發前請用兩部手機實際驗收所有離線資料。"
           };
         } else {
@@ -1433,33 +1696,70 @@
             const isLunch = item[1] === "午餐 G／I／J／K 自選" || item[1] === "石臼挽蕎麦 弦（あべのハルカス12F）";
             const code = isDinner ? (day.day === "10/4" ? chosen.dinner1004 : chosen.dinner1006) : isShowDinner ? chosen.dinner1005 : isLunch ? foodForDay[day.day] : "";
             if (isLunch && code) {
-              return [item[0], foodNames[code], code === "J" ? "已選定，未訂位／現場候位；看完 HARUKAS 300 下樓至近鐵本店塔館12F，建議12:15到店。海老天せいろ（冷蕎麥＋蝦天婦羅）或海老天ぷら蕎麥（熱），餐單各¥1,738，當日價為準；11:00–22:00，L.O.21:00。用餐後前往新世界。" : "已在餐廳決策板選擇", item[3]];
+              return [item[0], foodNames[code], code === "J" ? "已選、未訂位；Harukas塔館12F，現場候位。詳見當日指南。" : code === "G" ? "已選、未訂位；美々卯なんば店，高島屋7F，現場候位。" : "已在餐廳決策板選擇；營業及訂位需另核對", item[3]];
             }
             if (isShowDinner && code && code !== "F") return [item[0], foodNames[code], "改選候選 · 磯丸 22:00 訂位仍保留；" + item[2], item[3]];
             return code ? [item[0], foodNames[code], "已在餐廳決策板選擇 · " + item[2], item[3]] : item;
           }).filter(item => {
             const dayMatch = activeDay === "all" || day.day === activeDay;
-            const queryMatch = !query || item.join(" ").toLowerCase().includes(query) || day.label.toLowerCase().includes(query);
+            const guide = window.OsakaGuides?.find(day.day, item);
+            const queryMatch = !query || item.join(" ").toLowerCase().includes(query) || day.label.toLowerCase().includes(query) || (guide && window.OsakaGuides.matches(guide, query));
             return dayMatch && queryMatch;
           })
-        })).filter(day => day.items.length > 0);
+        })).filter(day => day.items.length > 0 || ((activeDay === "all" || day.day === activeDay) && window.OsakaGuides?.forDay(day.day).some(g => window.OsakaGuides.matches(g, query))));
       }
 
       function renderDays() {
         if (!appState) return;
         updateTripMetrics();
+        const api = window.OsakaGuides;
+        const query = $("search").value.trim().toLowerCase();
+        const openIds = new Set([...document.querySelectorAll('#day-timeline details[open]')].map(n => n.id));
         const days = visibleDays();
         const count = days.reduce((sum, day) => sum + day.items.length, 0);
-        $("result-meta").textContent = count + " 個可見行程節點";
-        $("day-timeline").innerHTML = days.map(day => `
-          <article class="day-card">
-            <header class="day-head"><time>${esc(day.day)}<br>2026</time><div><h3>${esc(day.label)}</h3><p>${esc(day.read)}</p></div><span class="density">${esc(day.density)}</span></header>
-            <div class="schedule-line"><i style="width:${day.width}%"></i></div>
-            <div class="event-list">${day.items.map(item => `<div class="event-row"><time class="event-time">${esc(item[0])}</time><div class="event-main"><b>${esc(item[1])}</b><span>${esc(item[2])}</span></div><span class="type-chip ${esc(item[3])}">${esc(typeLabel[item[3]] || item[3])}</span></div>`).join("")}</div>
-          </article>`).join("") || `<article class="conflict-panel"><strong>找不到相符行程</strong><p>請清除搜尋字詞或切換到「全部」。</p></article>`;
+        $("result-meta").textContent = count + " 個可見行程節點" + (query ? " · 同時搜尋指南內文" : "");
+        $("guide-index").innerHTML = appState.days.map(day => `<a href="#day-guides-${day.day.replace('/', '-')}">${esc(day.day)} · 當日完整指南</a>`).join('');
+        $("day-timeline").innerHTML = days.map(day => {
+          const used = new Set();
+          const rows = day.items.map(item => {
+            const guide = api?.find(day.day, item);
+            let detail = '';
+            if (guide && !used.has(guide.id)) {
+              used.add(guide.id);
+              detail = api.render(guide, { open: openIds.has('guide-' + guide.id) || Boolean(query) });
+            } else if (guide) detail = `<a class="browser-guide-link" href="#guide-${esc(guide.id)}">查看操作指南 →</a>`;
+            return `<div class="event-row"><time class="event-time">${esc(item[0])}</time><div class="event-main"><b>${esc(item[1])}</b><span>${esc(item[2])}</span>${detail}</div><span class="type-chip ${esc(item[3])}">${esc(typeLabel[item[3]] || item[3])}</span></div>`;
+          }).join('');
+          const all = api?.forDay(day.day) || [];
+          const unmatched = all.filter(g => !used.has(g.id) && api.matches(g, query));
+          const libraryId = 'day-guides-' + day.day.replace('/', '-');
+          const library = `<details class="reading-toggle day-guide-library" id="${libraryId}"${openIds.has(libraryId) || query ? ' open' : ''}><summary class="reading-heading">${esc(day.day)} · 當日完整指南（${all.length}）</summary><p>自訂行程會保留。下列為原定路線指南；更換餐廳或日期時，先核對是否適用。</p><div class="guide-index">${all.filter(g=>used.has(g.id)).map(g=>`<a href="#guide-${esc(g.id)}">${esc(g.title)}</a>`).join('')}</div>${unmatched.map(g=>api.render(g,{open:openIds.has('guide-'+g.id)||Boolean(query)})).join('')}</details>`;
+          return `<article class="day-card"><header class="day-head"><time>${esc(day.day)}<br>2026</time><div><h3>${esc(day.label)}</h3><p>${esc(day.read)}</p></div><span class="density">${esc(day.density)}</span></header><div class="schedule-line"><i style="width:${day.width}%"></i></div><div class="event-list">${rows}</div>${library}</article>`;
+        }).join('') || `<article class="conflict-panel"><strong>找不到相符行程或指南</strong><p>請清除搜尋字詞或切換到「全部」。</p></article>`;
         renderBrowser(days);
         window.renderOfflineRoutes?.(appState.days);
+        if (query) $("itinerary").open = true;
+        window.revealReading?.(location.hash, false);
       }
+
+      window.addEventListener('osaka-guides-ready', () => { renderDays(); openGuideHash(location.hash); });
+      function openGuideHash(hash) {
+        if (!appState || !/^#(?:guide-|day-guides-)/.test(hash)) return;
+        const day = hash.startsWith('#day-guides-') ? hash.slice(12).replace('-', '/') : window.OsakaGuides?.byId(hash.slice(7))?.day;
+        if (!day) return;
+        if (!document.getElementById(hash.slice(1))) {
+          $("search").value = '';
+          activeDay = 'all';
+          document.querySelectorAll('[data-day]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.day === 'all')));
+          renderDays();
+        }
+        window.revealReading?.(hash, true);
+      }
+      document.addEventListener('click', event => {
+        const link = event.target.closest('a[href^="#guide-"],a[href^="#day-guides-"]');
+        if (link && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) openGuideHash(link.getAttribute('href'));
+      });
+      window.addEventListener('hashchange', () => openGuideHash(location.hash));
 
       function updateTripMetrics() {
         const items = appState.days.flatMap(day => day.items);
@@ -1484,7 +1784,7 @@
       function renderBrowser(days) {
         const rows = days.flatMap(day => day.items.map(item => ({ day: day.day, item })));
         $("all-count").textContent = rows.length + " ITEMS";
-        $("item-browser").innerHTML = rows.map(({day, item}) => `<div class="browser-row"><time>${esc(day)}<br>${esc(item[0])}</time><div><b>${esc(item[1])}</b><span>${esc(item[2])}</span></div><span class="type-chip ${esc(item[3])}">${esc(typeLabel[item[3]] || item[3])}</span></div>`).join("");
+        $("item-browser").innerHTML = rows.map(({day, item}) => `<div class="browser-row"><time>${esc(day)}<br>${esc(item[0])}</time><div><b>${esc(item[1])}</b><span>${esc(item[2])}</span>${window.OsakaGuides?.find(day,item) ? `<a class="browser-guide-link" href="#guide-${esc(window.OsakaGuides.find(day,item).id)}">查看操作指南 →</a>` : ""}</div><span class="type-chip ${esc(item[3])}">${esc(typeLabel[item[3]] || item[3])}</span></div>`).join("");
       }
 
       function copyChecklist() {
@@ -1579,6 +1879,15 @@
           merged.publishedRevision = publishedRevision;
           changed = true;
         }
+        if (publishedRevision >= 62 && localPublishedRevision < 62 && Array.isArray(merged.taskItems)) {
+          const obsoleteTitles = ["確認 THE HARBOR 後處理 K7 備用訂位"];
+          const obsolete = merged.taskItems.find(t => t.id === "cancel-k7-1006" && obsoleteTitles.includes(t.title));
+          if (obsolete) {
+            merged.taskItems = merged.taskItems.filter(t => t !== obsolete);
+            delete merged.taskChecks["cancel-k7-1006"];
+            changed = true;
+          }
+        }
         // Apply the exact published wording correction once; keep personal notes intact.
         if (publishedRevision >= 55 && localPublishedRevision < 55 && typeof merged.notes === "string" && merged.notes.includes("先吃R3")) {
           merged.notes = merged.notes.replaceAll("先吃R3", "先吃已選的くそオヤジ最後のひとふり なんば店");
@@ -1601,9 +1910,9 @@
           merged.taskItems = merged.taskItems.map(task => {
             const publishedTask = publishedDone.get(task.id);
             if (!publishedTask) return task;
-            if (task.priority === "DONE" && task.note === publishedTask.note) return task;
+            if (task.priority === "DONE" && task.note === publishedTask.note && !(task.id === "dinner-select-1006" && task.title === "10/6 晚餐首選：THE HARBOR")) return task;
             changed = true;
-            return { ...task, note: publishedTask.note, priority: "DONE" };
+            return { ...task, title: task.id === "dinner-select-1006" && task.title === "10/6 晚餐首選：THE HARBOR" ? publishedTask.title : task.title, note: publishedTask.note, priority: "DONE" };
           });
           const dinnerTask = publishedState.taskItems.find(task => task.id === "dinner-select-1006");
           if (needsBookingTaskSync && dinnerTask) {
@@ -1612,16 +1921,12 @@
             else merged.taskItems[index] = clone(dinnerTask);
             changed = true;
           }
-          const cancelTask = publishedState.taskItems.find(task => task.id === "cancel-k7-1006");
-          if (cancelTask && !merged.taskItems.some(task => task.id === cancelTask.id)) {
-            merged.taskItems.push(clone(cancelTask));
-            changed = true;
-          }
+
         }
         if (Array.isArray(merged.days) && Array.isArray(publishedState.days)) {
           const localDay = merged.days.find(day => day.day === "10/6");
           const publishedDay = publishedState.days.find(day => day.day === "10/6");
-          if (localDay && publishedDay) {
+          if (localDay && publishedDay && !merged.editedDays?.["10/6"]) {
             if (localDay.read?.includes("晚餐可留神戶食完再返難波")) {
               localDay.read = publishedDay.read;
               changed = true;
@@ -1650,7 +1955,7 @@
           }
           let published = null;
           try {
-            const response = await fetch("./trip-data.json?release=59");
+            const response = await fetch("./trip-data.json?release=62");
             if (!response.ok) throw new Error("行程資料目前未能更新");
             published = await response.json();
             if (!published.days?.some(day => day.day === "10/4")) throw new Error("資料不屬於大阪行程，請重新載入");

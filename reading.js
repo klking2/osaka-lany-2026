@@ -7,6 +7,7 @@
     for(let node=target;node;node=node.parentElement)if(node.tagName==='DETAILS')node.open=true;
     if(scroll)requestAnimationFrame(()=>target.scrollIntoView({block:'start'}));
   }
+  window.revealReading = reveal;
   document.getElementById('expand-reading').onclick=()=>groups().forEach(node=>{node.open=true;});
   document.getElementById('collapse-reading').onclick=()=>groups().forEach(node=>{node.open=false;});
   document.addEventListener('click',event=>{

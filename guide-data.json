@@ -1,0 +1,1239 @@
+{
+  "revision": 62,
+  "checkedAt": "2026-10-03",
+  "timeNote": "日本境內時間為日本時間；香港出發為香港時間。約／目標時間是規劃，並非已訂班次。",
+  "guides": [
+    {
+      "id": "hkg-departure",
+      "day": "10/4",
+      "title": "已有登機證＋寄艙：香港 T2 上機",
+      "aliases": [
+        "UO686 香港起飛"
+      ],
+      "prepare": "香港時間；目標 05:45 到 T2。帶兩人護照、兩張 UO686 登機證、已購行李額資料；手機先試開離線登機證。",
+      "steps": [
+        "到 T2 Departures／離境大堂，找 HK Express U 區；向職員說已網上登機、有寄艙行李。",
+        "按自助機或職員指示掃描護照，列印行李牌；把行李牌貼妥，再去自助 Bag Drop。",
+        "完成寄艙，確認行李已收取，保留行李收據。遇條碼／證件問題即找職員；特殊行李及協助櫃檯在 V 區。",
+        "在 T2 完成安檢及出境檢查，備好護照與登機證。",
+        "查看 UO686 最新閘口；循 Automatic People Mover 指示搭接駁列車，依閘號前往相應客運廊。",
+        "目標 08:00 前到閘口；按登機證較早的登機時間及現場叫號，分別出示兩張登機證上機。"
+      ],
+      "action": "自助機 07:30 停止；寄艙／登機手續 07:45 截止；08:15 關閘。截止時間不是建議抵達時間。",
+      "confirm": "行李收據在手、護照及登機證可取用，抵達正確 UO686 閘口。",
+      "fallback": "航班改時按航空公司通知重算；排隊或交通延誤立即找職員。先到閘口，再決定早餐或購物。",
+      "links": [
+        {
+          "label": "私人票券：請選對文件",
+          "url": "#offline-wallet"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：hke",
+          "url": "https://www.hkexpress.com/en/Plan/Travel/HKIA-T2"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "kix-arrival",
+      "day": "10/4",
+      "title": "關西 T1：落機、入境、行李與海關",
+      "aliases": [
+        "抵達關西機場"
+      ],
+      "prepare": "13:30 為日本時間，比香港快 1 小時。護照、酒店地址及入境資料放手提袋；開日本 SIM／漫遊。",
+      "steps": [
+        "落機後跟 Arrivals／到着、Immigration／入国審査指示；如停靠翼樓，按指示搭接駁列車前往主樓。",
+        "在外國護照隊列辦入境。已完成 Visit Japan Web 就開對應入境 QR；未完成／不能顯示，詢問職員紙本或當場辦理方式。",
+        "通過入境後看行李顯示屏，用 UO686／Hong Kong 找當日轉盤。",
+        "取齊兩人的寄艙行李並核對行李牌；遺失或破損先在行李區找航空公司櫃檯。",
+        "帶行李按 Customs／税関指示完成申報及檢查，再走到 T1 1F 公眾到達大堂。",
+        "先上洗手間、確認網絡及 Rapi:t 車票頁能開啟，才往車站。"
+      ],
+      "action": "約 14:30 出公眾大堂只是估算；以實際落機、排隊及行李時間為準。",
+      "confirm": "已入境、取齊行李並完成海關，身處公眾大堂。",
+      "fallback": "入境延誤就順延火車／午餐／休息；10/4 取 LANY 紙本票及 19:30 万両優先保留。",
+      "links": [
+        {
+          "label": "私人票券：請選對文件",
+          "url": "#offline-wallet"
+        },
+        {
+          "label": "Visit Japan Web（需網絡）",
+          "url": "https://www.vjw.digital.go.jp/"
+        },
+        {
+          "label": "機場到達流程",
+          "url": "https://www.kansai-airport.or.jp/en/flight/route"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：kix",
+          "url": "https://www.kansai-airport.or.jp/en/access/to-airport/train"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "rapit-out",
+      "day": "10/4",
+      "title": "T1 找南海車站 → QR 入閘 → 難波",
+      "aliases": [
+        "Rapi:t 前往難波"
+      ],
+      "prepare": "已購 QR 直接入閘票，兩人各一張。保持網絡及手機電量；Klook 訂單憑證、Loppi 碼均不能代替有效乘車 QR。",
+      "steps": [
+        "從 T1 1F 公眾到達大堂找 Railway／鉄道指示，帶行李乘升降機上 2F。",
+        "由 2F 連接通道走到關西空港站；找 NANKAI／南海電鉄／なんば方向，不走旁邊 JR 閘口。",
+        "開啟 Klook 訂單內的電子車票連結，核對 10/4 關西空港 → なんば、兩位；若尚未選班次，依這張票的畫面選可趕上的 Rapi:t 及座位。",
+        "把發車時間、車廂及座位記在手機；預留找月台時間。選班／改班截止依票券頁顯示，不套用其他產品規則。",
+        "到支援 QR 的南海閘機，依車票頁指示逐人出示有效 QR；若同手機管理兩張，確認第一人過閘後再切換第二張。不要同時再拍 IC 卡。",
+        "入閘後對照月台屏幕的 Rapi:t、難波方向及發車時間；按車廂／座位上車，行李放架上或指定位置，勿阻通道。",
+        "到終點なんば，取齊行李；保留車票頁供 QR 出閘，再找西側／酒店方向。"
+      ],
+      "action": "使用可用車票頁；不要假設截圖可入閘。若頁面已有指定班次，先核對是否趕得上。",
+      "confirm": "兩人均出閘、行李齊全，身處南海難波站。",
+      "fallback": "QR 無效、錯過班次或選位失敗：未入閘先找南海職員並出示原訂單；不重複購票。找不到路可說「南海のラピート乗り場はどこですか」。",
+      "links": [
+        {
+          "label": "Klook 訂單（需網絡）",
+          "url": "https://www.klook.com/zh-HK/bookings/"
+        },
+        {
+          "label": "私人票券：請選對文件",
+          "url": "#offline-wallet"
+        },
+        {
+          "label": "南海難波站（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=Nankai%20Namba%20Station&travelmode=walking"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：kix",
+          "url": "https://www.kansai-airport.or.jp/en/access/to-airport/train"
+        },
+        {
+          "label": "官方：rapit",
+          "url": "https://www.nankai.co.jp/traffic/express/rapit.html"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "hotel-checkin",
+      "day": "10/4",
+      "title": "南海難波站 → 酒店辦理入住",
+      "aliases": [
+        "入住 Hotel IL Cuore"
+      ],
+      "prepare": "酒店日文：ホテル イルクオーレなんば；地址：大阪市浪速区難波中1-15-15。兩人護照、酒店確認書備妥。",
+      "steps": [
+        "Rapi:t 抵達南海難波後，跟出口及升降機標示離開月台層；以站內圖確認往西側地面出口。",
+        "酒店在車站西面，官方步行約 2 分鐘是由站外計；由月台帶行李走到前台另預留 10–20 分鐘。",
+        "打開酒店步行導航，核對地址與招牌；找不到升降機就向職員出示酒店地址詢問，勿為趕時間抬行李走長樓梯。",
+        "到前台出示確認書與護照，核對入住人數／日期，取房卡；放低大行李後再外出。"
+      ],
+      "action": "入住隨列車順延，原 15:10 不作保證抵達時間。",
+      "confirm": "兩人已完成入住或前台已接收行李，房卡及行李安排清楚。",
+      "fallback": "房間未就緒先問寄存行李；時間不足優先完成 Loppi 取票，拉麵及休息可縮短。",
+      "links": [
+        {
+          "label": "車站 → 酒店（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15&travelmode=walking&origin=Nankai%20Namba%20Station"
+        },
+        {
+          "label": "私人票券：請選對文件",
+          "url": "#offline-wallet"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：hotel",
+          "url": "https://www.ilcuore-namba.com/zh-tw/"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "ramen",
+      "day": "10/4",
+      "title": "難波拉麵：入住後彈性用餐",
+      "aliases": [
+        "くそオヤジ最後のひとふり なんば店"
+      ],
+      "prepare": "已選店、未訂位。貝出汁醬油拉麵；時間隨抵埗順延。",
+      "steps": [
+        "從酒店打開「くそオヤジ最後のひとふり なんば店」導航，核對是なんば分店。",
+        "到店先看營業牌、候位方式及餐單；按現場要求排隊、取號或購買食券。",
+        "選貝類湯底及麵；按現場餐單選配料及份量。",
+        "用餐後直接往 Lawson 取票，再回酒店休息。"
+      ],
+      "action": "建議候位不超過約 20 分鐘；這是行程分配，並非店方保證。",
+      "confirm": "已用餐並預留足夠時間於今天取得 LANY 正式票。",
+      "fallback": "若已近 17:00 或排隊太久，先取票，再簡單補食；19:30 晚餐保留。",
+      "links": [
+        {
+          "label": "酒店 → 拉麵（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E3%81%8F%E3%81%9D%E3%82%AA%E3%83%A4%E3%82%B8%E6%9C%80%E5%BE%8C%E3%81%AE%E3%81%B2%E3%81%A8%E3%81%B5%E3%82%8A%20%E3%81%AA%E3%82%93%E3%81%B0%E5%BA%97&travelmode=walking&origin=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15"
+        },
+        {
+          "label": "查看取票步驟",
+          "url": "#guide-loppi"
+        }
+      ],
+      "sources": [],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "loppi",
+      "day": "10/4",
+      "title": "Lawson Loppi：專用碼換正式門票",
+      "aliases": [
+        "Lawson Loppi 取 LANY 門票"
+      ],
+      "prepare": "用這張已付款LANY訂單的有效「Loppi 専用コード」，不要用舊碼或Rapi:t入閘QR。主選：ローソン難波三丁目（中央区難波3-7-12）；備用：難波中二丁目（浪速区難波中2-6-17）。兩店官方頁列24小時營業，但設備欄未明列Loppi，不能據此保證可取票；出發前致電問「Loppiでチケットの発券はできますか」（可以用Loppi取票嗎）。",
+      "steps": [
+        "到 Lawson 問「Loppi はどこですか」（Loppi 在哪裏）；找到紅色終端機。",
+        "開啟有效 Loppi 專用碼，按機器「Loppi 専用コードをお持ちの方」或掃碼引導，把碼對準掃描器。",
+        "按畫面核對 LANY、2026/10/5、Zepp Namba、GOLD GA。若要求姓名，按訂單登記拼法輸入；姓與名依畫面分隔。",
+        "按畫面處理資料確認；沒有 Ponta 會員卡時選無卡流程，不為取票新增會員。",
+        "列印後取走「申込券」；它只是交櫃檯用的紙條，不能拿去演唱會入場。",
+        "在列印後 30 分鐘內把申込券交同店收銀員，說「支払い済みのチケットを発券したいです」（想領已付款的票）。",
+        "領取正式票券及附帶文件；核對 10/5、Zepp Namba、GOLD GA 一張入場票，並確認贈品換領券在哪一張。",
+        "如缺換領券，當場向店員出示主辦方要求並查原訂單；不自行假設申込券就是贈品券。正式紙本票放平收好。"
+      ],
+      "action": "原訂單顯示已付款；如機器或櫃檯要求不明的新款項，先核對訂單及原因，不重複付款。",
+      "confirm": "拿到正式入場票，日期／場地／票種正確，知道贈品換領憑證的位置；照片只能備份資料，不能代替紙本票。",
+      "fallback": "掃不到碼先調高亮度、回原訂單重新開有效碼；不可猜訂單號。機器故障請店員協助或去備用店。30 分鐘過期請店員指示重新操作。",
+      "links": [
+        {
+          "label": "主選：難波三丁目（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E9%9B%A3%E6%B3%A2%E4%B8%89%E4%B8%81%E7%9B%AE%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%9B%A3%E6%B3%A23-7-12&travelmode=walking"
+        },
+        {
+          "label": "備用：難波中二丁目（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E9%9B%A3%E6%B3%A2%E4%B8%AD%E4%BA%8C%E4%B8%81%E7%9B%AE%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD2-6-17&travelmode=walking"
+        },
+        {
+          "label": "致電主選確認Loppi",
+          "url": "tel:+81666416588"
+        },
+        {
+          "label": "致電備用確認Loppi",
+          "url": "tel:+81666458194"
+        },
+        {
+          "label": "私人票券：請選對文件",
+          "url": "#offline-wallet"
+        },
+        {
+          "label": "Loppi 官方指南",
+          "url": "https://l-tike.com/guide/sp_receipt.html"
+        },
+        {
+          "label": "贈品換領要求",
+          "url": "https://www.livenationhip.co.jp/en/all-events/lany-tickets-ae771408"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：lawson",
+          "url": "https://l-tike.com/guide/sp_receipt.html"
+        },
+        {
+          "label": "Lawson難波三丁目：官方分店頁",
+          "url": "https://www.areamarker.com/lawson/info/375830"
+        },
+        {
+          "label": "Lawson難波中二丁目：官方分店頁",
+          "url": "https://www.areamarker.com/lawson/info/037368"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "hotel-rest-4",
+      "day": "10/4",
+      "title": "取票後回酒店、晚餐前準備",
+      "aliases": [
+        "回 Hotel IL Cuore 休息"
+      ],
+      "prepare": "正式票券已收好；核對万両是 19:30、2 位。",
+      "steps": [
+        "回酒店放低購物袋，把正式門票及贈品換領憑證一起保管。",
+        "充電、稍作休息，設定 18:50 提醒。",
+        "約 19:00 出發，依當刻步行導航爭取 19:20 到万両日本橋店。"
+      ],
+      "action": "保留晚餐前的路程緩衝，毋須帶整袋票券外出。",
+      "confirm": "訂位確認頁可開啟、出門前帶齊手機及房卡。",
+      "fallback": "如果時間已晚直接前往餐廳，預計遲到就致電通知。",
+      "links": [
+        {
+          "label": "返回酒店（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15&travelmode=walking"
+        },
+        {
+          "label": "万両報到步驟",
+          "url": "#guide-manryo"
+        }
+      ],
+      "sources": [],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "manryo",
+      "day": "10/4",
+      "title": "19:30 万両日本橋店：路線與報到",
+      "aliases": [
+        "萬兩 日本橋店",
+        "A · 焼肉 万両 日本橋店"
+      ],
+      "prepare": "已確認 19:30、2 位；用最新有效訂位，不要開舊取消單。地址：中央区日本橋2-5-5。",
+      "steps": [
+        "約 19:00 從酒店出發，預留約 20 分鐘步行及找店；導航終點必須是日本橋店。",
+        "到招牌「万両」先向接待員報到，目標 19:20 左右抵達。",
+        "說「19時30分に2名で予約しています」，出示 Google 訂位姓名及確認頁。",
+        "依店員帶位，先看當日餐單，再點餐。"
+      ],
+      "action": "日文意思：我預約了晚上 7:30、兩位。網站記錄不會代替到店報到。",
+      "confirm": "職員找到訂位並安排座位。",
+      "fallback": "找錯分店或預計遲到，致電日本橋店說明；用餐後道頓堀保留，其他購物可省略。",
+      "links": [
+        {
+          "label": "酒店 → 万両（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E4%B8%87%E4%B8%A1%20%E6%97%A5%E6%9C%AC%E6%A9%8B%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E6%97%A5%E6%9C%AC%E6%A9%8B2-5-5&travelmode=walking&origin=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15"
+        },
+        {
+          "label": "致電 +81666415388",
+          "url": "tel:+81666415388"
+        },
+        {
+          "label": "Google 預約（需網絡）",
+          "url": "https://www.google.com/maps/reserve/bookings?hl=zh-TW"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：manryo",
+          "url": "https://yakiniku-manryo.orwst.com/nihonbashi/ja"
+        }
+      ],
+      "checkedAt": "2026-10-03",
+      "food": {
+        "key": "dinner1004",
+        "code": "A"
+      }
+    },
+    {
+      "id": "dotonbori",
+      "day": "10/4",
+      "title": "晚餐後：道頓堀 → 按體力返酒店",
+      "aliases": [
+        "道頓堀（必去）、心齋橋、唐吉訶德"
+      ],
+      "prepare": "保留道頓堀拍照，其餘是可選散步；手機留電供導航。",
+      "steps": [
+        "飯後以「道頓堀グリコサイン／戎橋」為第一站，沿步行導航走。",
+        "在戎橋一帶拍照；人多時避開橋中央停留，與同行者約好集合點。",
+        "尚有體力才向北行心齋橋筋，或到 Don Quijote 道頓堀店；毋須三處全部走。",
+        "以酒店為終點返程，收拾翌日小袋及票券。"
+      ],
+      "action": "路程超出體力可由方便上車的位置搭的士返酒店。",
+      "confirm": "已完成道頓堀主線，兩人一起安全返酒店。",
+      "fallback": "雨大或疲倦：拍照後直接回酒店，保留翌日演唱會體力。",
+      "links": [
+        {
+          "label": "万両 → 道頓堀（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E9%81%93%E9%A0%93%E5%A0%80%E3%82%B0%E3%83%AA%E3%82%B3%E3%82%B5%E3%82%A4%E3%83%B3&travelmode=walking&origin=%E4%B8%87%E4%B8%A1%20%E6%97%A5%E6%9C%AC%E6%A9%8B%E5%BA%97"
+        },
+        {
+          "label": "返酒店（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15&travelmode=walking"
+        }
+      ],
+      "sources": [],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "kizu-breakfast",
+      "day": "10/5",
+      "title": "木津市場早餐：魚市食堂／まるよし",
+      "aliases": [
+        "大阪木津卸売市場"
+      ],
+      "prepare": "08:30 到市場，現場候位、未訂位。市場官方列店號 159 魚市食堂、158 まるよし；建議每人預留 ¥2,000–3,500 作預算，不是套餐報價。",
+      "steps": [
+        "約 08:05 從酒店步行出發，導航至木津市場敷津東2-2-8，路程按現場步速留 15–25 分鐘。",
+        "也可從地鐵大國町站 1 號出口步行約 3 分鐘；需要升降機時按站內無障礙圖走。",
+        "先找市場外圍餐飲區店號 159「木津魚市食堂」，看當日海鮮丼餐單及候位安排；官方營業為 06:00 至售完。",
+        "候位超過約 20 分鐘就轉附近店號 158「まるよし」，點握壽司；官方營業 05:00–13:00。",
+        "09:30 左右結束早餐及市場散步，保留前往天王寺時間。"
+      ],
+      "action": "10/5 是星期一；市場一般日曜、祝日及部分星期三休市。個別食店休息可不同，當日看店頭；不把市場開門視作店家一定開門。",
+      "confirm": "已吃早餐，約 09:30 準備離開；不只停留在找餐廳的階段。",
+      "fallback": "兩店皆休息／售罄：不繼續長排隊，去天王寺再補早餐；帶走易吃食物，不影響 10:30 觀景台。",
+      "links": [
+        {
+          "label": "酒店 → 市場（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E5%A4%A7%E9%98%AA%E6%9C%A8%E6%B4%A5%E5%8D%B8%E5%A3%B2%E5%B8%82%E5%A0%B4&travelmode=walking&origin=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15"
+        },
+        {
+          "label": "主選：木津魚市食堂（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E6%9C%A8%E6%B4%A5%E9%AD%9A%E5%B8%82%E9%A3%9F%E5%A0%82%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E6%95%B7%E6%B4%A5%E6%9D%B12-2-8&travelmode=walking"
+        },
+        {
+          "label": "備用：まるよし（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E3%81%BE%E3%82%8B%E3%82%88%E3%81%97%20%E6%9C%A8%E6%B4%A5%E5%B8%82%E5%A0%B4&travelmode=walking"
+        },
+        {
+          "label": "致電 +81666321017",
+          "url": "tel:+81666321017"
+        },
+        {
+          "label": "市場日曆",
+          "url": "https://kizu-ichiba.com/wp/wp-content/themes/theme-kizu/img/calendar/kizu-ichiba-2026.pdf"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：kizu",
+          "url": "https://kizu-ichiba.com/restaurant/"
+        },
+        {
+          "label": "官方：https://kiduichiba.jp/shop/maruyoshi-2/",
+          "url": "https://kiduichiba.jp/shop/maruyoshi-2/"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "harukas",
+      "day": "10/5",
+      "title": "木津市場 → 天王寺 → HARUKAS 300",
+      "aliases": [
+        "あべのハルカス 300"
+      ],
+      "prepare": "觀景台門票尚未有已購憑證；帶手機及現場購票預算，勿把行程列出等同已買票。",
+      "steps": [
+        "從市場步行到大國町站，進 Osaka Metro 御堂筋線 M；選「天王寺／なかもず」方向。",
+        "乘至天王寺站下車，出閘找「近鉄／大阪阿部野橋／あべのハルカス」指示，步行至大樓。",
+        "找 HARUKAS 300 專用指示，乘升降機到 16F 入口／售票櫃檯。",
+        "已有票就在 16F 出示該產品要求的憑證；未買則查看當日成人票價及隊列再買。",
+        "依職員指示搭觀景台升降機；約 11:45 開始回程，預留離場及換樓層時間。"
+      ],
+      "action": "一般成人當日券官網 ¥2,200；產品、日期及現場公告為準。不要把任何第三方 QR 當作可直接入閘。",
+      "confirm": "完成觀景並返回 16F 出入口，接着找近鐵塔館 12F 餐廳層。",
+      "fallback": "排隊長或能見度差：縮短觀景，優先保留 12:15 午餐候位與下午休息。",
+      "links": [
+        {
+          "label": "市場 → 大國町站（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E5%A4%A7%E5%9B%BD%E7%94%BA%E9%A7%85&travelmode=walking&origin=%E5%A4%A7%E9%98%AA%E6%9C%A8%E6%B4%A5%E5%8D%B8%E5%A3%B2%E5%B8%82%E5%A0%B4"
+        },
+        {
+          "label": "大國町 → 天王寺（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85&travelmode=transit&origin=%E5%A4%A7%E5%9B%BD%E7%94%BA%E9%A7%85"
+        },
+        {
+          "label": "私人票券：請選對文件",
+          "url": "#offline-wallet"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：harukas",
+          "url": "https://www.abenoharukas-300.jp/observatory/price.html"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "gen",
+      "day": "10/5",
+      "title": "12:30 弦：觀景台下樓吃天婦羅蕎麥麵",
+      "aliases": [
+        "石臼挽蕎麦 弦（あべのハルカス12F）",
+        "J · 石臼挽蕎麦 弦 · 天婦羅蕎麥麵"
+      ],
+      "prepare": "已選定、未訂位；あべのハルカス近鉄本店 タワー館12F。目標 12:15 到店。",
+      "steps": [
+        "觀景台離場回 16F，再跟「近鉄百貨店／ハルカスダイニング」指示換乘通往餐廳層的升降機或扶手電梯。",
+        "到塔館 12F 看樓層圖，找「石臼挽蕎麦 弦」；不要走到 13F 的美々卯。",
+        "向店員說「2名です。待ち時間はどのくらいですか」（兩位，要等多久）；按指示登記候位。",
+        "想吃冷蕎麥選海老天せいろ；熱湯蕎麥選海老天ぷら蕎麦，點餐時說そば，避免選成うどん。"
+      ],
+      "action": "餐單參考各 ¥1,738；當日價為準。11:00–22:00，L.O.21:00。",
+      "confirm": "兩人已入座並點到想吃的蕎麥麵；約 13:30 準備往新世界。",
+      "fallback": "候位超過 30 分鐘，先詢問預計入座時間；必要時縮短新世界，不犧牲演唱會前休息。",
+      "links": [
+        {
+          "label": "弦的位置（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E7%9F%B3%E8%87%BC%E6%8C%BD%E8%95%8E%E9%BA%A6%20%E5%BC%A6%20%E3%81%82%E3%81%B9%E3%81%AE%E3%83%8F%E3%83%AB%E3%82%AB%E3%82%B9%20%E3%82%BF%E3%83%AF%E3%83%BC%E9%A4%A812F&travelmode=walking"
+        },
+        {
+          "label": "致電 +81666549083",
+          "url": "tel:+81666549083"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：gen",
+          "url": "https://abenoharukas.d-kintetsu.co.jp/restaurant/75/index.html"
+        }
+      ],
+      "checkedAt": "2026-10-03",
+      "food": {
+        "key": "lunch1005",
+        "code": "J"
+      }
+    },
+    {
+      "id": "shinsekai",
+      "day": "10/5",
+      "title": "新世界街區散步 → 16:00 回酒店",
+      "aliases": [
+        "新世界、通天閣"
+      ],
+      "prepare": "主線是街區散步；通天閣登塔另購門票，未有已購記錄。",
+      "steps": [
+        "從天王寺站搭御堂筋線往梅田／新大阪方向，於動物園前下車；按出口圖找新世界方向。",
+        "跟「新世界／通天閣」路標到街區，沿通天閣周邊拍照及短逛。",
+        "登塔只在候位短、仍能準時回酒店時進行；否則保留外觀拍照。",
+        "最遲約 15:15–15:30 離開街區，返回動物園前搭御堂筋線往なんば，出站步行酒店。"
+      ],
+      "action": "交通和步行預留 30–45 分鐘；約 16:00 回酒店休息。",
+      "confirm": "16:00 左右回酒店，沒有因排隊壓縮演唱會準備。",
+      "fallback": "疲倦／下雨就由天王寺直接乘御堂筋線回なんば，或短程的士回酒店。",
+      "links": [
+        {
+          "label": "天王寺 → 動物園前（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E5%8B%95%E7%89%A9%E5%9C%92%E5%89%8D%E9%A7%85&travelmode=transit&origin=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85"
+        },
+        {
+          "label": "新世界散步（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E9%80%9A%E5%A4%A9%E9%96%A3&travelmode=walking&origin=%E5%8B%95%E7%89%A9%E5%9C%92%E5%89%8D%E9%A7%85"
+        },
+        {
+          "label": "返回酒店（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15&travelmode=walking"
+        }
+      ],
+      "sources": [],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "show-rest",
+      "day": "10/5",
+      "title": "演唱會前休息及檢查小袋",
+      "aliases": [
+        "返回酒店休息"
+      ],
+      "prepare": "約 16:00 回酒店，17:00 開始最後檢查，17:15 出發。",
+      "steps": [
+        "放低購物袋、充電、上洗手間。同行者不入場，先約好散場後酒店會合方式。",
+        "把 LANY 正式紙本票、贈品換領券、所需證件、房卡及小額現金放入小袋。",
+        "按當場活動規定整理隨身物品；不帶保溫瓶、玻璃瓶或罐裝飲料。",
+        "準備能妥善攜帶海報及贈品的輕便袋；袋尺寸要符合安檢要求，不假設場館提供大件寄存。"
+      ],
+      "action": "主辦方禁止超過 30×30×15cm 的袋，場內無衣帽寄存、置物櫃有限。",
+      "confirm": "正式票＋換領券在手，小袋符合規定，同行者知道集合地點。",
+      "fallback": "票券找不到時先查私人票券資料及原訂單求助；不要只有手機照片就直接出發。",
+      "links": [
+        {
+          "label": "私人票券：請選對文件",
+          "url": "#offline-wallet"
+        },
+        {
+          "label": "入場前步驟",
+          "url": "#guide-lany-entry"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：lany",
+          "url": "https://www.livenationhip.co.jp/en/all-events/lany-tickets-ae771408"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "lany-entry",
+      "day": "10/5",
+      "title": "Zepp：先領 GOLD 贈品，再排隊入場",
+      "aliases": [
+        "由酒店步行前往 Zepp Namba",
+        "Zepp Namba 開場"
+      ],
+      "prepare": "17:15 酒店出發；約 17:30 到場。GOLD GA 一張，只安排持票者入場；沒有 VIP Upgrade 購買證據，不排 VIP 活動。",
+      "steps": [
+        "從酒店步行到 Zepp Namba 正門，約 11 分鐘另留找路時間；不要走去 Zepp Osaka Bayside。",
+        "到正門附近「Exclusive Merchandise Redemption Booth」出示正式入場票與 merch voucher，先領 GOLD GA 贈品。",
+        "當場核對 T-shirt、海報、掛繩及紀念牌等是否齊全；尺寸依現場供應，缺漏當場告知。",
+        "領完把海報妥善收好，按 GOLD GA 區域及票上整理番號／工作人員叫號排隊，17:45 開門不等於必定立即入場。",
+        "安檢後出示正式票；按場館指示處理另付飲品費及飲品券。收費／方式看當日牌示，事先備小額現金。",
+        "入場後找到 GOLD GA 指定區、洗手間及出口位置，18:45 暖場開始前準備好。"
+      ],
+      "action": "贈品換領 14:45–18:45，逾時不補領或寄送；不可再次入場。付費周邊購買是可選項，排隊不影響先領贈品及入場。",
+      "confirm": "贈品已領、正式票仍妥善保管、已進入正確觀賞區。",
+      "fallback": "17:30 到場遇長龍，先向職員問贈品換領及入場隊列；放棄可選購物，勿錯過換領截止。",
+      "links": [
+        {
+          "label": "酒店 → Zepp（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=Zepp%20Namba%20Osaka&travelmode=walking&origin=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15"
+        },
+        {
+          "label": "私人票券：請選對文件",
+          "url": "#offline-wallet"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：lany",
+          "url": "https://www.livenationhip.co.jp/en/all-events/lany-tickets-ae771408"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "lany-show",
+      "day": "10/5",
+      "title": "演出時間與散場會合",
+      "aliases": [
+        "Alysha 暖場演出",
+        "LANY 演唱會"
+      ],
+      "prepare": "官方改時：17:45 開門、18:45 開演；電郵通知 Alysha 預計至 19:15，LANY 預計 19:45 起。完場未公布。",
+      "steps": [
+        "入場後遵從工作人員指示，在指定區觀賞；保留足夠手機電量供散場聯絡。",
+        "演出期間留意廣播，不能離場後再入場。",
+        "散場依指示離開，先訊息通知酒店內的同行者，再按導航返回酒店。"
+      ],
+      "action": "不把演出時長寫死，22:00 磯丸訂位仍保留。",
+      "confirm": "散場後知道兩人集合位置，已估算前往磯丸的時間。",
+      "fallback": "如預計趕不上 22:00，在可聯絡時主動致電餐廳說明；不視作已取消。",
+      "links": [
+        {
+          "label": "Zepp → 酒店（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15&travelmode=walking&origin=Zepp%20Namba%20Osaka"
+        },
+        {
+          "label": "磯丸報到／遲到句子",
+          "url": "#guide-isomaru"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：lany",
+          "url": "https://www.livenationhip.co.jp/en/all-events/lany-tickets-ae771408"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "isomaru",
+      "day": "10/5",
+      "title": "散場接同行者 → 22:00 磯丸",
+      "aliases": [
+        "磯丸水産 なんば南海通り店"
+      ],
+      "prepare": "22:00、2 位已確認。分店地址：中央区難波千日前11-22 ダイハイ千日前 1–3F。",
+      "steps": [
+        "從 Zepp 散場後先聯絡同行者，步行回 Hotel IL Cuore 會合。",
+        "兩人一起往「磯丸水産 なんば南海通り店」，核對難波千日前11-22；其他磯丸分店不能代替此訂位。",
+        "到門口向店員說「22時に2名で予約しています」，出示最新 Google 訂位。",
+        "若已預計遲到，先致電 06-6630-6801，詢問是否仍可保留座位。"
+      ],
+      "action": "遲到可說：「22時に2名で予約しています。少し遅れます。到着は○時○分ごろです。席を取っておいていただけますか。」填入實際預計時間。",
+      "confirm": "店員已確認訂位及到達安排，兩人會合完成。",
+      "fallback": "電話未通仍以訂位條款為準；網站提示及行程改動不代表店方已同意遲到或改期。",
+      "links": [
+        {
+          "label": "Zepp → 酒店（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15&travelmode=walking&origin=Zepp%20Namba%20Osaka"
+        },
+        {
+          "label": "酒店 → 磯丸（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E7%A3%AF%E4%B8%B8%E6%B0%B4%E7%94%A3%20%E3%81%AA%E3%82%93%E3%81%B0%E5%8D%97%E6%B5%B7%E9%80%9A%E3%82%8A%E5%BA%97&travelmode=walking&origin=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15"
+        },
+        {
+          "label": "致電 +81666306801",
+          "url": "tel:+81666306801"
+        },
+        {
+          "label": "Google 預約（需網絡）",
+          "url": "https://www.google.com/maps/reserve/bookings?hl=zh-TW"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：isomaru",
+          "url": "https://isomaru.jp/1461/"
+        }
+      ],
+      "checkedAt": "2026-10-03",
+      "food": {
+        "key": "dinner1005",
+        "code": "F"
+      }
+    },
+    {
+      "id": "kobe-out",
+      "day": "10/6",
+      "title": "酒店 → 阪神大阪難波 → 神戶三宮",
+      "aliases": [
+        "大阪難波出發往神戶三宮",
+        "抵達神戶三宮"
+      ],
+      "prepare": "約 08:35 從酒店出發，目標約 09:00 乘車；IC 卡有足夠餘額或購普通車票。",
+      "steps": [
+        "導航到「大阪難波駅／阪神・近鉄」，不要前往南海月台，也不要進 JR 難波。",
+        "進地下站後找「阪神なんば線／尼崎・神戸三宮方面」，看屏幕挑「快速急行 神戸三宮行」。",
+        "直通快速急行可不用轉車；若當刻沒有直通車，只按旅程查詢及職員確認的尼崎轉車方案乘搭，不隨意上近鐵奈良方向。",
+        "按當日屏幕找月台，乘至終點神戶三宮；約 40 多分鐘車程，連候車及步行預留約 1 小時。",
+        "出閘後先確認所在地是阪神神戶三宮，找市中心及餐廳方向；距取號時間尚早可附近短逛。"
+      ],
+      "action": "月台及班次以當日屏幕為準；問路：「神戸三宮へ行く快速急行はどれですか」。",
+      "confirm": "已抵達神戶三宮，知道 10:45 一平取號位置。",
+      "fallback": "誤到南海／JR 難波不要入閘，依阪神／近鐵指示轉去大阪難波站。遇停駛按職員提供的替代路線。",
+      "links": [
+        {
+          "label": "酒店 → 阪神大阪難波（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E5%A4%A7%E9%98%AA%E9%9B%A3%E6%B3%A2%E9%A7%85%20%E9%98%AA%E7%A5%9E&travelmode=walking&origin=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15"
+        },
+        {
+          "label": "大阪難波 → 神戶三宮（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E9%98%AA%E7%A5%9E%20%E7%A5%9E%E6%88%B8%E4%B8%89%E5%AE%AE%E9%A7%85&travelmode=transit&origin=%E5%A4%A7%E9%98%AA%E9%9B%A3%E6%B3%A2%E9%A7%85"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：hanshin",
+          "url": "https://www.hanshin.co.jp/station/sannomiya.html"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "ippei",
+      "day": "10/6",
+      "title": "Grill Ippei 三宮：取整理券及牛柳吉列",
+      "aliases": [
+        "グリル一平 三宮店取整理券",
+        "L · 厚切牛柳吉列午餐"
+      ],
+      "prepare": "已選店、午餐不設預約。10:45 取號、11:00 用餐是目標，實際視派券及叫號。 地址：琴ノ緒町5-5-26 サンハイツ三宮1F；11:00–15:00（L.O.14:30），星期三休息。",
+      "steps": [
+        "從阪神神戶三宮循A23出口方向到地面，店方指引步行約4分鐘；需要升降機則按站內無障礙路線。導航到琴ノ緒町5-5-26的グリル一平三宮店。",
+        "到入口發券機領兩人的整理券；看清人數與叫號方式，問題可問「2名です。整理券はありますか」。",
+        "取號後記下號碼、回店／叫號方式；不要離開到聽不到叫號的位置。",
+        "入座後點「ヘレビーフカツレツ」，依當日餐單選份量與熟度；這是牛柳吉列，沒有神戶牛保證。"
+      ],
+      "action": "店方可提早截止派券；不要因行程有 11:00 就當作已訂座。",
+      "confirm": "已拿到有效整理券並了解輪候方式，或已入座。",
+      "fallback": "取不到券／等待超過 45 分鐘：先問可否稍後返回；若不能，改到元町提早吃午餐，該店記為未吃而非已完成。",
+      "links": [
+        {
+          "label": "三宮 → 一平（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E3%82%B0%E3%83%AA%E3%83%AB%E4%B8%80%E5%B9%B3%20%E4%B8%89%E5%AE%AE%E5%BA%97&travelmode=walking&origin=%E9%98%AA%E7%A5%9E%20%E7%A5%9E%E6%88%B8%E4%B8%89%E5%AE%AE%E9%A7%85"
+        },
+        {
+          "label": "致電一平",
+          "url": "tel:+81782522527"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：一平三宮",
+          "url": "https://grill-ippei.co.jp/shop/sannomiya/"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "nankinmachi",
+      "day": "10/6",
+      "title": "三宮 → 元町／南京町短程散步",
+      "aliases": [
+        "元町／南京町散步"
+      ],
+      "prepare": "午餐後不強制加餐；下午保留坐下休息時間。",
+      "steps": [
+        "從三宮沿元町商店街方向步行；如覺得遠，改乘阪神神戶三宮至元町一站。",
+        "到南京町牌樓後沿主街短逛，以廣場作兩人集合點。",
+        "小食只按胃口選，避免排長隊；之後向海邊美利堅公園方向移動。"
+      ],
+      "action": "分段步行約 10–20 分鐘作規劃，現場依導航及體力調整。",
+      "confirm": "完成元町／南京町一段，不在市中心與海邊反覆折返。",
+      "fallback": "雨大先在元町商店街休息；取消可選小食，保留晚餐路程。",
+      "links": [
+        {
+          "label": "一平 → 南京町（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E5%8D%97%E4%BA%AC%E7%94%BA%20%E5%BA%83%E5%A0%B4&travelmode=walking&origin=%E3%82%B0%E3%83%AA%E3%83%AB%E4%B8%80%E5%B9%B3%20%E4%B8%89%E5%AE%AE%E5%BA%97"
+        },
+        {
+          "label": "南京町 → 美利堅公園（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E3%83%A1%E3%83%AA%E3%82%B1%E3%83%B3%E3%83%91%E3%83%BC%E3%82%AF&travelmode=walking&origin=%E5%8D%97%E4%BA%AC%E7%94%BA%20%E5%BA%83%E5%A0%B4"
+        }
+      ],
+      "sources": [],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "harbor-walk",
+      "day": "10/6",
+      "title": "美利堅公園／Harborland：海邊休息",
+      "aliases": [
+        "美利堅公園／Harborland",
+        "晚餐前核對 THE HARBOR",
+        "晚餐前休息及查看訂位"
+      ],
+      "prepare": "兩張晚餐按你的決定保留：からす19:00、HARBOR19:30。下午先以美利堅公園作主線。",
+      "steps": [
+        "南京町往美利堅公園步行，先看港景及找座位休息。",
+        "體力足才沿海邊去 Harborland；不必把兩區全部走完。",
+        "約 16:30 停止遠走，開啟最新訂位及對應餐廳導航，預留報到時間。"
+      ],
+      "action": "HARBOR 在神戶港塔酒店內，不是紅色神戶港塔的觀景設施。",
+      "confirm": "已確認餐廳正確地址及返回大阪路線，手機有電。",
+      "fallback": "海邊風雨大改室內休息；距餐廳過遠可搭短程的士。",
+      "links": [
+        {
+          "label": "美利堅公園（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E3%83%A1%E3%83%AA%E3%82%B1%E3%83%B3%E3%83%91%E3%83%BC%E3%82%AF&travelmode=walking"
+        },
+        {
+          "label": "Harborland（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E7%A5%9E%E6%88%B8%E3%83%8F%E3%83%BC%E3%83%90%E3%83%BC%E3%83%A9%E3%83%B3%E3%83%89&travelmode=walking"
+        },
+        {
+          "label": "Google 預約（需網絡）",
+          "url": "https://www.google.com/maps/reserve/bookings?hl=zh-TW"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：harbor",
+          "url": "https://www.kobe-porttower-hotel.com/access.html"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "karasu",
+      "day": "10/6",
+      "title": "19:00 からす：已確認訂位及返回難波",
+      "aliases": [
+        "郷土料理 からす · K7"
+      ],
+      "prepare": "19:00、2 位，依你的決定保留。地址：神戸市中央区加納町4-3-5 シャトー北野坂ビル1F・B1。",
+      "steps": [
+        "依當時位置開導航前往からす，目標18:50到店；不把HARBOR誤認為同一餐廳。",
+        "向接待員出示19:00兩位訂位，說「19時に2名で予約しています」。",
+        "用餐後步行至阪神神戶三宮站，乘往大阪難波方向的直通快速急行；若無直通車，依查詢在尼崎轉車。",
+        "在大阪難波下車，再步行回 Hotel IL Cuore。"
+      ],
+      "action": "此張及 HARBOR 訂位各自保留；兩個餐廳指南是獨立路線，不是已安排連續用餐。",
+      "confirm": "職員確認訂位；回程看清大阪難波方向及轉車要求。",
+      "fallback": "晚餐後疲倦可短程的士到車站；不要上只往大阪梅田、卻以為直達難波的車。",
+      "links": [
+        {
+          "label": "到からす（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E9%83%B7%E5%9C%9F%E6%96%99%E7%90%86%20%E3%81%8B%E3%82%89%E3%81%99%20%E7%A5%9E%E6%88%B8%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%8A%A0%E7%B4%8D%E7%94%BA4-3-5&travelmode=walking"
+        },
+        {
+          "label": "致電 +815035031546",
+          "url": "tel:+815035031546"
+        },
+        {
+          "label": "Google 預約（需網絡）",
+          "url": "https://www.google.com/maps/reserve/bookings?hl=zh-TW"
+        },
+        {
+          "label": "からす → 阪神三宮（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E9%98%AA%E7%A5%9E%20%E7%A5%9E%E6%88%B8%E4%B8%89%E5%AE%AE%E9%A7%85&travelmode=walking&origin=%E9%83%B7%E5%9C%9F%E6%96%99%E7%90%86%20%E3%81%8B%E3%82%89%E3%81%99"
+        },
+        {
+          "label": "三宮 → 難波（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E5%A4%A7%E9%98%AA%E9%9B%A3%E6%B3%A2%E9%A7%85&travelmode=transit&origin=%E9%98%AA%E7%A5%9E%20%E7%A5%9E%E6%88%B8%E4%B8%89%E5%AE%AE%E9%A7%85"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：karasu",
+          "url": "https://www.world-one-group.co.jp/brand_detail/karasu/"
+        },
+        {
+          "label": "官方：hanshin",
+          "url": "https://www.hanshin.co.jp/station/sannomiya.html"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "harbor-dinner",
+      "day": "10/6",
+      "title": "19:30 THE HARBOR：酒店 2F 自助餐",
+      "aliases": [
+        "THE HARBOR · 晚餐首選"
+      ],
+      "prepare": "19:30、2位已確認；最新更正每人¥6,600、合共¥13,200，含稅及任食蟹。此資料來自酒店更正電郵，並非已付款。",
+      "steps": [
+        "導航到「神戸ポートタワーホテル」，不要到神戶港塔觀景入口。",
+        "入酒店後找餐廳「THE HARBOR」2F，目標19:20向接待報到。",
+        "出示19:30兩位訂位及酒店最新更正電郵；有差異就先核對價錢與方案。",
+        "酒店回覆為入口付款、接受現金或信用卡、全店禁煙。晚餐21:00結束，20:30最後點餐，按現場自助餐規則取餐。",
+        "飯後往阪神元町站，依回程指南經三宮或尼崎銜接大阪難波。"
+      ],
+      "action": "からす19:00亦依你要求保留；已移除待取消任務，不代表執行過取消。",
+      "confirm": "酒店找到正確訂位，方案與最新電郵一致。",
+      "fallback": "若店方資料不同，出示更正電郵先確認；臨時晚到需致電酒店。",
+      "links": [
+        {
+          "label": "到港塔酒店（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E7%A5%9E%E6%88%B8%E3%83%9D%E3%83%BC%E3%83%88%E3%82%BF%E3%83%AF%E3%83%BC%E3%83%9B%E3%83%86%E3%83%AB&travelmode=walking"
+        },
+        {
+          "label": "Google 預約（需網絡）",
+          "url": "https://www.google.com/maps/reserve/bookings?hl=zh-TW"
+        },
+        {
+          "label": "私人票券：請選對文件",
+          "url": "#offline-wallet"
+        },
+        {
+          "label": "酒店 → 阪神元町（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E9%98%AA%E7%A5%9E%20%E5%85%83%E7%94%BA%E9%A7%85&travelmode=walking&origin=%E7%A5%9E%E6%88%B8%E3%83%9D%E3%83%BC%E3%83%88%E3%82%BF%E3%83%AF%E3%83%BC%E3%83%9B%E3%83%86%E3%83%AB"
+        },
+        {
+          "label": "返回大阪指南",
+          "url": "#guide-kobe-return"
+        },
+        {
+          "label": "酒店電話（電郵列10:00–17:00接聽）",
+          "url": "tel:+81783713773"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：harbor",
+          "url": "https://www.kobe-porttower-hotel.com/access.html"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "kobe-return",
+      "day": "10/6",
+      "title": "神戶晚餐後 → 大阪難波 → 酒店",
+      "aliases": [
+        "神戶晚餐後返回難波"
+      ],
+      "prepare": "約21:00起按實際用餐結束離開；查當晚路線與末班，不等到最後一班。",
+      "steps": [
+        "從HARBOR出發：步行至阪神元町站；搭大阪方向到神戶三宮，再轉可直達大阪難波的快速急行。若查詢顯示在尼崎轉車更合適，依屏幕與職員指示。",
+        "從からす出發：直接步行至阪神神戶三宮，找大阪難波／近鐵奈良方向的快速急行；看是否停大阪難波。",
+        "如乘大阪梅田行特急，必須按查詢在尼崎轉阪神なんば線，不能一直坐到梅田才發現目的地不同。",
+        "到大阪難波出閘，以Hotel IL Cuore地址導航回酒店，兩人一起取齊物品。"
+      ],
+      "action": "返程預留約60–90分鐘（含步行／候車／轉車），為規劃估算。",
+      "confirm": "兩人到大阪難波並順利回酒店。",
+      "fallback": "錯过直通車先查下一班與轉車方案；交通異常向職員求助，再決定替代交通。",
+      "links": [
+        {
+          "label": "阪神元町 → 大阪難波（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E5%A4%A7%E9%98%AA%E9%9B%A3%E6%B3%A2%E9%A7%85&travelmode=transit&origin=%E9%98%AA%E7%A5%9E%20%E5%85%83%E7%94%BA%E9%A7%85"
+        },
+        {
+          "label": "阪神三宮 → 大阪難波（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E5%A4%A7%E9%98%AA%E9%9B%A3%E6%B3%A2%E9%A7%85&travelmode=transit&origin=%E9%98%AA%E7%A5%9E%20%E7%A5%9E%E6%88%B8%E4%B8%89%E5%AE%AE%E9%A7%85"
+        },
+        {
+          "label": "大阪難波 → 酒店（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15&travelmode=walking&origin=%E5%A4%A7%E9%98%AA%E9%9B%A3%E6%B3%A2%E9%A7%85"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：hanshin",
+          "url": "https://www.hanshin.co.jp/station/sannomiya.html"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "checkout",
+      "day": "10/7",
+      "title": "11:00 退房並寄存行李",
+      "aliases": [
+        "退房並寄存行李"
+      ],
+      "prepare": "行李先收好；護照、回程票券、手機及需要隨身物品不要鎖進寄存箱。",
+      "steps": [
+        "檢查房內保險箱、插座、床邊及浴室，兩人核對證件。",
+        "到前台交房卡及辦退房，問可否寄存到今天15:45左右。",
+        "說「チェックアウト後、15時45分ごろまで荷物を預かっていただけますか」。",
+        "取寄存牌／收據、拍照備份，記住領取位置及件數。"
+      ],
+      "action": "寄存需前台當日確認，不預設已安排；保留領取憑證。",
+      "confirm": "前台已接收正確行李件數，15:45取件安排清楚。",
+      "fallback": "酒店不能寄存則請前台指引附近有人管理寄存或車站行李櫃；先確認可放入和取件時間再離開。",
+      "links": [
+        {
+          "label": "私人票券：請選對文件",
+          "url": "#offline-wallet"
+        },
+        {
+          "label": "酒店位置（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15&travelmode=walking"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：hotel",
+          "url": "https://www.ilcuore-namba.com/zh-tw/"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "shopping",
+      "day": "10/7",
+      "title": "最後購物：以難波站一圈為主",
+      "aliases": [
+        "心齋橋、難波站購物圈（五商場＋EDION）"
+      ],
+      "prepare": "11:30–12:45一段、午餐後再補；13:00美々卯在高島屋7F。商場不是全部必去。",
+      "steps": [
+        "先選PARKS／CITY／SkyO其中最想逛的一至兩處，讓路線靠近南海難波。",
+        "若要買手錶／電器，再到EDIONなんば本店看樓層指示；各樓層以當日商場圖為準。",
+        "12:45往大阪高島屋7Fなんばダイニングメゾン，準備美々卯午餐。",
+        "心齋橋、大丸及EKIKAN只留作時間足夠的可選項，15:00後不再拉遠路線。"
+      ],
+      "action": "用店名導航而非只搜難波；退稅排隊、包裝與取貨需另留時間。",
+      "confirm": "已購物且能準時午餐，15:45取行李不受影響。",
+      "fallback": "排隊或取貨延誤先刪可選商場；出發去機場優先。",
+      "links": [
+        {
+          "label": "難波CITY（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E3%81%AA%E3%82%93%E3%81%B0CITY&travelmode=walking"
+        },
+        {
+          "label": "難波PARKS（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E3%81%AA%E3%82%93%E3%81%B0PARKS&travelmode=walking"
+        },
+        {
+          "label": "EDION（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E3%82%A8%E3%83%87%E3%82%A3%E3%82%AA%E3%83%B3%E3%81%AA%E3%82%93%E3%81%B0%E6%9C%AC%E5%BA%97&travelmode=walking"
+        },
+        {
+          "label": "午餐高島屋（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E5%A4%A7%E9%98%AA%E9%AB%98%E5%B3%B6%E5%B1%8B&travelmode=walking"
+        }
+      ],
+      "sources": [],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "mimiu",
+      "day": "10/7",
+      "title": "13:00 美々卯：高島屋 7F",
+      "aliases": [
+        "午餐 G／I／J／K 自選",
+        "美々卯 なんば店",
+        "G · 美々卯 なんば店"
+      ],
+      "prepare": "已選店、未訂位；地址難波5-1-18 なんばダイニングメゾン7F，位於大阪高島屋。",
+      "steps": [
+        "到大阪高島屋，跟なんばダイニングメゾン指示乘客用升降機至7F。",
+        "看樓層圖找美々卯，向店員說兩位，確認候位時間。",
+        "選うどんすき或午餐餐單；鍋物需要較多時間，點餐前問預計等候。",
+        "吃完到同一大樓地庫買手信，減少再走遠。"
+      ],
+      "action": "官方營業11:00–22:00；鍋物最後點餐20:00、其他21:00。午餐仍需候位。",
+      "confirm": "已完成午餐，約14:15–14:30離店，仍有時間買手信。",
+      "fallback": "候位超過30分鐘先問出餐時間；時間緊改簡單餐點，15:45取行李維持。",
+      "links": [
+        {
+          "label": "美々卯なんば店（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E7%BE%8E%E3%80%85%E5%8D%AF%20%E3%81%AA%E3%82%93%E3%81%B0%E5%BA%97%20%E9%AB%98%E5%B3%B6%E5%B1%8B7F&travelmode=walking"
+        },
+        {
+          "label": "致電 +81666332871",
+          "url": "tel:+81666332871"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：mimiu",
+          "url": "https://www.mimiu.co.jp/restaurant/namba/"
+        }
+      ],
+      "checkedAt": "2026-10-03",
+      "food": {
+        "key": "lunch1007",
+        "code": "G"
+      }
+    },
+    {
+      "id": "souvenirs",
+      "day": "10/7",
+      "title": "地庫買手信 → 收好行李",
+      "aliases": [
+        "大丸／高島屋地庫"
+      ],
+      "prepare": "主選高島屋地庫，減少折返；只在早前已到心齋橋時才選大丸。",
+      "steps": [
+        "約15:00在高島屋地庫集中買手信，先看保質期及是否需冷藏。",
+        "問店員包裝與保存方法；避免買需冷藏卻無法在返港途中保持溫度的食品。",
+        "15:20左右結束購物，帶手信回酒店，預留重新整理行李時間。"
+      ],
+      "action": "食物可否入境及液體可否手提按機場／目的地官方規定核對，不以店員推薦代替入境規則。",
+      "confirm": "手信包裝妥當，沒有影響取行李及乘車。",
+      "fallback": "結帳長隊就刪減購物，保留機場交通緩衝。",
+      "links": [
+        {
+          "label": "高島屋地庫（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E5%A4%A7%E9%98%AA%E9%AB%98%E5%B3%B6%E5%B1%8B&travelmode=walking"
+        },
+        {
+          "label": "回酒店（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15&travelmode=walking"
+        }
+      ],
+      "sources": [],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "collect-bags",
+      "day": "10/7",
+      "title": "15:45 取行李 → 南海難波站",
+      "aliases": [
+        "返回酒店取行李"
+      ],
+      "prepare": "帶寄存牌；目標17:40–18:00抵達關西T1，不代表已選定火車。",
+      "steps": [
+        "15:45左右回前台出示寄存牌，點算兩人的所有行李。",
+        "把護照、UO689資料及手機留在隨身袋，需託運的手信先整理入箱。",
+        "開回程Rapi:t電子票頁，核對10/7なんば→関西空港、兩位及是否已有指定班次。",
+        "帶行李步行南海難波站，優先找升降機；約16:15–16:30到站準備乘車。"
+      ],
+      "action": "出門前依票券實際班次與車程，選能在17:40–18:00到機場的車；不再把17:30當固定發車時間。",
+      "confirm": "行李齊全、票券頁可開、清楚下一班次與車廂座位。",
+      "fallback": "整理行李超時立即停止購物，前往車站；不要為趕列車在樓梯搬重行李。",
+      "links": [
+        {
+          "label": "酒店 → 南海難波（需網絡）",
+          "url": "https://www.google.com/maps/dir/?api=1&destination=%E5%8D%97%E6%B5%B7%E3%81%AA%E3%82%93%E3%81%B0%E9%A7%85&travelmode=walking&origin=Hotel%20IL%20Cuore%20Namba%20%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B5%AA%E9%80%9F%E5%8C%BA%E9%9B%A3%E6%B3%A2%E4%B8%AD1-15-15"
+        },
+        {
+          "label": "私人票券：請選對文件",
+          "url": "#offline-wallet"
+        }
+      ],
+      "sources": [],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "rapit-return",
+      "day": "10/7",
+      "title": "難波 QR 入閘 → 關西 T1 出發層",
+      "aliases": [
+        "Rapi:t 前往關西機場"
+      ],
+      "prepare": "回程已購兩人QR票；班次／座位按實際票券頁確認。目標17:40–18:00抵達機場。",
+      "steps": [
+        "到南海難波站，找南海電鉄／関西空港方向，不去阪神大阪難波或JR難波。",
+        "開回程電子票，核對日期、方向、人數、班次與座位；若未選位，按該票畫面完成並預留上月台時間。",
+        "兩人依序以有效QR入閘，對照顯示屏及車廂指示搭Rapi:t往関西空港。",
+        "在関西空港終點下車、取齊行李，以車票QR出閘。",
+        "跟Terminal 1／第1ターミナル指示走連接通道到T1 2F，乘升降機上4F國際線出發大堂。",
+        "看Departure／出発屏幕找UO689 Hong Kong及當日HK Express櫃檯。"
+      ],
+      "action": "以實際票券及顯示屏為準；QR不能讀取就到南海有人閘口求助。",
+      "confirm": "兩人已到T1 4F，知道UO689寄艙櫃檯。",
+      "fallback": "Rapi:t滿座／停駛就向職員問替代空港急行及票券處理；不要自行假設原票可搭任何車。",
+      "links": [
+        {
+          "label": "Klook訂單（需網絡）",
+          "url": "https://www.klook.com/zh-HK/bookings/"
+        },
+        {
+          "label": "私人票券：請選對文件",
+          "url": "#offline-wallet"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：kix",
+          "url": "https://www.kansai-airport.or.jp/en/access/to-airport/train"
+        },
+        {
+          "label": "官方：rapit",
+          "url": "https://www.nankai.co.jp/traffic/express/rapit.html"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "mensho",
+      "day": "10/7",
+      "title": "MENSHO：完成出境後有時間才吃",
+      "aliases": [
+        "MENSHO 關西機場店"
+      ],
+      "prepare": "可選晚餐，必須先完成寄艙、安檢及出境；先知道登機閘及步行時間。",
+      "steps": [
+        "在T1國際線安檢後商業區按餐飲指示找MENSHO；不可為吃麵延誤寄艙。",
+        "查看排隊及出餐速度，再看UO689最新閘口、登機時間與行走距離。",
+        "只有能在目標19:55前到閘口才用餐；時間不夠改簡單食物並先往閘口。"
+      ],
+      "action": "約19:15只是可用餐時段估算，不是必做項目。",
+      "confirm": "已吃或決定略過，正前往正確登機閘。",
+      "fallback": "排隊、出餐或閘口距離不確定就略過，飛機優先。",
+      "links": [
+        {
+          "label": "查看回程寄艙及登機",
+          "url": "#guide-kix-departure"
+        }
+      ],
+      "sources": [],
+      "checkedAt": "2026-10-03"
+    },
+    {
+      "id": "kix-departure",
+      "day": "10/7",
+      "title": "UO689：關西寄艙、出境及上機",
+      "aliases": [
+        "UO689 起飛"
+      ],
+      "prepare": "20:40日本時間起飛；需UO689回程登機證，UO686去程QR不能代替。目標17:40–18:00到T1。",
+      "steps": [
+        "在T1 4F屏幕查UO689櫃檯，帶兩人護照、訂單及已辦理的回程登機證排隊。",
+        "即使已網上登機，仍到HK Express指定櫃檯寄艙、按要求核對證件；取行李收據及所需登機證。",
+        "寄艙完成後跟International Departures／国際線出発前往安檢，按指示處理隨身物品。",
+        "完成日本出境手續，再查最新閘口及登機時間。",
+        "先估算到閘口的步行／接駁時間；有充足時間才吃MENSHO。目標19:55或登機證要求更早的時間到閘。",
+        "備好護照與UO689登機證等候叫號，按機組／地勤指示登機。"
+      ],
+      "action": "按20:40起飛：KIX櫃檯17:40開、19:40關（起飛前60分鐘）。閘口截止依回程登機證／現場指示，勿等到20:40。",
+      "confirm": "寄艙收據在手、UO689登機證正確，已到當日正確閘口。",
+      "fallback": "預計無法在19:40前完成寄艙立即找航空公司職員；航班改時依最新通知重算。",
+      "links": [
+        {
+          "label": "私人票券：請選對文件",
+          "url": "#offline-wallet"
+        }
+      ],
+      "sources": [
+        {
+          "label": "官方：counter",
+          "url": "https://www.hkexpress.com/Plan/Guideline/Airport-Check-in/Counter-Check-in-Timetable"
+        }
+      ],
+      "checkedAt": "2026-10-03"
+    }
+  ]
+}

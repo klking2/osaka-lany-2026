@@ -16,7 +16,7 @@
   if(timeline.children.length) {
     try { const saved=JSON.parse(localStorage.getItem('osaka-mobile-state-v1')); if(saved?.days)window.renderOfflineRoutes(saved.days); else fetch('./trip-data.json').then(r=>r.json()).then(s=>window.renderOfflineRoutes(s.days)); } catch { /* Main app reports storage errors. */ }
   }
-  fetch('./places.json?v=61').then(r=>{if(!r.ok)throw Error();return r.json();}).then(places=>{
+  fetch('./places.json?v=62').then(r=>{if(!r.ok)throw Error();return r.json();}).then(places=>{
     places.forEach(place=>{
       const card=el('article',undefined,'place-card'); card.append(el('b',place.name),el('p',place.day+' · '+place.kind),el('p',place.query),el('p',place.note));
       const link=el('a','Google 地圖／導航 ↗（需網絡）'); link.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place.query); link.target='_blank'; link.rel='noreferrer'; card.append(link); $('offline-places').append(card);
@@ -33,8 +33,8 @@
       // Check actual shell contents, not just registration success.
       const registration=await navigator.serviceWorker.getRegistration();
       if(!registration?.active)throw Error('離線服務尚未啟用');
-      const assets=['./index.html','./trip-data.json','./places.json?v=61','./mobile.js?v=61','./mobile.css?v=61'];
-      const cache=await caches.open('osaka-lany-2026-v20');
+      const assets=['./guide-data.json?v=62','./guides.js?v=62','./index.html','./trip-data.json','./places.json?v=62','./mobile.js?v=62','./mobile.css?v=62'];
+      const cache=await caches.open('osaka-lany-2026-v21');
       const found=await Promise.all(assets.map(path=>cache.match(new URL(path,location.href).href)));
       if(found.some(x=>!x))throw Error('下載未完整'); ready=true; connection();
     }).catch(()=>status('離線包未完成：請保持連網並重新載入。私人瀏覽模式可能不支援。'));

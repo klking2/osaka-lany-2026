@@ -1,6 +1,8 @@
 # Osaka LANY 2026 手機版
 
-靜態 GitHub Pages 行程網站，不需登入 ChatGPT。公開行程基線為 revision 61；個人修改存在 localStorage，私人票券存在 IndexedDB。
+> 詳細指南版本62：37個節點／32張可收合指南；內容、相容性及驗收記錄見 [PREVIEW-62.md](PREVIEW-62.md)。
+
+靜態 GitHub Pages 行程網站，不需登入 ChatGPT。本次發布行程基線為 revision 62；個人修改存在 localStorage，私人票券存在 IndexedDB。
 
 ## 私人跨裝置版本
 
