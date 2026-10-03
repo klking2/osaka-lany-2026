@@ -33,8 +33,8 @@
       // Check actual shell contents, not just registration success.
       const registration=await navigator.serviceWorker.getRegistration();
       if(!registration?.active)throw Error('離線服務尚未啟用');
-      const assets=['./guide-data.json?v=62','./guides.js?v=62','./index.html','./trip-data.json','./places.json?v=62','./mobile.js?v=65','./mobile.css?v=65'];
-      const cache=await caches.open('osaka-lany-2026-v24');
+      const assets=['./guide-data.json?v=62','./guides.js?v=62','./index.html','./trip-data.json','./places.json?v=62','./mobile.js?v=66','./mobile.css?v=66'];
+      const cache=await caches.open('osaka-lany-2026-v25');
       const found=await Promise.all(assets.map(path=>cache.match(new URL(path,location.href).href)));
       if(found.some(x=>!x))throw Error('下載未完整'); ready=true; connection();
     }).catch(()=>status('離線包未完成：請保持連網並重新載入。私人瀏覽模式可能不支援。'));
@@ -108,7 +108,8 @@
       };
       actions.append(open,save,rename,remove);content.append(actions);$('wallet-files').append(row);
     });
-    walletStatus.textContent=files.length?'已儲存 '+files.length+' 份私人文件 · 點票券標題展開圖片，再點圖片放大。':'這部裝置尚未有票券圖片。可從私人 Drive「只加入票券」，或在下方選擇圖片。';
+    $('wallet-count').textContent='這部裝置：'+files.length+' 份';
+    walletStatus.textContent=files.length?'這部裝置已儲存 '+files.length+' 份私人文件。若數量不足，按上方「登入 Google 並載入最新票券」。':'這部裝置尚未載入私人文件。按上方「登入 Google 並載入最新票券」，完成後文件會出現在這裏。';
   }
   window.addEventListener('osaka-wallet-updated',()=>{if(db)renderWallet().catch(()=>{walletStatus.textContent='票券已新增，請重新載入查看。';});});
   request.onsuccess=()=>{db=request.result;renderWallet().catch(()=>{walletStatus.textContent='文件讀取失敗，請重新載入。';});};

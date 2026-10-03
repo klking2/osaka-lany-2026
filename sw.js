@@ -1,5 +1,5 @@
-const CACHE='osaka-lany-2026-v24';
-const SHELL=['./guide-data.json?v=62','./guides.js?v=62','./','./index.html','./trip-data.json','./places.json?v=62','./mobile.js?v=65','./install.js','./reading.js?v=62','./sync-core.js?v=65','./private-sync.js?v=65','./sync-config.json','./mobile.css?v=65','./manifest.webmanifest','./icon.svg','./apple-touch-icon.png'];
+const CACHE='osaka-lany-2026-v25';
+const SHELL=['./guide-data.json?v=62','./guides.js?v=62','./','./index.html','./trip-data.json','./places.json?v=62','./mobile.js?v=66','./install.js','./reading.js?v=62','./sync-core.js?v=66','./private-sync.js?v=66','./sync-config.json','./mobile.css?v=66','./manifest.webmanifest','./icon.svg','./apple-touch-icon.png'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('osaka-lany-2026-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',event=>{

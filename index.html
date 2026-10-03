@@ -13,9 +13,9 @@
   <script defer src="./guides.js?v=62"></script>
   <script defer src="./reading.js?v=62"></script>
   <script defer src="./install.js"></script>
-  <script defer src="./mobile.js?v=65"></script>
-  <script defer src="./sync-core.js?v=65"></script>
-  <script defer src="./private-sync.js?v=65"></script>
+  <script defer src="./mobile.js?v=66"></script>
+  <script defer src="./sync-core.js?v=66"></script>
+  <script defer src="./private-sync.js?v=66"></script>
   <style>
     :root {
       color-scheme: light;
@@ -458,10 +458,10 @@
       .panel, .soft-alert { box-shadow: none; break-inside: avoid; }
     }
   </style>
-  <link rel="stylesheet" href="./mobile.css?v=65">
+  <link rel="stylesheet" href="./mobile.css?v=66">
 </head>
 <body>
-  <p class="guide-preview-note">版本 65 · 票券按用途及持有人命名，點標題展開。<a href="#offline-wallet">查看我的票券圖片</a>。逐站詳細步驟：<a href="#guide-kix-arrival">關西機場抵埗</a> · <a href="#guide-rapit-out">找 Rapi:t 前往難波</a> · <a href="#guide-loppi">Loppi 取 LANY 門票</a>。</p>
+  <p class="guide-preview-note">版本 66 · <a href="#offline-wallet">登入 Google 並載入最新票券</a>；票券區顯示這部裝置的實際文件數量。<a href="#offline-wallet">查看我的票券圖片</a>。逐站詳細步驟：<a href="#guide-kix-arrival">關西機場抵埗</a> · <a href="#guide-rapit-out">找 Rapi:t 前往難波</a> · <a href="#guide-loppi">Loppi 取 LANY 門票</a>。</p>
   <main class="soft-saas-shell">
     <header class="topbar">
       <div class="brandline">
@@ -980,9 +980,9 @@
       <p id="sync-status" role="status" aria-live="polite">正在讀取同步設定…</p>
     </details>
     <details class="reading-toggle panel mobile-intro" id="offline-wallet">
-      <summary class="reading-heading"><h2>我的票券圖片 · 私人離線票券包</h2></summary>
+      <summary class="reading-heading"><h2>我的私人票券及文件 · <span id="wallet-count">讀取本機文件中…</span></h2></summary>
       <p>登機證、Visit Japan Web 入境海關 QR、Loppi 取票碼及訂位詳情按標題列出；點標題展開圖片，再點圖片放大，載入後可離線查看。圖片留在本機／私人 Drive，不會公開；請另留原檔備份。</p>
-      <p>手機第一次使用：連接同一 Google 帳戶 → 選擇含圖片的私人版本 → 按「只加入票券（保留手機行程）」。</p><div class="mobile-actions"><a href="#private-sync">從私人 Drive 加入圖片</a></div>
+      <p>請在平常使用的手機 App 內載入；主畫面 App 與 Safari 可能分開儲存。按下方按鈕，用儲存票券的同一 Google 帳戶登入，就會下載最新私人票券及標題，保留這部裝置的行程和備註。</p><div class="mobile-actions"><button id="wallet-load-latest" type="button" disabled>登入 Google 並載入最新票券</button><a href="#private-sync">選擇其他私人版本</a></div><p id="wallet-sync-status" role="status" aria-live="polite">正在準備私人票券載入…</p>
       <label>選擇文件（單檔上限 20 MB）<input id="wallet-file" type="file" accept="application/pdf,image/jpeg,image/png,image/webp" multiple></label>
       <p id="wallet-status" role="status"></p><div id="wallet-files"></div>
     </details>

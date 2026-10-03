@@ -3,11 +3,13 @@
   const C=window.OsakaSyncCore,$=id=>document.getElementById(id);
   const scope='https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/userinfo.email';
   const API='https://www.googleapis.com/drive/v3/files';
-  let token='',expires=0,client=null,busy=false,files=[],email='',dbPromise;
-  const message=text=>{$('sync-status').textContent=text;};
+  let token='',expires=0,client=null,busy=false,files=[],email='',dbPromise,authPending=false,loadLatestAfterConnect=false;
+  const message=text=>{$('sync-status').textContent=text;$('wallet-sync-status').textContent=text;};
   function controls(){
     const connected=token&&Date.now()<expires;
-    $('sync-connect').disabled=busy||!client;
+    $('sync-connect').disabled=busy||authPending||!client;
+    $('wallet-load-latest').disabled=busy||authPending||!client;
+    $('wallet-load-latest').textContent=authPending?'等候 Google 登入…':busy?'正在處理私人票券…':connected?'載入最新私人票券':'登入 Google 並載入最新票券';
     for(const id of ['sync-upload','sync-list','sync-disconnect'])$(id).disabled=busy||!connected;
     $('sync-restore').disabled=busy||!connected||!$('sync-versions').value;
     $('sync-restore-wallet').disabled=busy||!connected||!$('sync-versions').value;
@@ -106,9 +108,26 @@
     message('正在下載及校驗私人票券…');
     const downloaded=await readSnapshot(file.id);const snapshot=await C.snapshot(JSON.parse(downloaded.text));
     const count=await addWallet(snapshot.files);
-    message('已加入 '+count+' 份私人票券；重複圖片已略過，手機行程、備註與原有票券均保留。');
+    const total=(await wallet()).length;
+    message('已載入「'+snapshot.device+'」的 '+snapshot.files.length+' 份文件；這部裝置現有 '+total+' 份（新增 '+count+' 份）。行程和備註保持不變。');
     location.hash='#offline-wallet';window.revealReading?.('#offline-wallet',true);
   }
+  async function loadLatestWallet(refresh=true){
+    if(refresh)await listVersions();
+    if(!files.length)throw Error('這個 Google 帳戶沒有私人版本。請改用儲存票券的同一帳戶，再按載入。');
+    $('sync-versions').value=files[0].id;
+    await restoreWalletOnly();
+  }
+  function connectGoogle(loadLatest){
+    loadLatestAfterConnect=loadLatest;authPending=true;
+    token='';expires=0;email='';files=[];$('sync-versions').replaceChildren();controls();
+    message('請在 Google 登入視窗選擇儲存票券的帳戶；完成後'+(loadLatest?'會直接下載最新私人票券。':'可選擇私人版本。'));
+    try{client.requestAccessToken({prompt:'select_account'});}catch(e){authPending=false;loadLatestAfterConnect=false;controls();message(e.message||'Google 登入未能開啟，請再試。');}
+  }
+  $('wallet-load-latest').onclick=()=>{
+    if(token&&Date.now()<expires)work(loadLatestWallet);
+    else if(client)connectGoogle(true);
+  };
   $('sync-restore-wallet').onclick=()=>work(restoreWalletOnly);
   $('sync-undo').onclick=()=>work(async()=>{if(confirm('還原最近一次載入前的行程、待辦、選餐及備註？票券保持現狀。')){window.osakaPrivateState.undo();message('已還原載入前的行程；票券保持現狀。');}});
   $('sync-upload').onclick=()=>work(upload);
@@ -123,13 +142,14 @@
     if(!/^[\w-]+\.apps\.googleusercontent\.com$/.test(config.clientId||''))throw Error('私人同步設定尚未完成');
     await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='https://accounts.google.com/gsi/client';s.onload=resolve;s.onerror=()=>reject(Error('Google 登入未能載入；請連網後重試'));document.head.append(s);});
     client=google.accounts.oauth2.initTokenClient({client_id:config.clientId,scope,include_granted_scopes:false,
-      callback:response=>work(async()=>{
+      callback:response=>{authPending=false;const loadLatest=loadLatestAfterConnect;loadLatestAfterConnect=false;return work(async()=>{
         if(response.error||!response.access_token)throw Error('Google 授權未完成');
         if(!google.accounts.oauth2.hasGrantedAllScopes(response,'https://www.googleapis.com/auth/drive.appdata','https://www.googleapis.com/auth/userinfo.email'))throw Error('需要私人應用程式資料及電郵辨識權限才能同步');
         token=response.access_token;expires=Date.now()+(Number(response.expires_in)||0)*1000-60000;
         try{const user=await (await request('https://www.googleapis.com/oauth2/v3/userinfo')).json();if(!user.email)throw Error('未能確認登入帳戶');email=user.email;await listVersions();message('已連接 '+email+'。請選擇儲存本機版本或載入另一裝置版本。');}catch(e){token='';expires=0;throw e;}
-      }),error_callback:()=>{message('登入視窗未完成，請再按連接 Google Drive。');controls();}});
-    $('sync-connect').onclick=()=>{token='';expires=0;email='';files=[];$('sync-versions').replaceChildren();controls();client.requestAccessToken({prompt:'select_account'});};
+      if(loadLatest)await loadLatestWallet(false);
+      });},error_callback:()=>{authPending=false;loadLatestAfterConnect=false;message('登入視窗未完成，請再按「登入 Google 並載入最新票券」。');controls();}});
+    $('sync-connect').onclick=()=>connectGoogle(false);
     message('尚未連接。兩部裝置請使用同一個 Google 帳戶。');controls();
   }
   controls();initialize().catch(e=>message(e.message));
