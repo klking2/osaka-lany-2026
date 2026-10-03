@@ -33,8 +33,8 @@
       // Check actual shell contents, not just registration success.
       const registration=await navigator.serviceWorker.getRegistration();
       if(!registration?.active)throw Error('離線服務尚未啟用');
-      const assets=['./guide-data.json?v=62','./guides.js?v=62','./index.html','./trip-data.json','./places.json?v=62','./mobile.js?v=64','./mobile.css?v=64'];
-      const cache=await caches.open('osaka-lany-2026-v23');
+      const assets=['./guide-data.json?v=62','./guides.js?v=62','./index.html','./trip-data.json','./places.json?v=62','./mobile.js?v=65','./mobile.css?v=65'];
+      const cache=await caches.open('osaka-lany-2026-v24');
       const found=await Promise.all(assets.map(path=>cache.match(new URL(path,location.href).href)));
       if(found.some(x=>!x))throw Error('下載未完整'); ready=true; connection();
     }).catch(()=>status('離線包未完成：請保持連網並重新載入。私人瀏覽模式可能不支援。'));
@@ -53,12 +53,28 @@
     $('wallet-viewer-zoom').textContent=zoomed?'適合螢幕':'原始大小';
   };
   viewer.addEventListener('close',()=>{viewerImage.removeAttribute('src');viewerImage.classList.remove('actual-size');});
-  function ticketTitle(name){
-    return name.replace(/^\d+[a-z]?[-_ ]+/i,'').replace(/\.(png|jpe?g|webp|pdf)$/i,'').replace('入境海關QR','Visit Japan Web 入境／海關 QR').replace(/-/g,' · ');
+  function ticketTitle(file){
+    if(typeof file.title==='string'&&file.title.trim())return file.title.trim();
+    const name=file.name||'',owner=/Edward|Long/i.test(name)?'Edward':/同行者|Fanny/i.test(name)?'同行者':'';
+    const person=owner?'｜'+owner:'';
+    if(/護照/.test(name))return '護照影本'+person;
+    if(/Visit Japan|入境海關/i.test(name))return 'Visit Japan Web｜入境及海關 QR'+person;
+    if(/登機證/.test(name))return '去程電子登機證｜香港 → 關西'+person;
+    if(/Loppi/i.test(name))return 'LANY 演唱會｜Lawson 取票 QR 碼';
+    if(/最新開場|時間変更/.test(name))return 'LANY 演唱會｜最新開場及演出時間通知';
+    if(/Lawson海外|非日本用戶/.test(name))return 'Lawson｜海外旅客取票操作說明';
+    if(/原始預訂/.test(name))return 'LANY 演唱會｜原始訂單（時間以最新通知為準）';
+    if(/門票收據/.test(name))return 'LANY 演唱會｜購票收據';
+    if(/訂位詳情/.test(name))return 'LANY 演唱會｜已付款預訂紀錄（非入場票）';
+    if(/酒店|住宿訂房/.test(name))return '酒店｜住宿預訂確認';
+    if(/機票|HK Express訂單/.test(name))return 'HK Express｜機票訂單（非登機證）';
+    if(/保險|旅遊保/.test(name))return '旅遊保險｜保單及保障文件';
+    return file.blob?.type==='application/pdf'?'私人旅程文件｜待填標題':'私人票券圖片｜待填標題';
   }
+  window.osakaTicketTitle=ticketTitle;
   function showImage(file,url){
-    $('wallet-viewer-title').textContent=ticketTitle(file.name);
-    viewerImage.alt=file.name;viewerImage.src=url;viewerImage.classList.remove('actual-size');
+    $('wallet-viewer-title').textContent=ticketTitle(file);
+    viewerImage.alt=ticketTitle(file);viewerImage.src=url;viewerImage.classList.remove('actual-size');
     $('wallet-viewer-zoom').textContent='原始大小';viewer.showModal();
   }
   async function renderWallet() {
@@ -66,7 +82,7 @@
     const files=await operation('readonly',store=>store.getAll());
     files.sort((a,b)=>a.name.localeCompare(b.name,'zh-Hant'));
     files.forEach(file=>{
-      const title=ticketTitle(file.name);
+      const title=ticketTitle(file);
       const row=el('details',undefined,'wallet-card reading-toggle');
       const summary=el('summary',title,'wallet-title');row.append(summary);
       const content=el('div',undefined,'wallet-content');row.append(content);
@@ -80,11 +96,17 @@
       const actions=el('div',undefined,'wallet-actions');
       const open=el('a','開啟原檔');open.href=url;open.target='_blank';open.rel='noopener';
       const save=el('a','下載備份');save.href=url;save.download=file.name;
+      const rename=el('button','修改標題');rename.type='button';rename.onclick=async()=>{
+        const title=prompt('這是什麼票券？輸入用途及持有人（原始檔名保持不變）：',ticketTitle(file));
+        if(title===null)return;
+        if(!title.trim()||title.trim().length>200){walletStatus.textContent='請填寫 1 至 200 字的票券標題。';return;}
+        try{await operation('readwrite',store=>store.put({...file,title:title.trim()}));await renderWallet();}catch{walletStatus.textContent='標題未能儲存，請重試。';}
+      };
       const remove=el('button','移除');remove.type='button';remove.onclick=async()=>{
         if(!confirm('只移除這部裝置內的「'+file.name+'」？原檔不受影響。'))return;
         try{await operation('readwrite',store=>store.delete(file.id));await renderWallet();}catch{walletStatus.textContent='未能移除，請重試。';}
       };
-      actions.append(open,save,remove);content.append(actions);$('wallet-files').append(row);
+      actions.append(open,save,rename,remove);content.append(actions);$('wallet-files').append(row);
     });
     walletStatus.textContent=files.length?'已儲存 '+files.length+' 份私人文件 · 點票券標題展開圖片，再點圖片放大。':'這部裝置尚未有票券圖片。可從私人 Drive「只加入票券」，或在下方選擇圖片。';
   }
@@ -99,7 +121,7 @@
       for(const file of event.target.files) {
         if(!['application/pdf','image/jpeg','image/png','image/webp'].includes(file.type)||file.size>20*1024*1024)throw Error('只接受 20 MB 內的 PDF／JPG／PNG／WebP。');
         const hash=await digest(file);if(hashes.has(hash))continue;
-        await operation('readwrite',store=>store.add({id:crypto.randomUUID(),name:file.name,blob:file}));hashes.add(hash);
+        await operation('readwrite',store=>store.add({id:crypto.randomUUID(),name:file.name,title:ticketTitle({name:file.name,blob:file}),blob:file}));hashes.add(hash);
       }
       await renderWallet();
     }catch(error){walletStatus.textContent='未能完成儲存：'+error.message+' 請保留原檔。';}

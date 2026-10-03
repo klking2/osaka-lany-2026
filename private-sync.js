@@ -33,12 +33,13 @@
   });}
   async function addWallet(incoming){
     // Never overwrite or delete local attachments. Equal bytes are deduplicated.
-    const existing=await wallet(),hashes=new Set();
-    for(const f of existing)hashes.add(await C.digest(await f.blob.arrayBuffer()));
-    const additions=[];for(const f of incoming){if(hashes.has(f.sha256))continue;hashes.add(f.sha256);additions.push({id:crypto.randomUUID(),name:f.name,blob:new Blob([C.decode(f.data)],{type:f.type})});}
+    const existing=await wallet(),hashes=new Map(),titleUpdates=[];
+    for(const f of existing)hashes.set(await C.digest(await f.blob.arrayBuffer()),f);
+    const additions=[];for(const f of incoming){if(hashes.has(f.sha256)){const local=hashes.get(f.sha256);if(local&&!local.title&&f.title)titleUpdates.push({...local,title:f.title});continue;}hashes.set(f.sha256,null);additions.push({id:crypto.randomUUID(),name:f.name,title:f.title||'',blob:new Blob([C.decode(f.data)],{type:f.type})});}
     const db=await openDB();await new Promise((resolve,reject)=>{
       const tx=db.transaction('files','readwrite'),store=tx.objectStore('files');
       for(const f of additions)store.add(f);
+      for(const f of titleUpdates)store.put(f);
       tx.oncomplete=resolve;tx.onabort=tx.onerror=()=>reject(Error('票券儲存失敗；原有票券未更動。'));
     });
     window.dispatchEvent(new Event('osaka-wallet-updated'));return additions.length;
@@ -53,7 +54,7 @@
       total+=f.blob.size;if(f.blob.size>C.MAX_FILE||total>C.MAX_TOTAL)throw Error('每份票券上限 20 MB，合計上限 64 MB');
       if(!C.types.includes(f.blob.type))throw Error('票券只接受 PDF／JPG／PNG／WebP');
       const bytes=new Uint8Array(await f.blob.arrayBuffer());
-      result.files.push({name:f.name,type:f.blob.type,data:C.encode(bytes),sha256:await C.digest(bytes)});
+      result.files.push({name:f.name,title:window.osakaTicketTitle?.(f)||f.title||'',type:f.blob.type,data:C.encode(bytes),sha256:await C.digest(bytes)});
     }
     return C.snapshot(result);
   }

@@ -55,7 +55,7 @@
       const bytes=decode(file.data);size+=bytes.length;check(size<=MAX_TOTAL,'私人票券總容量上限為 64 MB');
       const hash=await digest(bytes);check(hash===file.sha256,'票券內容校驗失敗，未載入');
       if(hashes.has(hash))continue;hashes.add(hash);
-      result.files.push({id:'sha256-'+hash,name:str(file.name,500),type:file.type,data:file.data,sha256:hash});
+      result.files.push({id:'sha256-'+hash,name:str(file.name,500),title:file.title===undefined?'':str(file.title,200),type:file.type,data:file.data,sha256:hash});
     }
     return result;
   }

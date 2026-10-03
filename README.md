@@ -2,7 +2,7 @@
 
 > 詳細指南版本62：37個節點／32張可收合指南；內容、相容性及驗收記錄見 [PREVIEW-62.md](PREVIEW-62.md)。
 
-靜態 GitHub Pages 行程網站，不需登入 ChatGPT。本次發布行程基線為 revision 64；個人修改存在 localStorage，私人票券存在 IndexedDB。
+靜態 GitHub Pages 行程網站，不需登入 ChatGPT。本次發布行程基線為 revision 65；個人修改存在 localStorage，私人票券存在 IndexedDB。
 
 ## 私人跨裝置版本
 
@@ -29,3 +29,7 @@
 ## 私人票券收合清單版本64
 
 票券以原生 details/summary 預設收起，標題由私人檔名產生並去掉編號和副檔名；展開即顯示原圖，可再點圖放大。保持 IndexedDB 原檔及 Drive 同步格式，支援全部展開／收起。
+
+## 票券用途標題版本65
+
+顯示標題與原始檔名分開；可修改標題。私人同步保留標題；舊版本缺少標題仍可載入，按票券用途顯示，未分類文件提示填寫標題。
