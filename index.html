@@ -10,9 +10,9 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
-  <script defer src="./reading.js?v=59"></script>
+  <script defer src="./reading.js?v=60"></script>
   <script defer src="./install.js"></script>
-  <script defer src="./mobile.js?v=59"></script>
+  <script defer src="./mobile.js?v=60"></script>
   <script defer src="./sync-core.js"></script>
   <script defer src="./private-sync.js"></script>
   <style>
@@ -457,7 +457,7 @@
       .panel, .soft-alert { box-shadow: none; break-inside: avoid; }
     }
   </style>
-  <link rel="stylesheet" href="./mobile.css?v=59">
+  <link rel="stylesheet" href="./mobile.css?v=60">
 </head>
 <body>
   <main class="soft-saas-shell">
@@ -481,7 +481,8 @@
     </div>
     <section class="mobile-intro panel" id="install-section">
       <strong>大阪・神戶，放進手機。</strong>
-      <div class="mobile-actions install-actions"><button id="install-app" type="button" aria-controls="install-help">＋ 加入手機主畫面</button></div>
+      <div class="mobile-actions install-actions"><button id="install-app" type="button" aria-controls="install-help">＋ 加入手機主畫面</button><a id="google-bookings" href="https://www.google.com/maps/reserve/bookings?hl=zh-TW" target="_blank" rel="noopener noreferrer" aria-describedby="google-bookings-help">開啟 Google 預約 ↗</a></div>
+      <p id="google-bookings-help">查看已訂餐廳及預約詳情（需網絡）。請使用訂位時的 Google 帳戶登入；若清單不對，切換右上角帳戶。</p>
       <p id="install-status" role="status" aria-live="polite">加入後可從手機桌面直接開啟行程。</p>
       <details id="install-help">
         <summary>查看 iPhone／Android 加入方法</summary>

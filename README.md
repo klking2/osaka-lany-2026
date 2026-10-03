@@ -1,6 +1,6 @@
 # Osaka LANY 2026 手機版
 
-靜態 GitHub Pages 行程網站，不需登入 ChatGPT。公開行程基線為 revision 56；個人修改存在 localStorage，私人票券存在 IndexedDB。
+靜態 GitHub Pages 行程網站，不需登入 ChatGPT。公開行程基線為 revision 60；個人修改存在 localStorage，私人票券存在 IndexedDB。
 
 ## 私人跨裝置版本
 
