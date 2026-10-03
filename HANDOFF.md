@@ -1,14 +1,14 @@
 # 大阪 LANY 2026｜另一部 Mac / Codex 接手
 
 更新：2026-10-03。行程網站公開可讀，不需登入 ChatGPT：
-https://klking2.github.io/osaka-lany-2026/?v=58
+https://klking2.github.io/osaka-lany-2026/?v=59
 
 ## 專案在哪裏
 
 - GitHub 原始碼（公開、用來發布網站）：https://github.com/klking2/osaka-lany-2026 ，`main` 分支。
 - Google Drive 工作資料夾：`我的雲端硬碟/大阪之旅/osaka-trip-mobile`。在另一部 Mac，從 Finder 的 Google Drive 找這個資料夾；不要照搬這部 Mac 的 `/Users/kingclaw/...` 路徑。
 - 這部 MacBook 的獨立 checkout：`~/Documents/ChatGPT/travel/osaka-trip-mobile`。其他機器需實測自己的路徑。
-- revision 54 原始基線提交：`27a1bdf`；目前目標基線為 `trip-data.json` revision 58（電子登機證後的上機步驟）。另一部 Mac 接手時，先核對自己的資料夾已同步到至少這個版本。
+- revision 54 原始基線提交：`27a1bdf`；目前目標基線為 `trip-data.json` revision 59（可收合閱讀標題）。另一部 Mac 接手時，先核對自己的資料夾已同步到至少這個版本。
 
 ## 明天在另一部 Mac
 
@@ -47,3 +47,7 @@ revision 55 修正備註內的舊 R3 字眼，也對已儲存舊備註的瀏覽�
 ## revision 58 電子登機證後的上機步驟
 
 新增 `#boarding-guide` 六步指引及頁首「上飛機步驟」捷徑，針對10/4 UO686。已按 HK Express 官方網上登機、T2、FAQ、旅遊警示核對；08:45 取自原行程，05:45抵達建議／07:30自助機截止／07:45寄艙截止／08:00前到閘／08:15關閘為按其推算，若改時依航空公司最新安排。Edward 確認有寄艙行李，主要流程固定先到T2 U行寄艙，T2安檢出境後搭接駁列車到T1登機區，回程須另用UO689登機證。沒有把私人QR放入repo，也沒有改動既有行程時間及訂位。
+
+## revision 59 手機／電腦收合閱讀
+
+上機步驟、總覽待辦、地圖、候選、餐廳、行程、私人同步及票券預設收起；餐廳與候選子分類及備註亦有獨立標題。原生 details／summary 支援觸控及鍵盤，提供全部展開／收起。點擊頁內捷徑（包括拉麵及備註）會自動打開所需父層。URL 的 ?v=53 只是查詢參數，同站點會取得目前版本；既有私人資料及訂位不變。

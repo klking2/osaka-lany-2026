@@ -10,6 +10,7 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <script defer src="./reading.js"></script>
   <script defer src="./install.js"></script>
   <script defer src="./mobile.js"></script>
   <script defer src="./sync-core.js"></script>
@@ -498,12 +499,14 @@
       <p>行程、餐廳特色、地址與路線示意可離線；Google 地圖及即時導航需要網絡。手機修改只存在這部裝置，不會自動同步 Drive／Codex 或改動真實訂位。</p>
       <div class="mobile-actions"><a href="#itinerary">查看四日行程</a><a href="#offline-wallet">私人票券包</a><button id="export-state" type="button">匯出我的修改</button></div>
     </section>
+    <div class="reading-controls mobile-actions" aria-label="閱讀顯示方式"><span>點按標題，展開要看的內容</span><button id="expand-reading" type="button">全部展開</button><button id="collapse-reading" type="button">全部收起</button></div>
     <nav class="quick-nav" aria-label="旅程系統快速前往">
       <a href="#boarding-guide">上飛機步驟</a><a href="#food-choices">選餐廳</a><a href="#optional-places">候選行程</a><a href="#task-panel">待辦</a><a href="#itinerary">行程</a><a href="#trip-notes">備註</a><a href="#trip-map">地圖</a>
     </nav>
 
-    <section class="panel mobile-intro" id="boarding-guide" aria-labelledby="boarding-guide-title">
-      <h2 id="boarding-guide-title">已有電子登機證，怎樣上飛機？</h2>
+    <details class="reading-toggle panel mobile-intro" id="boarding-guide" aria-labelledby="boarding-guide-title">
+      <summary class="reading-heading"><h2 id="boarding-guide-title">已有電子登機證，怎樣上飛機？</h2></summary>
+
       <p><b>10/4 去程 UO686 · 香港 → 關西 · 行程原定 08:45 起飛（香港時間）</b><br>你已完成網上登機，兩張電子登機證已發出及離線保存，並確認有寄艙行李。到機場後仍要先寄艙，再過安檢；出發前再看航空公司通知及最新登機證。</p>
       <div class="boarding-times" aria-label="按 08:45 起飛推算的時間">
         <div><b>05:45 左右</b><span>建議抵達香港機場 T2<br>預留約 3 小時</span></div>
@@ -524,9 +527,10 @@
       <div class="mobile-actions"><a href="#offline-wallet">開啟私人離線票券包</a><a href="#itinerary">返回四日行程</a></div>
       <p class="boarding-sources">官方流程核對：2026-10-03。<a href="https://www.hkexpress.com/Plan/Guideline/Online-Check-in" target="_blank" rel="noreferrer">HK Express 網上登機</a> · <a href="https://www.hkexpress.com/en/Plan/Travel/HKIA-T2" target="_blank" rel="noreferrer">T2 路線及截止時間</a> · <a href="https://www.hkexpress.com/Need-help/Customer-Care/check-in-faq" target="_blank" rel="noreferrer">登機證／閘口 FAQ</a> · <a href="https://www2.hkexpress.com/Plan/Travel/Important-Travel-Alerts" target="_blank" rel="noreferrer">提前 45 分鐘到閘提示</a></p>
       <p>此段適用於 10/4 香港出發；10/7 回程須另行辦理 UO689 登機，使用回程登機證及關西機場當日指示。</p>
-    </section>
+    </details>
 
-    <section class="soft-board" aria-label="大阪旅程互動控制台">
+    <details class="reading-toggle dashboard-toggle panel" id="overview-toggle"><summary class="reading-heading"><h2>旅程總覽與待辦</h2></summary>
+<section class="soft-board" aria-label="大阪旅程互動控制台">
       <aside class="left-stack">
         <article class="profile-card panel">
           <div class="avatar" aria-hidden="true">
@@ -663,11 +667,13 @@
         </div>
       </article>
     </section>
+    </details>
 
-    <section class="map-shell panel" id="trip-map" aria-label="大阪與神戶行程 Google 地圖">
+    <details class="reading-toggle map-shell panel" id="trip-map" aria-label="大阪與神戶行程 Google 地圖">
+      <summary class="reading-heading"><h2 class="panel-title">大阪 LANY 2026 · Google My Maps</h2></summary>
       <div class="map-head">
         <div class="map-copy">
-          <h2 class="panel-title">大阪 LANY 2026 · Google My Maps</h2>
+
           <p>原有大阪／神戶 Google My Maps 連結。私人地圖可能需登入原 Google 帳戶；下面的離線地點清單及路線示意不需要登入。候選不會自動改動正式行程。</p>
           <div class="map-meta" aria-label="地圖摘要">
             <span class="map-chip">既有 Google 地圖</span>
@@ -690,25 +696,28 @@
         <span>地圖由 Google My Maps 提供；新候選會獨立成圖層，不會自動改動正式四日行程。奈良四個舊 pin 仍保留供參考。</span>
         <a href="https://www.google.com/maps/d/edit?mid=1EfJWtbDdLZm14VFLMqp-Vksp_uucBY4" target="_blank" rel="noreferrer">管理 pins</a>
       </div>
-    </section>
+    </details>
 
-    <section class="candidate-board panel" id="optional-places" aria-label="可能會做與後備行程">
+    <details class="reading-toggle candidate-board panel" id="optional-places" aria-label="可能會做與後備行程">
+      <summary class="reading-heading"><h2 class="panel-title">可能會做／臨時改行程</h2></summary>
       <div class="panel-head">
-        <div><h2 class="panel-title">可能會做／臨時改行程</h2><p class="candidate-intro">以下先放進 Google My Maps 作後備，不硬塞入正式四日行程。當日不知道做甚麼、天氣或體力令原路線要改時，再按地區挑選。</p></div>
+        <div><p class="candidate-intro">以下先放進 Google My Maps 作後備，不硬塞入正式四日行程。當日不知道做甚麼、天氣或體力令原路線要改時，再按地區挑選。</p></div>
         <span class="status-pill">MAP PINS</span>
       </div>
       <div class="candidate-groups">
-        <article class="candidate-group">
-          <h3>LUCUA Osaka · 一站式後備方案</h3>
+        <details class="reading-toggle candidate-group">
+      <summary class="reading-heading"><h3>LUCUA Osaka · 一站式後備方案</h3></summary>
+
           <p>梅田區可同時吃飯、甜品與購物；適合空檔、下雨或臨時想改行程。</p>
           <div class="candidate-grid">
             <div class="candidate-card"><span class="meal-label">B2F · 鰻魚</span><b>うなぎ 串焼き いづも</b><p>招牌鰻玉丼；作臨時午餐或較早晚餐。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%86%E3%81%AA%E3%81%8E+%E4%B8%B2%E7%84%BC%E3%81%8D+%E3%81%84%E3%81%A5%E3%82%82+%E3%83%AB%E3%82%AF%E3%82%A2%E5%A4%A7%E9%98%AA%E5%BA%97" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
             <div class="candidate-card"><span class="meal-label">7F · 晚間甜品</span><b>WIRED CAFE LUCUA</b><p>咖啡、甜品與輕食；LUCUA 店一般營業至 23:00。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=WIRED+CAFE+LUCUA+Osaka" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
             <div class="candidate-card"><span class="meal-label">10F · 壽喜燒</span><b>モリタ屋 ルクア大阪店</b><p>京都老字號和牛壽喜燒；想吃較正式晚餐時可選。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A2%E3%83%AA%E3%82%BF%E5%B1%8B+%E3%83%AB%E3%82%AF%E3%82%A2%E5%A4%A7%E9%98%AA%E5%BA%97" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
           </div>
-        </article>
-        <article class="candidate-group">
-          <h3>大阪景點候選</h3>
+        </details>
+        <details class="reading-toggle candidate-group">
+      <summary class="reading-heading"><h3>大阪景點候選</h3></summary>
+
           <p>勝尾寺＋箕面大滝最好視作半日至一日郊遊；大阪城三項可串成同一區行程。</p>
           <div class="candidate-grid">
             <div class="candidate-card"><span class="meal-label">難波附近</span><b>難波八阪神社</b><p>看巨大獅子殿；正式名稱為「八阪」。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Namba+Yasaka+Shrine" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
@@ -720,17 +729,19 @@
             <div class="candidate-card"><span class="meal-label">已排 10/5</span><b>阿倍野 HARUKAS 300</b><p>已在正式行程及地圖，不重複新增 pin。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=HARUKAS+300" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
             <div class="candidate-card must"><span class="meal-label">必去</span><b>道頓堀</b><p>固定放在 10/4 晚上；已在地圖，不是可刪候選。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Dotonbori+Glico+Sign" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
           </div>
-        </article>
-        <article class="candidate-group">
-          <h3>大阪實體服裝店</h3>
+        </details>
+        <details class="reading-toggle candidate-group">
+      <summary class="reading-heading"><h3>大阪實體服裝店</h3></summary>
+
           <p>以難波／心齋橋順路程度優先；WTAPS 使用官方 stockist HOODS OSAKA。</p>
           <div class="candidate-grid">
             <div class="candidate-card"><span class="meal-label">心齋橋</span><b>Stüssy Osaka Chapter</b><p>大阪市中央區西心齋橋 1-7-9。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Stussy+Osaka+1-7-9+Nishishinsaibashi" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
             <div class="candidate-card"><span class="meal-label">南堀江</span><b>HOODS OSAKA · WTAPS</b><p>WTAPS 官方列出的大阪 stockist；南堀江 1-19-22。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=HOODS+Osaka+1-19-22+Minamihorie" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
           </div>
-        </article>
-        <article class="candidate-group" id="daytona-options">
-          <h3>Daytona Park／FREAK’S STORE · 經過才逛</h3>
+        </details>
+        <details class="reading-toggle candidate-group" id="daytona-options">
+      <summary class="reading-heading"><h3>Daytona Park／FREAK’S STORE · 經過才逛</h3></summary>
+
           <p>2026-09-29 記錄：以下全部是順路購物備選，不是必去、不安排專程、不改動餐廳訂位或每日路線。難波、梅田 LUCUA 與門真三個地點；梅田男裝／女裝分兩層。資料已按官方店頁核對，臨時營業變動以店方公告為準。</p>
           <div class="candidate-grid">
             <div class="candidate-card"><span class="meal-label">難波 · 男女裝 · 順路備選</span><b>FREAK’S STORE なんばパークス店</b><p>大阪市浪速區難波中 2-10-70 · なんばパークス 4F<br>11:00–21:00（日本時間）</p><p>逛難波或 10/7 經過 PARKS 時順便看看；不另設必到時段。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=FREAK'S%20STORE%20%E3%81%AA%E3%82%93%E3%81%B0%E3%83%91%E3%83%BC%E3%82%AF%E3%82%B9%E5%BA%97" target="_blank" rel="noreferrer">開啟 Google 地圖 ↗</a> · <a href="https://www.daytona-park.com/store/nambaparks/" target="_blank" rel="noreferrer">官方店頁 ↗</a></div>
@@ -738,9 +749,10 @@
             <div class="candidate-card"><span class="meal-label">梅田 · 女裝 · 順路備選</span><b>FREAK’S STORE 梅田ルクアウィメンズ店</b><p>大阪市北區梅田 3-1-3 · LUCUA 3F<br>10:30–20:30（日本時間）</p><p>與男裝店不同樓層；經過 3F 有興趣才逛。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=FREAK'S%20STORE%20%E6%A2%85%E7%94%B0%E3%83%AB%E3%82%AF%E3%82%A2%E3%82%A6%E3%82%A3%E3%83%A1%E3%83%B3%E3%82%BA%E5%BA%97%20LUCUA%203F" target="_blank" rel="noreferrer">開啟 Google 地圖 ↗</a> · <a href="https://www.daytona-park.com/store/umeda2/" target="_blank" rel="noreferrer">官方店頁 ↗</a></div>
             <div class="candidate-card"><span class="meal-label">門真 · Outlet · 順路備選</span><b>FREAK’S STORE OUTLET · 大阪門真</b><p>大阪府門真市松生町 1-11 · 三井 OUTLET PARK 大阪門真 2F<br>10:00–21:00（日本時間）</p><p>只有剛好去了門真 Outlet 才看看；不為這間店特地繞路，也不改動現有四日行程。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=FREAK'S%20STORE%20OUTLET%20%E4%B8%89%E4%BA%95%E3%82%A2%E3%82%A6%E3%83%88%E3%83%AC%E3%83%83%E3%83%88%E3%83%91%E3%83%BC%E3%82%AF%20%E5%A4%A7%E9%98%AA%E9%96%80%E7%9C%9F" target="_blank" rel="noreferrer">開啟 Google 地圖 ↗</a> · <a href="https://mitsui-shopping-park.com/mop/osakakadoma/shop/3068531.html" target="_blank" rel="noreferrer">官方店頁 ↗</a></div>
           </div>
-        </article>
-        <article class="candidate-group">
-          <h3>難波站購物圈 · 五個商場＋EDION</h3>
+        </details>
+        <details class="reading-toggle candidate-group">
+      <summary class="reading-heading"><h3>難波站購物圈 · 五個商場＋EDION</h3></summary>
+
           <p>把你提到的「五個商場」按南海難波站一帶處理：PARKS、CITY、SkyO、EKIKAN、髙島屋；PARKS 和髙島屋原本已有 pin。EDION 在髙島屋對面，是獨立補充停點。</p>
           <div class="candidate-grid">
             <div class="candidate-card"><span class="meal-label">已在地圖</span><b>なんばパークス</b><p>服裝、FREAK’S STORE、餐廳及天台花園；已有 pin。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Namba+Parks+Osaka" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
@@ -750,14 +762,15 @@
             <div class="candidate-card"><span class="meal-label">已在地圖</span><b>大阪髙島屋</b><p>百貨、手信及地下食物；已有 pin，與 EDION 面對面。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Osaka+Takashimaya+Namba" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
             <div class="candidate-card must"><span class="meal-label">髙島屋對面</span><b>EDION なんば本店</b><p>8F 看手錶／珠寶；9F「なんばラーメン一座」拉麵樓層，11:00–22:00、最後點餐 21:30。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=EDION+Namba+Main+Store" target="_blank" rel="noreferrer">開啟地圖 ↗</a></div>
           </div>
-        </article>
+        </details>
       </div>
-    </section>
+    </details>
 
-    <section class="food-decider panel" id="food-choices" aria-label="餐廳選擇決策板">
+    <details class="reading-toggle food-decider panel" id="food-choices" aria-label="餐廳選擇決策板">
+      <summary class="reading-heading"><h2 class="panel-title">餐廳決策板 · 由你自己揀</h2></summary>
       <div class="food-head">
         <div class="food-head-copy">
-          <h2 class="panel-title">餐廳決策板 · 由你自己揀</h2>
+
           <p>A–E 是大阪晚餐，K1–K10 及 KH 是神戶晚餐，R1–R12 是拉麵／烏冬候選；10/6 已選 THE HARBOR，K7 訂位仍有效。選擇會儲存在這部手機，不會自動取消另一張訂位。</p>
         </div>
         <span class="status-pill">AUTO SAVE</span>
@@ -776,25 +789,28 @@
 
       <div class="food-layout">
         <div class="food-column">
-          <article class="food-group">
-            <div class="food-group-head"><div><h3>晚餐日期分配</h3><p>10/6 首選 THE HARBOR，K7 仍為有效備用訂位；改選只改行程，不會取消訂位。</p></div><span class="type-chip food">DINNER</span></div>
+          <details class="reading-toggle food-group">
+      <summary class="reading-heading"><h3>晚餐日期分配</h3></summary>
+            <div class="food-group-head"><div><p>10/6 首選 THE HARBOR，K7 仍為有效備用訂位；改選只改行程，不會取消訂位。</p></div><span class="type-chip food">DINNER</span></div>
             <div class="choice-grid">
               <label class="choice-slot"><span>10/4 SUN · 晚餐 · 已定但可改選</span><select id="dinner-1004" data-food-choice="dinner1004" aria-label="選擇 10月4日晚餐"><option value="A">A · 焼肉 万両（現有訂位）</option><option value="B">B · 肉匠なか田</option><option value="C">C · DINING あじと</option><option value="D">D · 心斎橋 和っか</option><option value="E">E · なるとや蔬菜串</option></select><small>現有 Google 訂位：萬兩 日本橋店 · 19:30 · 2 位；改選不會自動取消訂位</small></label>
               <label class="choice-slot"><span>10/5 MON · 演唱會後 · 已定但可改選</span><select id="dinner-1005" data-food-choice="dinner1005" aria-label="選擇 10月5日演唱會後晚餐"><option value="F">F · 磯丸水産（現有訂位）</option><option value="E">E · なるとや蔬菜串（候選）</option><option value="H">H · 玄品 法善寺總本店（候選）</option></select><small>現有 Google 訂位：磯丸水産 なんば南海通り店 · 22:00 · 2 位；改選不會自動取消訂位。E／H 請當日再核對營業時間及空位。</small></label>
               <label class="choice-slot"><span>10/6 TUE · 晚餐 · 兩張已訂位，待擇一</span><select id="dinner-1006" data-food-choice="dinner1006" aria-label="選擇 10月6日晚餐"><option value="">兩張已訂位 · 尚未擇一</option><optgroup label="已訂位 · 留在神戶"><option value="KB7">K7 · 郷土料理 からす · 19:00</option><option value="KH">KH · THE HARBOR · 19:30</option></optgroup><optgroup label="其他大阪候選"><option value="A">A · 焼肉 万両</option><option value="B">B · 肉匠なか田</option><option value="C">C · DINING あじと</option><option value="D">D · 心斎橋 和っか</option><option value="E">E · なるとや蔬菜串</option></optgroup><optgroup label="其他神戶候選"><option value="KB1">K1 · 神戸プレジール本店</option><option value="KB2">K2 · 炭焼肉 石田屋。Hanare</option><option value="KB3">K3 · モーリヤ三宮店</option><option value="KB4">K4 · KOBE BEEF RED ONE</option><option value="KB5">K5 · 銀平 三宮店</option><option value="KB6">K6 · うを勢総本店</option><option value="KB8">K8 · 串乃家 神戸本店</option><option value="KB9">K9 · 明石焼き 蛸匠 神戸三宮本店</option><option value="KB10">K10 · FISHERMAN'S MARKET</option></optgroup></select><small>K7 19:00、THE HARBOR 19:30，均為 2 位 Google 訂座。揀好後須自行取消另一張；THE HARBOR 自助餐、禁煙與付款方式仍待酒店回覆。</small></label>
             </div>
-          </article>
+          </details>
 
-          <article class="food-group" id="kobe-bookings">
-            <div class="food-group-head"><div><h3>10/6 兩張已確認訂位</h3><p>THE HARBOR 為首選，K7 為未取消備用訂位；行程內改選不會通知餐廳。</p></div><span class="type-chip food">K7 待處理</span></div>
+          <details class="reading-toggle food-group" id="kobe-bookings">
+      <summary class="reading-heading"><h3>10/6 兩張已確認訂位</h3></summary>
+            <div class="food-group-head"><div><p>THE HARBOR 為首選，K7 為未取消備用訂位；行程內改選不會通知餐廳。</p></div><span class="type-chip food">K7 待處理</span></div>
             <div class="food-options">
               <div class="food-option must"><span class="food-code">K7</span><span class="meal-label">Google 已確認 · 19:00 · 2 位</span><b>郷土料理 からす</b><p>神戶三宮，僅訂座。若不去，按訂位電郵條款處理；已知取消期限為 10/5 20:00（日本時間），出發前請再核對電郵。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=郷土料理+からす+神戸三宮" target="_blank" rel="noreferrer">Google 地圖 ↗</a></div>
               <div class="food-option must"><span class="food-code">KH</span><span class="meal-label">Google 已確認 · 19:30 · 2 位</span><b>THE HARBOR</b><p>神戶港塔酒店內，僅訂座；自助餐、禁煙及現場付款仍待酒店回覆。若不去，已知取消期限為 10/5 17:30（日本時間），出發前請再核對電郵。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=The+Harbor+Kobe+Port+Tower+Hotel" target="_blank" rel="noreferrer">Google 地圖 ↗</a></div>
             </div>
-          </article>
+          </details>
 
-          <article class="food-group" id="kobe-dinner-options">
-            <div class="food-group-head"><div><h3>10/6 神戶晚餐候選 K1–K10</h3><p>全部按 10/6 星期二晚市篩選；分成神戶牛、海鮮和食、地道輕食。可預約／全席禁煙只按目前公開資料標示，訂位前再核對空位與臨時休業。</p></div><span class="type-chip food">10 OPTIONS</span></div>
+          <details class="reading-toggle food-group" id="kobe-dinner-options">
+      <summary class="reading-heading"><h3>10/6 神戶晚餐候選 K1–K10</h3></summary>
+            <div class="food-group-head"><div><p>全部按 10/6 星期二晚市篩選；分成神戶牛、海鮮和食、地道輕食。可預約／全席禁煙只按目前公開資料標示，訂位前再核對空位與臨時休業。</p></div><span class="type-chip food">10 OPTIONS</span></div>
             <div class="food-options">
               <div class="food-option must"><span class="food-code">K1</span><span class="meal-label">神戶牛 · 首選</span><b>神戸プレジール本店</b><p>JA 全農兵庫直營，可食神戶牛鐵板燒、蒸籠或涮涮鍋；三宮站約 5 分鐘。星期二晚市 17:00–22:00，可網上預約，晚餐另收 10% 服務費。</p><a href="https://kobeplaisir-honten.jp/access" target="_blank" rel="noreferrer">官方資料／預約 ↗</a></div>
               <div class="food-option"><span class="food-code">K2</span><span class="meal-label">神戶牛燒肉</span><b>炭焼肉 石田屋。Hanare</b><p>想食燒肉而不是鐵板燒可選；三宮站附近，星期二營業 17:00–22:30。本店逢星期二休，所以特別改選星期三休的 Hanare。</p><a href="https://kobe-ishidaya.com/" target="_blank" rel="noreferrer">查看官方店舖資料 ↗</a></div>
@@ -807,10 +823,11 @@
               <div class="food-option"><span class="food-code">K9</span><span class="meal-label">明石燒 · 輕鬆</span><b>明石焼き 蛸匠 神戸三宮本店</b><p>飯蛸明石燒、關東煮及章魚飯，三宮站 1–2 分鐘；星期二 17:00–23:00，可網上預約、全席禁煙。適合想食得輕巧。</p><a href="https://tabelog.com/hyogo/A2801/A280101/28074958/" target="_blank" rel="noreferrer">店舖資料／預約 ↗</a></div>
               <div class="food-option"><span class="food-code">K10</span><span class="meal-label">Harborland · 景觀</span><b>FISHERMAN'S MARKET</b><p>MOSAIC 2F 海景海鮮自助餐，約 90 款、90 分鐘制；11:00–22:00，可預約。行完 Harborland 不想折返三宮時最順路。</p><a href="https://umie.jp/shops/detail/106" target="_blank" rel="noreferrer">官方資料／預約 ↗</a></div>
             </div>
-          </article>
+          </details>
 
-          <article class="food-group">
-            <div class="food-group-head"><div><h3>晚餐候選 A–E</h3><p>燒肉與居酒屋只安排晚上。</p></div><span class="type-chip food">5 OPTIONS</span></div>
+          <details class="reading-toggle food-group">
+      <summary class="reading-heading"><h3>晚餐候選 A–E</h3></summary>
+            <div class="food-group-head"><div><p>燒肉與居酒屋只安排晚上。</p></div><span class="type-chip food">5 OPTIONS</span></div>
             <div class="food-options">
               <div class="food-option"><span class="food-code">A</span><span class="meal-label">燒肉</span><b>焼肉 万両 日本橋店</b><p>性價比及本地口碑路線；星期三休息，適合 10/4 或 10/6 晚上。</p><a href="https://yakiniku-manryo.orwst.com/nihonbashi/ja" target="_blank" rel="noreferrer">查看店舖資料 ↗</a></div>
               <div class="food-option"><span class="food-code">B</span><span class="meal-label">高級燒肉</span><b>肉匠なか田 本店</b><p>想食一餐較高級和牛時選；星期一休息，不影響 10/4 或 10/6。</p><a href="https://tabelog.com/osaka/A2701/A270202/27001305/" target="_blank" rel="noreferrer">查看店舖資料 ↗</a></div>
@@ -818,29 +835,32 @@
               <div class="food-option"><span class="food-code">D</span><span class="meal-label">和食居酒屋</span><b>心斎橋 和っか</b><p>季節料理與日本酒；星期一休息，保留作 10/4 或 10/6 晚餐備選。</p><a href="https://tabelog.com/osaka/A2701/A270201/27085403/" target="_blank" rel="noreferrer">查看店舖資料 ↗</a></div>
               <div class="food-option"><span class="food-code">E</span><span class="meal-label">蔬菜串居酒屋</span><b>やさい串巻き なるとや</b><p>裏難波的蔬菜豚肉卷串燒；難波千日前 7-18，適合想吃較輕巧、多款串物的晚上。</p><a href="https://tabelog.com/osaka/A2701/A270202/27099675/" target="_blank" rel="noreferrer">查看店舖資料 ↗</a></div>
             </div>
-          </article>
+          </details>
 
-          <article class="food-group">
-            <div class="food-group-head"><div><h3>午餐日期分配</h3><p>暫排 10/5 J 天婦羅蕎麥麵、10/6 L 神戶牛柳吉列、10/7 G 美々卯。I 鰻魚／K 吉列豬排飯保留備選，若要換入可在下拉選單調整。</p></div><span class="type-chip food">LUNCH</span></div>
+          <details class="reading-toggle food-group">
+      <summary class="reading-heading"><h3>午餐日期分配</h3></summary>
+            <div class="food-group-head"><div><p>暫排 10/5 J 天婦羅蕎麥麵、10/6 L 神戶牛柳吉列、10/7 G 美々卯。I 鰻魚／K 吉列豬排飯保留備選，若要換入可在下拉選單調整。</p></div><span class="type-chip food">LUNCH</span></div>
             <div class="choice-grid">
               <label class="choice-slot"><span>10/5 MON · 午餐</span><select id="lunch-1005" data-food-choice="lunch1005" aria-label="選擇 10月5日午餐"><option value="">尚未選擇</option><option value="G">G · 美々卯 なんば店</option><option value="I">I · 鰻魚 Izumo LUCUA</option><option value="J">J · 天婦羅蕎麥麵（必吃）</option><option value="K">K · 吉列豬排飯</option></select></label>
               <div class="choice-slot"><span>10/6 TUE · 神戶午餐</span><div class="locked-choice">L · グリル一平 三宮店 · 厚切牛柳吉列</div></div>
               <label class="choice-slot"><span>10/7 WED · 午餐</span><select id="lunch-1007" data-food-choice="lunch1007" aria-label="選擇 10月7日午餐"><option value="">尚未選擇</option><option value="G">G · 美々卯 なんば店</option><option value="I">I · 鰻魚 Izumo LUCUA</option><option value="J">J · 天婦羅蕎麥麵（必吃）</option><option value="K">K · 吉列豬排飯</option></select></label>
             </div>
-          </article>
+          </details>
 
-          <article class="food-group">
-            <div class="food-group-head"><div><h3>其餘午餐候選 G／I／J／K</h3><p>G 美々卯與 J 天婦羅蕎麥麵已暫排；I／K 保留備選，不在本次三餐內。</p></div><span class="type-chip food">4 OPTIONS</span></div>
+          <details class="reading-toggle food-group">
+      <summary class="reading-heading"><h3>其餘午餐候選 G／I／J／K</h3></summary>
+            <div class="food-group-head"><div><p>G 美々卯與 J 天婦羅蕎麥麵已暫排；I／K 保留備選，不在本次三餐內。</p></div><span class="type-chip food">4 OPTIONS</span></div>
             <div class="food-options">
               <div class="food-option"><span class="food-code">G</span><span class="meal-label">麵食</span><b>美々卯 なんば店</b><p>已按你的要求只列為午餐，主打大阪名物うどんすき。</p><a href="https://www.mimiu.co.jp/restaurant/namba/" target="_blank" rel="noreferrer">查看官方店舖頁 ↗</a></div>
               <div class="food-option"><span class="food-code">I</span><span class="meal-label">暫不排</span><b>鰻魚 Izumo LUCUA</b><p>三個午餐時段已用完；保留作臨時替換選項。</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Izumo+LUCUA+Osaka" target="_blank" rel="noreferrer">在 Google Maps 查看 ↗</a></div>
               <div class="food-option must"><span class="food-code">J</span><span class="meal-label">必吃</span><b>天婦羅蕎麥麵</b><p>必須排入其中一日午餐；實際店舖留待你選定日期後再挑。</p></div>
               <div class="food-option"><span class="food-code">K</span><span class="meal-label">暫不排</span><b>吉列豬排飯</b><p>三個午餐時段已用完；保留作臨時替換選項。</p></div>
             </div>
-          </article>
+          </details>
 
-          <article class="food-group" id="noodle-options">
-            <div class="food-group-head"><div><h3>拉麵／烏冬選擇板 R1–R12</h3><p>10/4 約15:30已選「くそオヤジ最後のひとふり なんば店」；R10–R12 是附近／同類拉麵後備，不會自動改動當日安排。MENSHO 固定在回程登機前。</p></div><span class="type-chip food">13 OPTIONS</span></div>
+          <details class="reading-toggle food-group" id="noodle-options">
+      <summary class="reading-heading"><h3>拉麵／烏冬選擇板 R1–R12</h3></summary>
+            <div class="food-group-head"><div><p>10/4 約15:30已選「くそオヤジ最後のひとふり なんば店」；R10–R12 是附近／同類拉麵後備，不會自動改動當日安排。MENSHO 固定在回程登機前。</p></div><span class="type-chip food">13 OPTIONS</span></div>
             <div class="choice-grid" style="grid-template-columns:1fr;margin-bottom:11px">
               <label class="choice-slot"><span>目前拉麵／烏冬首選</span><select id="noodle-pick" data-food-choice="noodlePick" aria-label="選擇拉麵或烏冬首選"><option value="">尚未選擇</option><option value="R1">R1 · 本町製麺所 中華そば工房</option><option value="R2">R2 · 麺屋 ラパス</option><option value="R3">R3 · ラーメン大戦争 せんば心斎橋店</option><option value="R4">R4 · 本町製麺所 本店（烏冬）</option><option value="R5">R5 · 麺スタイル谷本家 大阪梅田店</option><option value="R6">R6 · MAIDOU 西安料理</option><option value="R7">R7 · うどん棒 大阪本店</option><option value="R8">R8 · 燃えよ麺助</option><option value="R9">R9 · 銀座 篝 ルクア大阪店</option><option value="R10">R10 · 中華そば ふじい 難波千日前店</option><option value="R11">R11 · 麺屋 丈六 なんば店</option><option value="R12">R12 · なんばラーメン一座（EDION 9F）</option></select><small>這個欄位只記錄你的拉麵候選首選，不會自動改動每日行程；10/4 已選餐廳仍照行程執行。</small></label>
             </div>
@@ -860,11 +880,12 @@
               <div class="food-option"><span class="food-code">R11</span><span class="meal-label">高井田系濃口醬油 · R1/R3延伸</span><b>麺屋 丈六 なんば店</b><p>大阪特色高井田系：深色醬油湯與粗直麵，口味比 R1／R3 更厚重。官方營業時段為11:30–15:00、18:00–21:00；約15:30正值休息，不適合當天這餐，但可留作其他日子候選。</p><a href="https://jouroku.blog.fc2.com/" target="_blank" rel="noreferrer">查看官方營業公告 ↗</a></div>
               <div class="food-option"><span class="food-code">R12</span><span class="meal-label">選擇多 · EDION 9F</span><b>なんばラーメン一座</b><p>同一樓層集合全國9間拉麵店；如果臨時不想吃貝出汁，可到現場看各店口味再選。官方營業11:00–22:00、最後點餐21:30；你原本已想去 EDION 9F。</p><a href="https://namba-ramen-ichiza.com/" target="_blank" rel="noreferrer">官方店舖與樓層資料 ↗</a></div>
             </div>
-          </article>
-          <article class="food-group">
-            <div class="food-group-head"><div><h3>10/6 神戶午餐 · 已選</h3><p>厚切牛柳吉列配傳統燴汁；這道菜並非神戶牛。</p></div><span class="type-chip food">FIXED</span></div>
+          </details>
+          <details class="reading-toggle food-group">
+      <summary class="reading-heading"><h3>10/6 神戶午餐 · 已選</h3></summary>
+            <div class="food-group-head"><div><p>厚切牛柳吉列配傳統燴汁；這道菜並非神戶牛。</p></div><span class="type-chip food">FIXED</span></div>
             <div class="food-options"><div class="food-option must"><span class="food-code">L</span><span class="meal-label">牛柳吉列</span><b>グリル一平 三宮店</b><p>11:00 開始午餐、星期三休息；不設預約，到店先取整理券。10/6 星期二去之前再核對臨時休業。</p><a href="https://grill-ippei.co.jp/shop/sannomiya/" target="_blank" rel="noreferrer">查看官方店舖頁 ↗</a></div></div>
-          </article>
+          </details>
         </div>
 
         <aside class="food-column">
@@ -887,11 +908,12 @@
           <article class="food-option"><span class="food-code">H</span><span class="meal-label">現場決定</span><b>玄品 法善寺総本店</b><p>先寫入候選，但不排固定日期、不預約；到大阪後再決定是否食。</p><a href="https://guenpin-houzenji.com/" target="_blank" rel="noreferrer">查看官方網站 ↗</a></article>
         </aside>
       </div>
-    </section>
+    </details>
 
-    <section class="trip-workbench panel" id="itinerary" aria-label="每日行程瀏覽器">
+    <details class="reading-toggle trip-workbench panel" id="itinerary" aria-label="每日行程瀏覽器">
+      <summary class="reading-heading"><h2 class="panel-title">四日行程與旅程備註</h2></summary>
       <div class="toolbar">
-        <div><h2 class="panel-title">Itinerary browser</h2><p class="panel-kicker" id="result-meta">四日行程 · 可按日期或關鍵字篩選</p></div>
+        <div><p class="panel-kicker" id="result-meta">四日行程 · 可按日期或關鍵字篩選</p></div>
         <label><span class="sr-only">搜尋行程</span><input class="search" id="search" type="search" placeholder="搜尋地點、餐廳或活動"></label>
         <div class="top-actions"><button class="ghost-button" id="edit-itinerary" type="button">編輯行程</button><button class="copy-button" id="copy-checklist" type="button">複製今日清單</button></div>
       </div>
@@ -904,13 +926,14 @@
       </div>
       <div class="day-timeline" id="day-timeline"></div>
 
-      <article class="notes-panel">
-        <h3 class="panel-title">旅程備註</h3>
+      <details class="reading-toggle notes-panel">
+      <summary class="reading-heading"><h3 class="panel-title">旅程備註</h3></summary>
+
         <p class="panel-kicker">可記低預約、交通或臨時想法；按儲存寫入這部手機。</p>
         <label class="sr-only" for="trip-notes">旅程備註內容</label>
         <textarea id="trip-notes" placeholder="例如：10/5 午餐想選哪間；餐廳預約結果；臨時改動…"></textarea>
         <div class="note-actions"><button class="primary-link" id="save-notes" type="button">儲存備註</button></div>
-      </article>
+      </details>
 
       <div class="breakdown-grid">
         <article class="breakdown">
@@ -933,7 +956,7 @@
         <summary>Browse all items <span class="mono" id="all-count">29 ITEMS</span></summary>
         <div class="item-browser" id="item-browser"></div>
       </details>
-    </section>
+    </details>
 
     <footer class="source-footer">
       本頁沿用原行程；航班、營業時間與交通班次未在本次重新核實，出發前請按官方公告核對。<br>資料來源：<a href="https://app.notion.com/p/3e46a0b4b6f48000b201ef7e622275b5" target="_blank" rel="noreferrer">2026-09-23 Notion 工作頁</a> ·
@@ -942,8 +965,9 @@
       <a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6559.htm" target="_blank" rel="noreferrer">日本國稅廳</a><br>
       Rapi:t 來回四張已於 2026-09-23 在 Klook 付款及確認，合共 HK$284；班次與座位尚待安排。訂單編號及醫療代碼沒有複製到本 HTML。
     </footer>
-    <section class="panel mobile-intro" id="private-sync">
-      <h2>跨裝置私人同步</h2>
+    <details class="reading-toggle panel mobile-intro" id="private-sync">
+      <summary class="reading-heading"><h2>跨裝置私人同步</h2></summary>
+
       <p>兩部裝置登入同一 Google 帳戶。先在有最新資料的裝置儲存，再於另一裝置選版本載入。同步包含行程、待辦、選餐、備註與票券；不會自動上傳、不會修改真實訂位。</p>
       <p>版本存於此應用程式專用的私人 Drive 空間，不會出現在公開網站。載入前會備份本機行程；票券只新增缺少的內容。每份上限 20 MB，合計 64 MB。</p>
       <label>這部裝置名稱 <input id="sync-device" maxlength="60" placeholder="例如：MacBook 或 iPhone"></label>
@@ -951,12 +975,13 @@
       <label>私人版本 <select id="sync-versions"><option value="">尚未連接</option></select></label>
       <div class="mobile-actions"><button id="sync-restore" type="button" disabled>載入所選版本</button><button id="sync-undo" type="button">還原載入前的行程</button></div>
       <p id="sync-status" role="status" aria-live="polite">正在讀取同步設定…</p>
-    </section>
-    <section class="panel mobile-intro" id="offline-wallet">
-      <h2>私人離線票券包</h2><p>自行加入機票、酒店確認書、LANY 或 Rapi:t 票券 PDF／圖片。只存這部裝置，不上傳 GitHub，不會供朋友看到。可在上方登入 Google Drive，手動保存及載入私人版本；請另留原檔備份。</p>
+    </details>
+    <details class="reading-toggle panel mobile-intro" id="offline-wallet">
+      <summary class="reading-heading"><h2>私人離線票券包</h2></summary>
+      <p>自行加入機票、酒店確認書、LANY 或 Rapi:t 票券 PDF／圖片。只存這部裝置，不上傳 GitHub，不會供朋友看到。可在上方登入 Google Drive，手動保存及載入私人版本；請另留原檔備份。</p>
       <label>選擇文件（單檔上限 20 MB）<input id="wallet-file" type="file" accept="application/pdf,image/jpeg,image/png,image/webp" multiple></label>
       <p id="wallet-status" role="status"></p><div id="wallet-files"></div>
-    </section>
+    </details>
   </main>
   <nav class="mobile-tabs" aria-label="手機導覽"><a href="#itinerary">行程</a><a href="#food-choices">餐廳</a><a href="#noodle-options">拉麵</a><a href="#trip-map">地圖</a><a href="#task-panel">待辦</a></nav>
   <dialog class="editor-dialog" id="day-editor">
@@ -1624,7 +1649,7 @@
           }
           let published = null;
           try {
-            const response = await fetch("./trip-data.json?release=58");
+            const response = await fetch("./trip-data.json?release=59");
             if (!response.ok) throw new Error("行程資料目前未能更新");
             published = await response.json();
             if (!published.days?.some(day => day.day === "10/4")) throw new Error("資料不屬於大阪行程，請重新載入");
